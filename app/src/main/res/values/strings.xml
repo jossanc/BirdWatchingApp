@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BirdWatchAppv1</string>
+    <string name="title_sighting">Nuevo avistamiento</string>
+    <string name="button_sighting">Enviar</string>
+    <string name="hint_sighting">Comentario sobre el avistamiento</string>
+    <string name="name_sighting">Nombre del ave</string>
+    <string name="area_sighting">Zona geográfica</string>
+    <string name="name_count">Caracteres restantes:</string>
+    <string name="summaryZonaGeografica">zona geográfica del usuario</string>
+    <string name="titleZonaGeografica">Zona Geográfica</string>
+    <string name="sighting">Nuevo Avistamiento</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="purge">Limpiar Base Datos</string>
+    <string name="titleServiceStart">Arrancar Refrescar</string>
+    <string name="titleServiceStop">Detener Refrescar</string>
+    <string name="pause">En pausa</string>
+    <string name="resume">Resume</string>
+    <string name="title_activity_challenges">ChallengesActivity</string>
+    <string name="title_challenges">Retos</string>
+</resources>

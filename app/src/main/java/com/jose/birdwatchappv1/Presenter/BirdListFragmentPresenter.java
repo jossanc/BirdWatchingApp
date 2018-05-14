@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 
+import com.jose.birdwatchappv1.Model.BirdOps;
 import com.jose.birdwatchappv1.R;
 import com.jose.birdwatchappv1.Utilities.HttpHandler;
 
@@ -25,6 +26,7 @@ public class BirdListFragmentPresenter extends ListFragment{
 
 
     private String TAG = BirdListFragmentPresenter.class.getSimpleName();
+    private BirdOps birdOps = new BirdOps();
 
     private static final String TAG_NAME="commonName";
     private static final String TAG_SNAME="scientificName";
@@ -37,9 +39,11 @@ public class BirdListFragmentPresenter extends ListFragment{
     public BirdListFragmentPresenter() {
     }
 
-    public void getBirds(Context context){
-        mcontext=context;
-        new LoadAllBirds().execute();
+    public String getBirds(){
+
+        //BirdOps birdOps=new BirdOps();
+        return birdOps.getBirds();
+        //new LoadAllBirds().execute();
     }
 
     /**

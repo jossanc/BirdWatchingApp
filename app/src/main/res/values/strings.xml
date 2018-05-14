@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BirdWatchAppv1</string>
+    <string name="app_name">BirdWatchingApp</string>
     <string name="title_sighting">Nuevo avistamiento</string>
     <string name="button_sighting">Enviar</string>
     <string name="hint_sighting">Comentario sobre el avistamiento</string>
@@ -17,4 +17,17 @@
     <string name="resume">Resume</string>
     <string name="title_activity_challenges">ChallengesActivity</string>
     <string name="title_challenges">Retos</string>
+    <string name="title_activity_login">Login</string>
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="button_login">Acceder</string>
+    <string name="button_register">Registrarse</string>
+    <string name="register">Todavía no tienes una cuenta? Créate una</string>
+    <string name="usuario">Usuario</string>
+    <string name="title_activity_signup">SignupActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_signup">Nombre del usuario</string>
+
 </resources>

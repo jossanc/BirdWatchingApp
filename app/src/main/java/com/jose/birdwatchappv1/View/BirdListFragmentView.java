@@ -1,7 +1,6 @@
 package com.jose.birdwatchappv1.View;
 
 import android.app.ListFragment;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.widget.SimpleAdapter;
 
 import com.jose.birdwatchappv1.Presenter.BirdListFragmentPresenter;
 import com.jose.birdwatchappv1.R;
-import com.jose.birdwatchappv1.Utilities.HttpHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +33,6 @@ public class BirdListFragmentView extends ListFragment {
     private static final String TAG_NAME="commonName";
     private static final String TAG_SNAME="scientificName";
     private static final String TAG_FAMILY="family";
-    Context context;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> birdList = new ArrayList<HashMap<String, String>>();
@@ -44,8 +41,9 @@ public class BirdListFragmentView extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setEmptyText("Sin aves...");
-        //String a ="a";
-        new LoadAllBirds().execute();
+        //String a[] ={"a","b"}; execute(a)
+        String birds=birdListFragmentPresenter.getBirds();
+        new LoadAllBirds().execute(birds);
         //birdListFragmentPresenter.getBirds(context);
         //birdListFragmentPresenter.new LoadAllBirds().execute();
     }
@@ -67,13 +65,15 @@ public class BirdListFragmentView extends ListFragment {
          * getting All products from url
          * */
         protected String doInBackground(String... args) {
-            HttpHandler sh = new HttpHandler();
+           /* HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
             String url_all_birds = "http://virtual.lab.inf.uva.es:20072/birds/";
             String jsonStrg = sh.makeServiceCall(url_all_birds);
-            if(jsonStrg!=null) {
+            //Log.e(TAG,args[0]); primer argumento en 0
+            */
+            if(args[0]!=null) {
                 try {
-                    JSONArray birds = new JSONArray(jsonStrg);
+                    JSONArray birds = new JSONArray(args[0]);
 
                     Log.e(TAG, "All birds: " + birds);
 

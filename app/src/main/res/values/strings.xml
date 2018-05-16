@@ -29,5 +29,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_signup">Nombre del usuario</string>
+    <string name="signup_password">Contraseña</string>
+    <string name="signup_create">Crear cuenta</string>
+    <string name="signup_login">Ya registrado? Accede aquí</string>
+    <string name="signup_repeat_password">Reescribe la contraseña</string>
 
 </resources>

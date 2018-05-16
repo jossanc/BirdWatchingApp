@@ -26,12 +26,30 @@ public class HttpHandler {
     public String makeServiceCall(String reqUrl) {
         String response = null;
         try {
+            Log.d(TAG,reqUrl);
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             // read the response
+            Log.d(TAG,"hecho el request");
             InputStream in = new BufferedInputStream(conn.getInputStream());
             response = convertStreamToString(in);
+            /*
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.connect();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder stringBuilder = new StringBuilder();
+
+            String line = null;
+            while ((line = reader.readLine()) != null)
+            {
+                stringBuilder.append(line + "\n");
+            }
+            conn.disconnect();
+            response= stringBuilder.toString();
+            Log.d(TAG,response);*/
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
         } catch (ProtocolException e) {

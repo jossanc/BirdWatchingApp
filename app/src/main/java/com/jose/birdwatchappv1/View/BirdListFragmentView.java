@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.jose.birdwatchappv1.Presenter.BirdListFragmentPresenter;
 import com.jose.birdwatchappv1.R;
@@ -42,6 +43,7 @@ public class BirdListFragmentView extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         setEmptyText("Sin aves...");
         //String a[] ={"a","b"}; execute(a)
+        birdListFragmentPresenter=new BirdListFragmentPresenter(this.getActivity());
         String birds=birdListFragmentPresenter.getBirds();
         new LoadAllBirds().execute(birds);
         //birdListFragmentPresenter.getBirds(context);
@@ -62,7 +64,7 @@ public class BirdListFragmentView extends ListFragment {
         }
 
         /**
-         * getting All products from url
+         * getting All birds from url
          * */
         protected String doInBackground(String... args) {
            /* HttpHandler sh = new HttpHandler();
@@ -135,6 +137,10 @@ public class BirdListFragmentView extends ListFragment {
 
         }
 
+    }
+
+    public void showMessage(String message){
+        Toast.makeText(this.getActivity(),message,Toast.LENGTH_LONG).show();
     }
 
 

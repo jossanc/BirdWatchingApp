@@ -2,6 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/signup_back"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -11,12 +12,6 @@
         android:paddingTop="56sp"
         android:paddingLeft="24sp"
         android:paddingRight="24sp">
-
-        <ImageView android:src="@drawable/login"
-            android:layout_width="wrap_content"
-            android:layout_height="72sp"
-            android:layout_marginBottom="24sp"
-            android:layout_gravity="center_horizontal" />
 
         <!--  Name Label -->
         <android.support.design.widget.TextInputLayout
@@ -28,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="@string/name_signup" />
+                android:hint="@string/name_signup"
+                android:textColorHint="#FFFFFF"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -41,7 +37,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password"/>
+                android:hint="@string/signup_password"/>
+        </android.support.design.widget.TextInputLayout>
+        <!-- Password2 Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:layout_marginBottom="8sp">
+            <EditText android:id="@+id/input_password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/signup_repeat_password"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Signup Button -->
@@ -52,13 +60,13 @@
             android:layout_marginTop="24sp"
             android:layout_marginBottom="24sp"
             android:padding="12sp"
-            android:text="Create Account"/>
+            android:text="@string/signup_create"/>
 
         <TextView android:id="@+id/link_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
-            android:text="Already a member? Login"
+            android:text="@string/signup_login"
             android:gravity="center"
             android:textSize="16sp"/>
 

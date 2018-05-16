@@ -8,7 +8,7 @@ import com.jose.birdwatchappv1.Utilities.HttpHandler;
 
 public class BirdOps {
 
-    private String TAG= Bird.class.getSimpleName();
+    private String TAG= BirdOps.class.getSimpleName();
 
     public String getBirds(){
 

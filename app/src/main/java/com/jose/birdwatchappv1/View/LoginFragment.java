@@ -26,6 +26,7 @@ public class LoginFragment extends Fragment {
     Button buttonLogin;
     TextView linkSignUp;
     SharedPreferences prefs;
+    SharedPreferences.Editor edit;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -100,9 +101,9 @@ public class LoginFragment extends Fragment {
 
             Log.d(TAG, "Login");
 
-            if (!validate()) {
+            if (validate()!="ok") {
                 onLoginFailed();
-                return "Fallo al acceder";
+                return validate();
             }
 
 
@@ -114,18 +115,27 @@ public class LoginFragment extends Fragment {
             values.clear();
             // comprobar pass y acceder a Main activity
             prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            edit = prefs.edit();
+            edit.putString("username", name);
+            edit.commit();
+            //String aaa= prefs.getString("username","");
+            //Log.d(TAG,"prefs:"+aaa);
 
             //meter el usuario en preferencias, para luego cogerlo en el resto de actividades
             Log.d(TAG,"Accediendo...");
-            return "Bienvenido"+ name;
+            return "Bienvenido";
         }
         // Llamada cuando la actividad en background ha terminado
         @Override
         protected void onPostExecute(String result) {
             // Acción al completar el envio del avistamiento
             super.onPostExecute(result);
-            Toast.makeText(LoginFragment.this.getActivity(), result, Toast.LENGTH_LONG).show();
-            startActivity(new Intent(getActivity(), MainActivity.class));
+            if (result != "Bienvenido"){
+                Toast.makeText(LoginFragment.this.getActivity(), result, Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(LoginFragment.this.getActivity(), result, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
         }
     }
 
@@ -136,22 +146,17 @@ public class LoginFragment extends Fragment {
         buttonLogin.setEnabled(true);
     }
 
-    public boolean validate() {
-        boolean valid = true;
+    public String validate() {
+        String valid = "ok";
         String user = editUserName.getText().toString();
         String password = editPassword.getText().toString();
 
-        if (user.isEmpty() || password.length() < 4 || password.length() > 10) {
+        if (user.isEmpty() || user.length() < 4 || user.length() > 10) {
            // editUserName.setError("Introduce un usuario válido");
-            valid = false;
-        } else {
-            //editUserName.setError(null);
-        }
-
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+            valid = "El usuario no es correcto";
+        } else if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
             //editPassword.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
+            valid = "La contraseña no es correcta";
         } else {
             //editPassword.setError(null);
         }

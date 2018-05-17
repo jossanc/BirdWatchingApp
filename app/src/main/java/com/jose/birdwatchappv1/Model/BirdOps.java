@@ -1,6 +1,7 @@
 package com.jose.birdwatchappv1.Model;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.jose.birdwatchappv1.Utilities.HttpHandler;
 import com.jose.birdwatchappv1.Utilities.HttpInterface;
@@ -45,6 +46,7 @@ public class BirdOps extends AsyncTask<Void,Void,Void>{
         try {
             Response response = client.newCall(request).execute();
             httpResult.onSuccess(response.body().string());
+            Log.d(TAG,response.body().string());
         } catch (IOException e) {
             e.printStackTrace();
             httpResult.onFail("Error al obtener los datos");

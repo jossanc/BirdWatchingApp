@@ -23,7 +23,7 @@ public class BirdListFragmentPresenter{
     }
 
 
-    public String getBirds(){
+    public void getBirds(){
         Log.d(TAG,"Obteniendo las aves");
        // view.showMessage("asda");
         //view.showMessage("as");
@@ -40,8 +40,8 @@ public class BirdListFragmentPresenter{
                 view.showMessage(result);
             }
         });
-        return bird.getBirds();
-        //new LoadAllBirds().execute();
+
+
     }
 
 }

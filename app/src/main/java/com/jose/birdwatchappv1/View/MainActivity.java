@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPresenter= new MainFragmentPresenter();
-        new GetBirds().execute();
+        //new GetBirds().execute();
 
     }
 

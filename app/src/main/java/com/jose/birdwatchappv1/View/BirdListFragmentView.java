@@ -51,6 +51,7 @@ public class BirdListFragmentView extends ListFragment {
     }
 
     public void loadBirds(String result){
+
         new LoadAllBirds().execute(result);
     }
 

@@ -27,12 +27,12 @@ public class MainFragmentPresenter extends Fragment implements MainPresenterInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_fragment_presenter, container, false);
+        return inflater.inflate(R.layout.fragment_main_presenter, container, false);
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mainView = null;
+        //mainView = null;
     }
 
     // según la opción de menu elegida se inicia una actividad u otra

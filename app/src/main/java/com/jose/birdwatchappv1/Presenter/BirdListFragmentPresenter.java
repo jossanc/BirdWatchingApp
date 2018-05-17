@@ -19,6 +19,7 @@ public class BirdListFragmentPresenter{
 
 
     public BirdListFragmentPresenter(BirdListFragmentView fragView) {
+        Log.d(TAG,"enlazando con el presentador");
         view=fragView;
     }
 

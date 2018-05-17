@@ -22,6 +22,7 @@ public class BirdOps extends AsyncTask<Void,Void,Void>{
     private HttpInterface httpResult;
     public BirdOps(HttpInterface httpR){
         httpResult=httpR;
+        Log.d(TAG,"enlazando listener");
     }
 
     public String getBirds(){
@@ -36,6 +37,7 @@ public class BirdOps extends AsyncTask<Void,Void,Void>{
 
     @Override
     protected Void doInBackground(Void... voids) {
+        Log.d(TAG,"Obteniendo el GET de la url");
         OkHttpClient client = new OkHttpClient();
         String url = "http://virtual.lab.inf.uva.es:20072/birds/";
 

@@ -33,5 +33,8 @@
     <string name="signup_create">Crear cuenta</string>
     <string name="signup_login">Ya registrado? Accede aquí</string>
     <string name="signup_repeat_password">Reescribe la contraseña</string>
+    <string name="element_text">Un avistamiento</string>
+    <string name="item_date">Fecha</string>
+    <string name="item_bird">Ave avistada</string>
 
 </resources>

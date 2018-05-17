@@ -5,6 +5,12 @@ import android.util.Log;
 
 import com.jose.birdwatchappv1.Utilities.HttpHandler;
 
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 /**
  * Created by jose on 12/05/18.
  */
@@ -47,7 +53,7 @@ public class Bird {
     }
 
 
-    public String getBirds(){
+    public String getBirds2(){
         //TODO: obtener bien los datos, sale exception en httpHandler
         HttpHandler sh = new HttpHandler();
         // Making a request to url and getting response
@@ -61,4 +67,7 @@ public class Bird {
         Log.d(TAG,birds);
         return birds;
     }
+
+
+
 }

@@ -43,11 +43,15 @@ public class BirdListFragmentView extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         setEmptyText("Sin aves...");
         //String a[] ={"a","b"}; execute(a)
-        birdListFragmentPresenter=new BirdListFragmentPresenter(this.getActivity());
-        String birds=birdListFragmentPresenter.getBirds();
-        new LoadAllBirds().execute(birds);
+        birdListFragmentPresenter=new BirdListFragmentPresenter(this);
+        birdListFragmentPresenter.getBirds();
+        //new LoadAllBirds().execute(birds);
         //birdListFragmentPresenter.getBirds(context);
         //birdListFragmentPresenter.new LoadAllBirds().execute();
+    }
+
+    public void loadBirds(String result){
+        new LoadAllBirds().execute(result);
     }
 
     /**

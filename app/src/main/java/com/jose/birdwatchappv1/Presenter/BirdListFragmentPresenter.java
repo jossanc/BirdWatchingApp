@@ -30,17 +30,28 @@ public class BirdListFragmentPresenter{
         //view.showMessage("as");
         new BirdOps(new HttpInterface() {
             @Override
-            public void onSuccess(String result) {
-                view.showMessage(result);
-                view.loadBirds(result);
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        view.loadBirds(result);
+
+                    }
+                });
 
             }
 
             @Override
-            public void onFail(String result) {
-                view.showMessage(result);
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
             }
-        });
+        }).execute();
 
 
     }

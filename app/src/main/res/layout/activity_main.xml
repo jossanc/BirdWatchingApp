@@ -11,9 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragment_timeline"
-        android:name="com.jose.birdwatchappv1.View.SightingsFragment"
-        android:layout_centerHorizontal="true" />
-    <!--android:name="com.jose.birdwatchappv1.View.BirdListFragmentView"-->
+        android:layout_centerHorizontal="true"
+        android:name="com.jose.birdwatchappv1.View.BirdListFragmentView"/>
 
 
 </android.support.constraint.ConstraintLayout>

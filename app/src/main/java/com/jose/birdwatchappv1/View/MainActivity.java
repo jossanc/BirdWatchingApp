@@ -1,52 +1,27 @@
 package com.jose.birdwatchappv1.View;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.jose.birdwatchappv1.Presenter.MainFragmentPresenter;
+import com.jose.birdwatchappv1.Presenter.MainPresenter;
 import com.jose.birdwatchappv1.R;
-import com.jose.birdwatchappv1.Utilities.HttpHandler;
+/*
+    Actividad principal, accedida después de la actividad Login. Es donde se carga la primera lista de aves y el menú
 
-public class MainActivity extends AppCompatActivity implements MainInterface{
+    Created by José Luis Sánchez Paredes for the Final Degree Project
+ */
+public class MainActivity extends AppCompatActivity {
 
-    private MainFragmentPresenter mainPresenter;
+    private MainPresenter mainPresenter;
     private String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenter= new MainFragmentPresenter();
-        //new GetBirds().execute();
-
-    }
-
-    private class GetBirds extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            HttpHandler sh = new HttpHandler();
-            // Making a request to url and getting response
-            String url = "http://virtual.lab.inf.uva.es:20072/birds/";
-            String jsonStr = sh.makeServiceCall(url);
-
-            Log.e(TAG, "Response from url: " + jsonStr);
-
-
-            return null;
-        }
-
+        mainPresenter= new MainPresenter(this);
 
     }
 
@@ -55,17 +30,32 @@ public class MainActivity extends AppCompatActivity implements MainInterface{
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
-    // según la opción de menu elegida se inicia una actividad u otra
+    // según la opción de menu elegida llamamos al presentador para que inicie una actividad u otra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        mainPresenter.onOptionsItemSelected(item);
-        return true;
+        switch (item.getItemId()) {
+            case R.id.action_sighting:
+                mainPresenter.menu("action_sighting");
+                return true;
+            case R.id.action_sightings:
+                mainPresenter.menu("action_sightings");
+                return true;
+            case R.id.action_my_sightings:
+                mainPresenter.menu("action_my_sightings");
+                return true;
+            case R.id.action_challenges:
+                mainPresenter.menu("action_challenges");
+                return true;
+            case R.id.action_achievements:
+                mainPresenter.menu("action_achievements");
+                return true;
+            case R.id.action_settings:
+                mainPresenter.menu("action_settings");
+                return true;
+            default:
+                return false;
+        }
     }
 
-    @Override
-    protected void onDestroy() {
-        mainPresenter.onDestroy();
-        super.onDestroy();
-    }
 
 }

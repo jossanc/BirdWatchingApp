@@ -10,15 +10,15 @@ import com.jose.birdwatchappv1.View.BirdListFragmentView;
  * Created by jose on 12/05/18.
  */
 
-public class BirdListFragmentPresenter{
+public class BirdsPresenter {
 
 
-    private String TAG = BirdListFragmentPresenter.class.getSimpleName();
+    private String TAG = BirdsPresenter.class.getSimpleName();
     private BirdOps bird ;
     private BirdListFragmentView view;
 
 
-    public BirdListFragmentPresenter(BirdListFragmentView fragView) {
+    public BirdsPresenter(BirdListFragmentView fragView) {
         Log.d(TAG,"enlazando con el presentador");
         view=fragView;
     }

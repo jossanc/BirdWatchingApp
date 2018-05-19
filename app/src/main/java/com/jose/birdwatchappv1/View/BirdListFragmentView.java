@@ -8,7 +8,7 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.jose.birdwatchappv1.Presenter.BirdListFragmentPresenter;
+import com.jose.birdwatchappv1.Presenter.BirdsPresenter;
 import com.jose.birdwatchappv1.R;
 
 import org.json.JSONArray;
@@ -26,7 +26,7 @@ import java.util.HashMap;
  */
 public class BirdListFragmentView extends ListFragment {
 
-    private BirdListFragmentPresenter birdListFragmentPresenter;
+    private BirdsPresenter birdListFragmentPresenter;
     // Toast.makeText(BirdOps.this.getActivity(),"Json Data is downloading",Toast.LENGTH_LONG).show();
 
     private String TAG = BirdListFragmentView.class.getSimpleName();
@@ -43,7 +43,8 @@ public class BirdListFragmentView extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         setEmptyText("Sin aves...");
         //String a[] ={"a","b"}; execute(a)
-        birdListFragmentPresenter=new BirdListFragmentPresenter(this);
+        Log.d(TAG,"Enlazando la vista con el presentador");
+        birdListFragmentPresenter=new BirdsPresenter(this);
         birdListFragmentPresenter.getBirds();
         //new LoadAllBirds().execute(birds);
         //birdListFragmentPresenter.getBirds(context);
@@ -78,6 +79,9 @@ public class BirdListFragmentView extends ListFragment {
             String jsonStrg = sh.makeServiceCall(url_all_birds);
             //Log.e(TAG,args[0]); primer argumento en 0
             */
+            Log.d(TAG,"Resultado del getBirds "+args[0]);
+            if (args[0].contains("<html>"))
+                args[0]=null;
             if(args[0]!=null) {
                 try {
                     JSONArray birds = new JSONArray(args[0]);
@@ -115,7 +119,8 @@ public class BirdListFragmentView extends ListFragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
+            }else
+                Log.d(TAG,"Resultado del getBirds "+args[0]);
 
             return null;
         }

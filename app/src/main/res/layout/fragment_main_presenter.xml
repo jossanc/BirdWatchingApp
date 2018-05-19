@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jose.birdwatchappv1.Presenter.MainFragmentPresenter">
+    tools:context="com.jose.birdwatchappv1.Presenter.MainPresenter">
 
     <!-- TODO: Update blank fragment layout -->
 

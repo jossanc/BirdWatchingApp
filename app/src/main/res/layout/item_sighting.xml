@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_item_height"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
     android:gravity="center_vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/sightingsUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/element_text"
         />
-<!--
     <TextView
-        android:id="@+id/textViewBird"
+        android:id="@+id/sightingsBird"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/item_bird"
-        android:layout_below="@+id/textView"/>
+        android:layout_below="@+id/sightingsUser"/>
 
     <TextView
-        android:id="@+id/textViewDate"
+        android:id="@+id/sightingsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/item_date"
-        android:layout_alignEnd="@+id/textView"/>-->
-    </LinearLayout>
-</FrameLayout>
+        android:layout_alignBaseline="@+id/sightingsUser"
+        android:layout_alignBottom="@+id/sightingsUser"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

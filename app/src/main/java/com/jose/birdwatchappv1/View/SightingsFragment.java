@@ -8,18 +8,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.jose.birdwatchappv1.Presenter.CustomAdapter;
+import com.jose.birdwatchappv1.Presenter.SightingsAdapter;
+import com.jose.birdwatchappv1.Presenter.SightingsPresenter;
 import com.jose.birdwatchappv1.R;
 
 
 public class SightingsFragment extends Fragment {
 
 
-    private static final String TAG = "RecyclerViewFragment";
+    private static final String TAG = SignupFragment.class.getSimpleName();
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
     private static final int DATASET_COUNT = 30;
+    private SightingsPresenter sightingsPresenter;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -30,7 +33,7 @@ public class SightingsFragment extends Fragment {
 
 
     protected RecyclerView mRecyclerView;
-    protected CustomAdapter mAdapter;
+    protected SightingsAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected String[] mDataset;
 
@@ -40,7 +43,8 @@ public class SightingsFragment extends Fragment {
 
         // Initialize dataset, this data would usually come from a local content provider or
         // remote server.
-        initDataset();
+
+
     }
 
     @Override
@@ -51,6 +55,7 @@ public class SightingsFragment extends Fragment {
 
         // BEGIN_INCLUDE(initializeRecyclerView)
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        //sightingsPresenter=new SightingsPresenter(this);
 
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion
         // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
@@ -66,12 +71,13 @@ public class SightingsFragment extends Fragment {
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
-        mAdapter = new CustomAdapter(mDataset);
-        // Set CustomAdapter as the adapter for RecyclerView.
-        mRecyclerView.setAdapter(mAdapter);
+        //mAdapter = new SightingsAdapter(mDataset);
+        // Set SightingsAdapter as the adapter for RecyclerView.
+        //RecyclerView.setAdapter(mAdapter);
         // END_INCLUDE(initializeRecyclerView)
 
-
+        sightingsPresenter=new SightingsPresenter(this);
+        initDataset();
         return rootView;
     }
 
@@ -123,6 +129,18 @@ public class SightingsFragment extends Fragment {
         for (int i = 0; i < DATASET_COUNT; i++) {
             mDataset[i] = "This is element #" + i;
         }
+        sightingsPresenter.getSightings();
+
+
+    }
+    public void loadSightings(String result){
+        //llamra a async task y parsear datos
+        mAdapter = new SightingsAdapter(result);
+        // Set SightingsAdapter as the adapter for RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+    }
+    public void showMessage(String message){
+        Toast.makeText(this.getActivity(),message,Toast.LENGTH_LONG).show();
     }
 
 

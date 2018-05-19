@@ -28,7 +28,8 @@
             android:name=".View.SignupActivity"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.SightingsActivity"></activity>
+        <activity android:name=".View.SightingsActivity" />
+        <activity android:name=".View.MySightingsActivity"></activity>
     </application>
 
 </manifest>

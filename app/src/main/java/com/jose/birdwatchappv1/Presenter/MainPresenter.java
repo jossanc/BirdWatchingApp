@@ -4,6 +4,7 @@ package com.jose.birdwatchappv1.Presenter;
 import android.content.Intent;
 
 import com.jose.birdwatchappv1.View.MainActivity;
+import com.jose.birdwatchappv1.View.MySightingsActivity;
 import com.jose.birdwatchappv1.View.SightingsActivity;
 /*
  Clase java que actúa como Presentador de la actividad MainActivity
@@ -30,7 +31,7 @@ public class MainPresenter {
                 mainView.startActivity(new Intent(mainView, SightingsActivity.class));
                 return ;
             case "action_my_sightings":
-                //mainView.startActivity(new Intent(mainView,MySightingsActivity.class));
+                mainView.startActivity(new Intent(mainView,MySightingsActivity.class));
                 return;
             case "action_challenges":
                 //mainView.startActivity(new Intent(this, ChallengesActivity.class));

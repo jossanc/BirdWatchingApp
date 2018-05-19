@@ -18,7 +18,7 @@ public class  API {
             case "url_all_birds":
                 return "http://virtual.lab.inf.uva.es:20072/birds/";
             case "url_all_sightings":
-                return "http://virtual.lab.inf.uva.es:20072/sightings";
+                return "http://virtual.lab.inf.uva.es:20072/sightings/";
             case "url_all_challenges":
                 return "http://virtual.lab.inf.uva.es:20072/challenges/";
             default:

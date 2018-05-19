@@ -16,7 +16,7 @@ import okhttp3.Response;
  * Created by jose on 12/05/18.
  */
 
-public class BirdOps extends AsyncTask<Void,Void,Void>{
+public class BirdOps extends AsyncTask<String,Void,Void>{
 
     private String TAG= BirdOps.class.getSimpleName();
     private API api = new API();
@@ -38,10 +38,11 @@ public class BirdOps extends AsyncTask<Void,Void,Void>{
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected Void doInBackground(String... urls) {
         Log.d(TAG,"Obteniendo el GET de la url");
         OkHttpClient client = new OkHttpClient();
-        String url = api.get_url("url_all_birds");
+        //String url = api.get_url("url_all_birds");
+        String url=urls[0];
 
             Request request = new Request.Builder()
                     .url(url)

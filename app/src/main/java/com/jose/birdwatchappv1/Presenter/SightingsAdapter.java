@@ -20,7 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,7 +28,6 @@ import java.util.List;
 public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.ViewHolder> {
     private static final String TAG = SightingsAdapter.class.getSimpleName();
 
-    private String[] mDataSet;
     private Sighting s1= new Sighting("jose","Cotorra Común","10-05-2018");
     private Sighting s2= new Sighting("jose","Cotorra Común","11-05-2018");
     private List<Sighting> sightings = new ArrayList<>();
@@ -82,8 +80,6 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     public SightingsAdapter(String jsonArray) {
         //  parsear aqui
         // la vista no tiene que generar el array de strings
-        //mDataSet = dataSet;
-
         sightings.add(s1);
         sightings.add(s2);
         parserAllSightings(jsonArray);
@@ -107,21 +103,15 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
 
-        // Get element from your dataset at this position and replace the contents of the view
+        // Get element from the list sightings at this position and replace the contents of the view
         // with that element
-        //viewHolder.getSightingUser().setText(mDataSet[position]);
-        //viewHolder.getSightingBird().setText(mDataSet[position]);
-        //viewHolder.getSightingDate().setText(mDataSet[position]);
-        //if(position==1){
             viewHolder.getSightingUser().setText(sightings.get(position).getUser());
             viewHolder.getSightingBird().setText(sightings.get(position).getBird());
             viewHolder.getSightingDate().setText(sightings.get(position).getDate());
-
-        //}
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size of your list (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return sightings.size();
@@ -142,8 +132,8 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                     JSONObject aux = data.getJSONObject(0);
                     String success = aux.getString(TAG_USER);
                     if (success != null) {
-                        // birds found
-                        // looping through All Birds
+                        // data found
+                        // looping through All Data
                         for (int i = 0; i < data.length(); i++) {
                             JSONObject c = data.getJSONObject(i);
 
@@ -152,17 +142,15 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                             String user = c.getString(TAG_USER);
                             String date = c.getString(TAG_DATE);
                             String area = c.getString(TAG_AREA);
-                            // creating new HashMap
-                            HashMap<String, String> map = new HashMap<String, String>();
+                            // creating new object to put into the List
                             Sighting sig=new Sighting(user,bird,date);
 
-                            // adding each child node to HashMap key => value
                             sig.setUser(user);
                             sig.setBird(bird);
                             sig.setDate(date);
                             sig.setAreaName(area);
 
-                            // adding HashList to ArrayList
+                            // adding the object to the List
                             sightings.add(sig);
                         }
                     }
@@ -172,8 +160,5 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                 }
             } else
                 Log.d(TAG, "Resultado del getSigtings " + result);
-
     }
-
-
 }

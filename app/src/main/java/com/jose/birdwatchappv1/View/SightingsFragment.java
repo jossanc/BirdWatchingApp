@@ -18,7 +18,7 @@ import com.jose.birdwatchappv1.R;
 public class SightingsFragment extends Fragment {
 
 
-    private static final String TAG = SignupFragment.class.getSimpleName();
+    private static final String TAG = SightingsFragment.class.getSimpleName();
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
     private static final int DATASET_COUNT = 30;

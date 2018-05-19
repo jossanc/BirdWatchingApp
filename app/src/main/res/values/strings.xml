@@ -39,5 +39,7 @@
     <string name="titleSightings">Avistamientos</string>
     <string name="titleMySightings">Mis avistamientos</string>
     <string name="titleAchievements">Mis logros</string>
+    <string name="item_description">Descripción del reto</string>
+    <string name="item_challenge">Reto</string>
 
 </resources>

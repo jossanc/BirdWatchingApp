@@ -1,10 +1,5 @@
 package com.jose.birdwatchingapp.Presenter;
 
-/**
- * Created by jose on 17/05/18.
- */
-
-
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,8 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Provide views to RecyclerView with data from mDataSet.
+ * Created by jose on 17/05/18.
  */
+
 public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.ViewHolder> {
     private static final String TAG = SightingsAdapter.class.getSimpleName();
 
@@ -105,9 +101,9 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
 
         // Get element from the list sightings at this position and replace the contents of the view
         // with that element
-            viewHolder.getSightingUser().setText(sightings.get(position).getUser());
-            viewHolder.getSightingBird().setText(sightings.get(position).getBird());
-            viewHolder.getSightingDate().setText(sightings.get(position).getDate());
+        viewHolder.getSightingUser().setText(sightings.get(position).getUser());
+        viewHolder.getSightingBird().setText(sightings.get(position).getBird());
+        viewHolder.getSightingDate().setText(sightings.get(position).getDate());
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
@@ -118,7 +114,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     }
 
     public void parserAllSightings(String result){
-            Log.d(TAG, "Resultado del getBirds " + result);
+            Log.d(TAG, "Resultado del get sightings " + result);
             if (result.contains("<html>"))
                 result = null;
             if (result != null) {
@@ -126,7 +122,6 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                     JSONArray data = new JSONArray(result);
 
                     Log.e(TAG, "All sightings: " + result);
-
 
                     // Checking for SUCCESS TAG
                     JSONObject aux = data.getJSONObject(0);

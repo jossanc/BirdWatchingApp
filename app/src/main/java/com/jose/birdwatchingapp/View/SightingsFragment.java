@@ -125,13 +125,7 @@ public class SightingsFragment extends Fragment {
      * from a local content provider or remote server.
      */
     private void initDataset() {
-        mDataset = new String[DATASET_COUNT];
-        for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = "This is element #" + i;
-        }
         sightingsPresenter.getSightings();
-
-
     }
     public void loadSightings(String result){
         //llamra a async task y parsear datos

@@ -8,11 +8,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.API;
+import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Model.User;
-import com.jose.birdwatchingapp.Model.UserOps;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.LoginFragment;
 import com.jose.birdwatchingapp.View.MainActivity;
+import com.jose.birdwatchingapp.View.SignupActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +36,7 @@ public class LoginPresenter {
     private String TAG_PASSWORD = "password";
     private String TAG_AREA = "areaName";
     private User user;
+    private static final int REQUEST_SIGNUP = 0;
 
     public LoginPresenter(LoginFragment view) {
         this.view = view;
@@ -46,6 +48,12 @@ public class LoginPresenter {
         userName = name;
         password = pass;
         new login().execute();
+    }
+
+    public void linkSignup(){
+
+        Intent intent = new Intent(view.getActivity(), SignupActivity.class);
+        view.startActivityForResult(intent, REQUEST_SIGNUP);
     }
 
     private final class login extends AsyncTask<String, Void, String> {
@@ -104,23 +112,30 @@ public class LoginPresenter {
     }
 
     public String validate() {
-        String valid;
+        final String[] valid = {"ok"};
         String[] urls = {"", "", ""};
         url = api.get_url("url_user");
         urls[0] = "get";
         urls[1] = url;
 
         if (userName.isEmpty() || userName.length() < 4 || userName.length() > 10) {
-            valid = "usuario incorrecto";
+            valid[0] = "usuario incorrecto";
         } else if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            valid = "pass incorrecta";
+            valid[0] = "pass incorrecta";
         } else {
-            new UserOps(new HttpInterface() {
+            new HttpReq(new HttpInterface() {
                 @Override
                 public void onSuccess(final String result) {
                     Log.d(TAG, result);
                     parseUser(result);
-
+                    //validar credenciales
+                    if (user.getUserName().contains(userName) && user.getPassword().contains(password)){
+                        //es correcto
+                        valid[0] ="ok";
+                        Log.d(TAG,"usuario correcto");
+                    }else if( user.getUserName().contains(userName)) {
+                        valid[0] = "pass incorrecta";
+                    }else valid[0] ="usuario incorrecto";
                 }
                 @Override
                 public void onFail(final String result) {
@@ -133,17 +148,10 @@ public class LoginPresenter {
                     Log.d(TAG, result);
                 }
             }).execute(urls);
-            //validar credenciales
-            if (user.getUserName().contains(userName) && user.getPassword().contains(password)){
-                //es correcto
-                valid="ok";
-                Log.d(TAG,"usuario correcto");
-            }else if( user.getUserName().contains(userName)) {
-                valid = "pass incorrecta";
-            }else valid="usuario incorrecto";
+
         }
 
-        return valid;
+        return valid[0];
     }
 
     public void parseUser(String result) {

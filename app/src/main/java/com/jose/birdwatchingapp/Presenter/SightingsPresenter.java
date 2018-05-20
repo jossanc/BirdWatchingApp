@@ -3,7 +3,7 @@ package com.jose.birdwatchingapp.Presenter;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.API;
-import com.jose.birdwatchingapp.Model.SightingsOps;
+import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.SightingsFragment;
 
@@ -14,7 +14,6 @@ import com.jose.birdwatchingapp.View.SightingsFragment;
 public class SightingsPresenter {
     private String TAG = SightingsPresenter.class.getSimpleName();
     private SightingsFragment view;
-    private String url;
     private API api;
 
     public SightingsPresenter(SightingsFragment fragView) {
@@ -24,12 +23,16 @@ public class SightingsPresenter {
         }
 
     public void getSightings(){
-        Log.d(TAG,"Obteniendo las aves");
+        Log.d(TAG,"Obteniendo los avistamientos");
         // view.showMessage("asda");
         //view.showMessage("as");
-        url=api.get_url("url_all_sightings");
+        String url=api.get_url("url_all_sightings");
         Log.d(TAG,url);
-        new SightingsOps(new HttpInterface() {
+        String[] urls={"","",""};
+        urls[0]="get";
+        urls[1]=url;
+
+        new HttpReq(new HttpInterface() {
             @Override
             public void onSuccess(final String result) {
                 view.getActivity().runOnUiThread(new Runnable() {
@@ -52,6 +55,6 @@ public class SightingsPresenter {
                     }
                 });
             }
-        }).execute(url);
+        }).execute(urls);
     }
 }

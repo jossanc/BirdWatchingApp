@@ -3,7 +3,7 @@ package com.jose.birdwatchingapp.Presenter;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.API;
-import com.jose.birdwatchingapp.Model.BirdOps;
+import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.BirdListFragmentView;
 
@@ -15,10 +15,8 @@ public class BirdsPresenter {
 
 
     private String TAG = BirdsPresenter.class.getSimpleName();
-    private BirdOps bird ;
     private BirdListFragmentView view;
     private API api;
-    private String url;
 
     public BirdsPresenter(BirdListFragmentView fragView) {
         Log.d(TAG,"enlazando con el presentador");
@@ -29,9 +27,12 @@ public class BirdsPresenter {
 
     public void getBirds(){
         Log.d(TAG,"Obteniendo las aves");
-        url=api.get_url("url_all_birds");
+        String url=api.get_url("url_all_birds");
+        String[] urls={"","",""};
+        urls[0]="get";
+        urls[1]=url;
 
-        new BirdOps(new HttpInterface() {
+        new HttpReq(new HttpInterface() {
             @Override
             public void onSuccess(final String result) {
                 view.getActivity().runOnUiThread(new Runnable() {
@@ -54,7 +55,7 @@ public class BirdsPresenter {
                     }
                 });
             }
-        }).execute(url);
+        }).execute(urls);
 
 
     }

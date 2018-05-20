@@ -22,7 +22,6 @@ import com.jose.birdwatchingapp.R;
 public class LoginFragment extends Fragment {
 
     private static final String TAG = LoginFragment.class.getSimpleName();
-    private static final int REQUEST_SIGNUP = 0;
     private EditText editUserName, editPassword;
     private Button loginButton;
     private TextView linkSignUp;
@@ -80,8 +79,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getActivity(), SignupActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                presenter.linkSignup();
             }
         });
 

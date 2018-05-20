@@ -14,16 +14,16 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by jose on 19/05/18.
+ * Created by jose on 20/05/18.
  */
 
-public class SightingsOps extends AsyncTask<String,Void,Void> {
+public class HttpReq extends AsyncTask<String,Void,Void> {
 
-    private String TAG = BirdOps.class.getSimpleName();
+    private String TAG = HttpReq.class.getSimpleName();
     private HttpInterface httpResult;
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    public SightingsOps(HttpInterface httpR) {
+    public HttpReq(HttpInterface httpR) {
         httpResult = httpR;
         Log.d(TAG, "enlazando listener");
     }
@@ -31,9 +31,8 @@ public class SightingsOps extends AsyncTask<String,Void,Void> {
 
     @Override
     protected Void doInBackground(String... urls) {
-        Log.d(TAG, "Obteniendo el GET de la url");
         OkHttpClient client = new OkHttpClient();
-        if (urls[0] == "post") {
+        if (urls[0].contains("post")) {
             Log.d(TAG, "Ejecutando el Post a esa url");
             String url = urls[1];
             String json = urls[2];
@@ -52,8 +51,9 @@ public class SightingsOps extends AsyncTask<String,Void,Void> {
                 httpResult.onFail("Error al obtener los datos");
             }
 
-        }else if ( urls[0]=="get") {
-            String url = urls[0];
+        }else if ( urls[0].contains("get")) {
+            Log.d(TAG, "Obteniendo el GET de la url");
+            String url = urls[1];
 
             Request request = new Request.Builder()
                     .url(url)

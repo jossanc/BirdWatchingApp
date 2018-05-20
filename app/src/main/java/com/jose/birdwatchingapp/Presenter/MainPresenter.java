@@ -3,8 +3,10 @@ package com.jose.birdwatchingapp.Presenter;
 
 import android.content.Intent;
 
+import com.jose.birdwatchingapp.View.ChallengesActivity;
 import com.jose.birdwatchingapp.View.MainActivity;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
+import com.jose.birdwatchingapp.View.SightingActivity;
 import com.jose.birdwatchingapp.View.SightingsActivity;
 /*
  Clase java que actúa como Presentador de la actividad MainActivity
@@ -26,7 +28,8 @@ public class MainPresenter {
 
         switch (id){
             case "action_sighting":
-                //mainView.startActivity(new Intent(this, SightingActivity.class));
+                mainView.startActivity(new Intent(mainView, SightingActivity.class));
+                return ;
             case "action_sightings":
                 mainView.startActivity(new Intent(mainView, SightingsActivity.class));
                 return ;
@@ -34,13 +37,14 @@ public class MainPresenter {
                 mainView.startActivity(new Intent(mainView,MySightingsActivity.class));
                 return;
             case "action_challenges":
-                //mainView.startActivity(new Intent(this, ChallengesActivity.class));
+                mainView.startActivity(new Intent(mainView, ChallengesActivity.class));
                 return;
             case "action_achievements":
-                //mainView.startActivity(new Intent(this, AchievementsActivity.class));
+                //mainView.startActivity(new Intent(mainView, AchievementsActivity.class));
                 return;
             case "action_settings":
-                //mainView.startActivity(new Intent(this, SettingsActivity.class));
+                //mainView.startActivity(new Intent(mainView, SettingsActivity.class));
+                return;
             default:
                 return;
         }

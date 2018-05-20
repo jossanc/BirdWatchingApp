@@ -3,7 +3,7 @@ package com.jose.birdwatchingapp.Presenter;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.API;
-import com.jose.birdwatchingapp.Model.UserOps;
+import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.SignupFragment;
 
@@ -21,7 +21,6 @@ public class SignupPresenter {
     private String password;
     private String password2;
     private String areaName;
-    private String url;
     private API api;
 
     private List<String> areaList= new ArrayList<String>();
@@ -61,7 +60,7 @@ public class SignupPresenter {
 
         // TODO: Implement your own signup logic here.
         //TODO: progress dialog, algo parecido
-        url=api.get_url("url_register_user");
+        String url=api.get_url("url_register_user");
         String json;
         //verificar aynctask y eso, httpinterface
         json = "{userName:"+name+",password:"+password+",areaName:"+areaName+"}";
@@ -71,7 +70,7 @@ public class SignupPresenter {
         urls[1]=url;
         urls[2]=json;
 
-        new UserOps(new HttpInterface() {
+        new HttpReq(new HttpInterface() {
             @Override
             public void onSuccess(final String result) {
                 view.getActivity().runOnUiThread(new Runnable() {
@@ -96,9 +95,6 @@ public class SignupPresenter {
             }
         }).execute(urls);
 
-
-
-
         onSignupSuccess(result);
         return  result;
     }
@@ -106,7 +102,7 @@ public class SignupPresenter {
 
     public void onSignupSuccess(String result) {
         view.setSignupButton(true);
-        view.showMessage(result);
+        //view.showMessage(result);
         view.getActivity().finish();
     }
 

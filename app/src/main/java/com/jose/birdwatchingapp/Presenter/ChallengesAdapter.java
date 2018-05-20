@@ -47,8 +47,8 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
                     //v.getContext().startActivity(new Intent(v.getContext(), SightingsActivity.class));
                 }
             });
-            challengeName = (TextView) v.findViewById(R.id.challengeName);
-            challengeDescription = (TextView) v.findViewById(R.id.challengeDescription);
+            challengeName = (TextView) v.findViewById(R.id.challengeN);
+            challengeDescription = (TextView) v.findViewById(R.id.challengeDesc);
         }
 
         public TextView getChallengeName() {
@@ -67,9 +67,9 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
      */
     public ChallengesAdapter(String jsonArray) {
         //  parsear aqui
-        // la vista no tiene que generar el array de strings
         challengeList.add(c1);
         parseAll(jsonArray);
+        Log.d(TAG,challengeList.get(0).getChallengeName());
     }
 
     // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)

@@ -1,11 +1,11 @@
-package com.jose.birdwatchappv1.Presenter;
+package com.jose.birdwatchingapp.Presenter;
 
 import android.util.Log;
 
-import com.jose.birdwatchappv1.Model.API;
-import com.jose.birdwatchappv1.Model.BirdOps;
-import com.jose.birdwatchappv1.Utilities.HttpInterface;
-import com.jose.birdwatchappv1.View.BirdListFragmentView;
+import com.jose.birdwatchingapp.Model.API;
+import com.jose.birdwatchingapp.Model.BirdOps;
+import com.jose.birdwatchingapp.Utilities.HttpInterface;
+import com.jose.birdwatchingapp.View.BirdListFragmentView;
 
 /**
  * Created by jose on 12/05/18.

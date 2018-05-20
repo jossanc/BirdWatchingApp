@@ -1,13 +1,13 @@
-package com.jose.birdwatchappv1.Presenter;
+package com.jose.birdwatchingapp.Presenter;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.jose.birdwatchappv1.Model.API;
-import com.jose.birdwatchappv1.Model.SightingsOps;
-import com.jose.birdwatchappv1.Utilities.HttpInterface;
-import com.jose.birdwatchappv1.View.MySightingsFragment;
+import com.jose.birdwatchingapp.Model.API;
+import com.jose.birdwatchingapp.Model.SightingsOps;
+import com.jose.birdwatchingapp.Utilities.HttpInterface;
+import com.jose.birdwatchingapp.View.MySightingsFragment;
 
 /**
  * Created by jose on 19/05/18.
@@ -15,7 +15,6 @@ import com.jose.birdwatchappv1.View.MySightingsFragment;
 
 public class MySightingsPresenter {
     private String TAG = MySightingsPresenter.class.getSimpleName();
-    private SightingsOps sightings ;
     private MySightingsFragment view;
     private String url;
     private API api;

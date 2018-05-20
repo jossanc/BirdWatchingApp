@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.View;
+package com.jose.birdwatchingapp.View;
 
 import android.app.Fragment;
 import android.content.ContentValues;
@@ -16,17 +16,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Presenter.LoginPresenter;
+import com.jose.birdwatchingapp.R;
 
 public class LoginFragment extends Fragment {
 
-    private static final String TAG = "LoginFragment";
+    private static final String TAG = LoginFragment.class.getSimpleName();
     private static final int REQUEST_SIGNUP = 0;
-    EditText editUserName, editPassword;
-    Button buttonLogin;
-    TextView linkSignUp;
-    SharedPreferences prefs;
-    SharedPreferences.Editor edit;
+    private EditText editUserName, editPassword;
+    private Button loginButton;
+    private TextView linkSignUp;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor edit;
+    private LoginPresenter presenter;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -60,14 +62,17 @@ public class LoginFragment extends Fragment {
         // Enlazar views  
         editUserName = (EditText) view.findViewById(R.id.input_user);
         editPassword = (EditText) view.findViewById(R.id.input_password);
-        buttonLogin = (Button) view.findViewById(R.id.btn_login);
+        loginButton = (Button) view.findViewById(R.id.btn_login);
         linkSignUp = (TextView) view.findViewById(R.id.link_signup);
-        buttonLogin.setOnClickListener(new View.OnClickListener(){
+        presenter = new LoginPresenter(this);
+
+        loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String name = editUserName.getText().toString();
                 String pass = editPassword.getText().toString();
-                new login().execute(name,pass);
+                //new login().execute(name,pass);
+                presenter.loginButton(name,pass);
             }
         });
         linkSignUp.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +89,12 @@ public class LoginFragment extends Fragment {
         //cogemos el valor de las preferencias del Area y lo pasamos al layout de Sighting
 
         return view;
+    }
+    public void showMessage(String message){
+        Toast.makeText(getActivity(),message,Toast.LENGTH_LONG).show();
+    }
+    public void setLoginpButton(boolean vis){
+        loginButton.setEnabled(vis);
     }
     /* Función llamada al pulsar el botón
     public void onClick(View v) {
@@ -143,7 +154,7 @@ public class LoginFragment extends Fragment {
     public void onLoginFailed() {
         //Toast.makeText(getActivity(), "Fallo al acceder", Toast.LENGTH_LONG).show();
         Log.e(TAG,"fallo de credenciales");
-        buttonLogin.setEnabled(true);
+        loginButton.setEnabled(true);
     }
 
     public String validate() {

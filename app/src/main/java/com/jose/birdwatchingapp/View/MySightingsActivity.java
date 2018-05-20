@@ -1,21 +1,21 @@
-package com.jose.birdwatchappv1.View;
+package com.jose.birdwatchingapp.View;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.R;
 
-public class SignupActivity extends AppCompatActivity {
+public class MySightingsActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-
-        // Comprobar si la actividad ya ha sido creada con anterioridad
+        setContentView(R.layout.activity_my_sightings);
+        // Check if the activity is already created
         if (savedInstanceState == null) {
-            // Crear un fragment
-            SignupFragment fragment = new SignupFragment();
+            // Create a fragment
+            MySightingsFragment fragment = new MySightingsFragment();
             getFragmentManager()
                     .beginTransaction()
                     .add(android.R.id.content, fragment,
@@ -23,5 +23,4 @@ public class SignupActivity extends AppCompatActivity {
                     .commit();
         }
     }
-
 }

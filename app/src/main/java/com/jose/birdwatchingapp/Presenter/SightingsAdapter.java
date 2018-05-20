@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.Presenter;
+package com.jose.birdwatchingapp.Presenter;
 
 /**
  * Created by jose on 17/05/18.
@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jose.birdwatchappv1.Model.Sighting;
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Model.Sighting;
+import com.jose.birdwatchingapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

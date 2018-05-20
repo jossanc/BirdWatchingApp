@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.Model;
+package com.jose.birdwatchingapp.Model;
 
 /**
  * Created by jose on 19/05/18.

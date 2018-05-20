@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.View;
+package com.jose.birdwatchingapp.View;
 
 import android.app.ListFragment;
 import android.os.AsyncTask;
@@ -8,8 +8,8 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.jose.birdwatchappv1.Presenter.BirdsPresenter;
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Presenter.BirdsPresenter;
+import com.jose.birdwatchingapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

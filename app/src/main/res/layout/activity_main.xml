@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jose.birdwatchappv1.View.MainActivity">
+    tools:context="com.jose.birdwatchingapp.View.MainActivity">
 
 
     <fragment
@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:id="@+id/fragment_timeline"
         android:layout_centerHorizontal="true"
-        android:name="com.jose.birdwatchappv1.View.BirdListFragmentView"/>
+        android:name="com.jose.birdwatchingapp.View.BirdListFragmentView"/>
 
 
 </android.support.constraint.ConstraintLayout>

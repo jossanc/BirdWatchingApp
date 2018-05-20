@@ -1,12 +1,12 @@
-package com.jose.birdwatchappv1.View;
+package com.jose.birdwatchingapp.View;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jose.birdwatchappv1.Presenter.MainPresenter;
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Presenter.MainPresenter;
+import com.jose.birdwatchingapp.R;
 /*
     Actividad principal, accedida después de la actividad Login. Es donde se carga la primera lista de aves y el menú
 

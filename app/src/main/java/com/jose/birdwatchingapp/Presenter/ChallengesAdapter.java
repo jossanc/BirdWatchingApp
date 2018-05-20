@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.Presenter;
+package com.jose.birdwatchingapp.Presenter;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jose.birdwatchappv1.Model.Challenge;
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Model.Challenge;
+import com.jose.birdwatchingapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

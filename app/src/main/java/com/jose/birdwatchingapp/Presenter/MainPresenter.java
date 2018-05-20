@@ -1,11 +1,11 @@
-package com.jose.birdwatchappv1.Presenter;
+package com.jose.birdwatchingapp.Presenter;
 
 
 import android.content.Intent;
 
-import com.jose.birdwatchappv1.View.MainActivity;
-import com.jose.birdwatchappv1.View.MySightingsActivity;
-import com.jose.birdwatchappv1.View.SightingsActivity;
+import com.jose.birdwatchingapp.View.MainActivity;
+import com.jose.birdwatchingapp.View.MySightingsActivity;
+import com.jose.birdwatchingapp.View.SightingsActivity;
 /*
  Clase java que actúa como Presentador de la actividad MainActivity
  */

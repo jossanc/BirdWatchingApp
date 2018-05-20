@@ -1,9 +1,9 @@
-package com.jose.birdwatchappv1.Model;
+package com.jose.birdwatchingapp.Model;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.jose.birdwatchappv1.Utilities.HttpInterface;
+import com.jose.birdwatchingapp.Utilities.HttpInterface;
 
 import java.io.IOException;
 

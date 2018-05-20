@@ -1,0 +1,57 @@
+package com.jose.birdwatchingapp.Presenter;
+
+import android.util.Log;
+
+import com.jose.birdwatchingapp.Model.API;
+import com.jose.birdwatchingapp.Model.SightingsOps;
+import com.jose.birdwatchingapp.Utilities.HttpInterface;
+import com.jose.birdwatchingapp.View.SightingsFragment;
+
+/**
+ * Created by jose on 19/05/18.
+ */
+
+public class SightingsPresenter {
+    private String TAG = SightingsPresenter.class.getSimpleName();
+    private SightingsFragment view;
+    private String url;
+    private API api;
+
+    public SightingsPresenter(SightingsFragment fragView) {
+        Log.d(TAG,"enlazando con el presentador");
+        view=fragView;
+        api = new API();
+        }
+
+    public void getSightings(){
+        Log.d(TAG,"Obteniendo las aves");
+        // view.showMessage("asda");
+        //view.showMessage("as");
+        url=api.get_url("url_all_sightings");
+        Log.d(TAG,url);
+        new SightingsOps(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        view.loadSightings(result);
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
+            }
+        }).execute(url);
+    }
+}

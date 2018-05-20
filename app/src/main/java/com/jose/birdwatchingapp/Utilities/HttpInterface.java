@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.Utilities;
+package com.jose.birdwatchingapp.Utilities;
 
 /**
  * Created by b.jlsp on 17/05/2018.

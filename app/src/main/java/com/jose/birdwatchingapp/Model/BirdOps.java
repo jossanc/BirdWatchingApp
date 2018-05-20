@@ -1,10 +1,9 @@
-package com.jose.birdwatchappv1.Model;
+package com.jose.birdwatchingapp.Model;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.jose.birdwatchappv1.Utilities.HttpHandler;
-import com.jose.birdwatchappv1.Utilities.HttpInterface;
+import com.jose.birdwatchingapp.Utilities.HttpInterface;
 
 import java.io.IOException;
 
@@ -26,7 +25,7 @@ public class BirdOps extends AsyncTask<String,Void,Void>{
         Log.d(TAG,"enlazando listener");
        // getBirds();
     }
-
+/*
     public String getBirds(){
 
         HttpHandler sh = new HttpHandler();
@@ -35,7 +34,7 @@ public class BirdOps extends AsyncTask<String,Void,Void>{
         String birds = sh.makeServiceCall(url_all_birds);
 
         return birds;
-    }
+    }*/
 
     @Override
     protected Void doInBackground(String... urls) {

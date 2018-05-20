@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jose.birdwatchappv1">
+    package="com.jose.birdwatchingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,9 +13,9 @@
         android:theme="@style/AppTheme">
 
         <!-- android:networkSecurityConfig="@xml/network_security_config" -->
-        <activity android:name=".View.MainActivity" />
+        <activity android:name="com.jose.birdwatchingapp.View.MainActivity" />
         <activity
-            android:name=".View.Login"
+            android:name="com.jose.birdwatchingapp.View.Login"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.SignupActivity"
+            android:name="com.jose.birdwatchingapp.View.SignupActivity"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.SightingsActivity" />
-        <activity android:name=".View.MySightingsActivity"></activity>
+        <activity android:name="com.jose.birdwatchingapp.View.SightingsActivity" />
+        <activity android:name="com.jose.birdwatchingapp.View.MySightingsActivity"></activity>
     </application>
 
 </manifest>

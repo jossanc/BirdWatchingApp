@@ -1,4 +1,4 @@
-package com.jose.birdwatchappv1.View;
+package com.jose.birdwatchingapp.View;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.jose.birdwatchappv1.Presenter.SightingsAdapter;
-import com.jose.birdwatchappv1.Presenter.SightingsPresenter;
-import com.jose.birdwatchappv1.R;
+import com.jose.birdwatchingapp.Presenter.SightingsAdapter;
+import com.jose.birdwatchingapp.Presenter.SightingsPresenter;
+import com.jose.birdwatchingapp.R;
 
 
 public class SightingsFragment extends Fragment {

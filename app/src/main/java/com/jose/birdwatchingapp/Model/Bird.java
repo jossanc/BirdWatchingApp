@@ -1,15 +1,9 @@
-package com.jose.birdwatchappv1.Model;
+package com.jose.birdwatchingapp.Model;
 
 
 import android.util.Log;
 
-import com.jose.birdwatchappv1.Utilities.HttpHandler;
-
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.jose.birdwatchingapp.Utilities.HttpHandler;
 
 /**
  * Created by jose on 12/05/18.

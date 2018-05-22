@@ -13,7 +13,7 @@ public class SightingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sighting);
         // Comprobar si la actividad ya ha sido creada con anterioridad
         if (savedInstanceState == null) {
-            // Crear un fragment
+            // Crear un fragmento
             SightingFragment fragment = new SightingFragment();
             getFragmentManager()
                     .beginTransaction()

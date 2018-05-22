@@ -1,20 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:paddingTop="56sp"
+        android:paddingLeft="24sp"
+        android:paddingRight="24sp">
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
-</LinearLayout>
+        <TextView android:id="@+id/birdName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/title_bird"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#000000"/>
+
+        <TextView android:id="@+id/birdSN"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/item_birdSN"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <TextView android:id="@+id/birdF"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/item_birdF"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <TextView android:id="@+id/birdE"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/item_birdE"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <TextView android:id="@+id/birdSeason"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/bird_season"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <Spinner
+            android:id="@+id/spinnerSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:background="#819FF7"/>
+
+        <TextView android:id="@+id/areaName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/bird_area"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <Spinner
+            android:id="@+id/spinnerArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:background="#81BEF7"
+            />
+
+
+
+    </LinearLayout>
+</ScrollView>

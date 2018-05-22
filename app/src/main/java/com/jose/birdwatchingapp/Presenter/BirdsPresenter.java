@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
-import com.jose.birdwatchingapp.View.BirdListFragmentView;
+import com.jose.birdwatchingapp.View.BirdsFragment;
 
 /**
  * Created by jose on 12/05/18.
@@ -14,10 +14,10 @@ public class BirdsPresenter {
 
 
     private String TAG = BirdsPresenter.class.getSimpleName();
-    private BirdListFragmentView view;
+    private BirdsFragment view;
     private API api;
 
-    public BirdsPresenter(BirdListFragmentView fragView) {
+    public BirdsPresenter(BirdsFragment fragView) {
         Log.d(TAG,"enlazando con el presentador");
         view=fragView;
         api=new API();

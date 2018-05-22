@@ -36,7 +36,7 @@ public class LoginPresenter {
     private String TAG_AREA = "areaName";
     private User user;
     private static final int REQUEST_SIGNUP = 0;
-    private String valid;
+
 
     public LoginPresenter(LoginFragment view) {
         this.view = view;
@@ -63,35 +63,54 @@ public class LoginPresenter {
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "Login");
-            String validate=validate();
-            validate="ok";
+            final String[] stringReturn = new String[1];
+            stringReturn[0]="Bienvenido";
+            //stringReturn[0]="not ok";  no se cambia,
+            validate(new HttpInterface() {
+                @Override
+                public void onSuccess(String result) {
+                    Log.d(TAG, "onClicked " + userName + " " + password);
+                    ContentValues values = new ContentValues();
+                    values.clear();
+                    // comprobar pass y acceder a Main activity
+                    prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+                    edit = prefs.edit();
+                    edit.putString("userName", userName);
+                    edit.commit();
+                    //String aaa= prefs.getString("username","");
+                    //Log.d(TAG,"prefs:"+aaa);
+
+                    //meter el usuario en preferencias, para luego cogerlo en el resto de actividades
+                    Log.d(TAG, "Accediendo...");
+                    stringReturn[0] ="Bienvenido";
+                }
+
+                @Override
+                public void onFail(String result) {
+                    Log.d(TAG,result+"2");
+                    if (result.contains("pass incorrecta")) {
+                        stringReturn[0] = "pass incorrecta";
+                    } else if (result.contains("usuario incorrecto")) {
+                        stringReturn[0]="usuario incorrecto";
+                        Log.d(TAG,stringReturn[0]+"3");
+                    }else stringReturn[0]="";
+                }
+            });
+            Log.d(TAG,"evaluacion obtenida: "+stringReturn[0]);
+                return stringReturn[0];
+            /*
             if(validate.contains("ok")) {
                 // final Location localizacion=null;
-                Log.d(TAG, "onClicked " + userName + " " + password);
-                ContentValues values = new ContentValues();
-                values.clear();
-                // comprobar pass y acceder a Main activity
-                prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
-                edit = prefs.edit();
-                edit.putString("userName", userName);
-                edit.commit();
-                //String aaa= prefs.getString("username","");
-                //Log.d(TAG,"prefs:"+aaa);
-
-                //meter el usuario en preferencias, para luego cogerlo en el resto de actividades
-                Log.d(TAG, "Accediendo...");
-                return "Bienvenido";
             }else if ( validate.contains("pass incorrecta")) {
                 onLoginFailed();
                 return "Contraseña incorrecta";
-            }else if(validate.contains("usuario incorrecto")) {
-                onLoginFailed();
+            }else             onLoginFailed();
                 Log.d(TAG, "if llega");
                 return "Usuario incorrecto";
             }else{
                     onLoginFailed();
                     return validate();
-            }
+            }*/
 
 
         }
@@ -111,13 +130,7 @@ public class LoginPresenter {
     }
 
 
-    public void onLoginFailed() {
-        //Toast.makeText(getActivity(), "Fallo al acceder", Toast.LENGTH_LONG).show();
-        Log.e(TAG, "fallo de credenciales");
-       // view.setLoginButton(true);
-    }
-
-    public String validate() {
+    public void validate(final HttpInterface req) {
         String[] urls = {"", "", ""};
         url = api.get_url("url_login");
         String json = "{userName:"+userName+",password:"+password+"}";
@@ -128,9 +141,11 @@ public class LoginPresenter {
 
 
         if (userName.isEmpty() || userName.length() < 4 || userName.length() > 10) {
-            valid = "usuario incorrecto";
+            req.onFail("usuario incorrecto");
+            //valid = "usuario incorrecto";
         } else if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            valid = "pass incorrecta";
+            req.onFail("pass incorrecta");
+            //valid = ;
         } else {
             new HttpReq(new HttpInterface() {
                 @Override
@@ -140,11 +155,14 @@ public class LoginPresenter {
                     //validar credenciales
                     if (user.getUserName().contains(userName)){
                         //es correcto
-                        valid ="ok";
+                        req.onSuccess("ok");
+                        //valid ="ok";
                         Log.d(TAG,"usuario correcto");
                     }else {// if( user.getUserName().contains(userName)) {
-                        changeValid("usuario incorrecto");
-                        Log.d(TAG,"usuario incorrecto  :"+valid);
+                        req.onFail("usuario incorrecto");
+                        Log.d(TAG,"usuario incorrecto 1");
+                        //changeValid("usuario incorrecto");
+                        //Log.d(TAG,"usuario incorrecto  :"+valid);
                     }//}else valid[0] ="usuario incorrecto";
                 }
                 @Override
@@ -160,11 +178,6 @@ public class LoginPresenter {
             }).execute(urls);
 
         }
-        Log.d(TAG,"return:"+valid);
-        return valid;
-    }
-    public void changeValid(String a){
-        valid=a;
     }
 
     public void parseUser(String result) {

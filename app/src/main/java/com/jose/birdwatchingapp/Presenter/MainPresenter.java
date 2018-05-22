@@ -3,6 +3,7 @@ package com.jose.birdwatchingapp.Presenter;
 
 import android.content.Intent;
 
+import com.jose.birdwatchingapp.View.AchievementsActivity;
 import com.jose.birdwatchingapp.View.ChallengesActivity;
 import com.jose.birdwatchingapp.View.MainActivity;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
@@ -40,7 +41,7 @@ public class MainPresenter {
                 mainView.startActivity(new Intent(mainView, ChallengesActivity.class));
                 return;
             case "action_achievements":
-                //mainView.startActivity(new Intent(mainView, AchievementsActivity.class));
+                mainView.startActivity(new Intent(mainView, AchievementsActivity.class));
                 return;
             case "action_settings":
                 //mainView.startActivity(new Intent(mainView, SettingsActivity.class));

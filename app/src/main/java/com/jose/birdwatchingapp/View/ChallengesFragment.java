@@ -4,6 +4,7 @@ package com.jose.birdwatchingapp.View;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,6 @@ import com.jose.birdwatchingapp.R;
 public class ChallengesFragment extends Fragment {
     private static final String TAG = ChallengesFragment.class.getSimpleName();
     private ChallengesPresenter presenter;
-
-
-
     protected RecyclerView mRecyclerView;
     protected ChallengesAdapter mAdapter;
 
@@ -40,7 +38,7 @@ public class ChallengesFragment extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewChallenge);
 
         presenter = new ChallengesPresenter(this);
-        initDataset();
+        initData();
         return rootView;
     }
 
@@ -48,15 +46,17 @@ public class ChallengesFragment extends Fragment {
      * Generates Strings for RecyclerView's adapter. This data would usually come
      * from a local content provider or remote server.
      */
-    private void initDataset() {
+    private void initData() {
         presenter.getChallenges();
     }
 
-    public void loadSightings(String result) {
+    public void loadChallenges(String result) {
         //llamar a async task y parsear datos
+        Log.d(TAG,result);
         mAdapter = new ChallengesAdapter(result);
         // Set SightingsAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
+        Log.d(TAG,"adaptador cargado");
     }
 
     public void showMessage(String message) {

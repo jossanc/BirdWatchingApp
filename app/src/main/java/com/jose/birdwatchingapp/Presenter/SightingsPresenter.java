@@ -23,8 +23,6 @@ public class SightingsPresenter {
 
     public void getSightings(){
         Log.d(TAG,"Obteniendo los avistamientos");
-        // view.showMessage("asda");
-        //view.showMessage("as");
         String url=api.get_url("url_all_sightings");
         Log.d(TAG,url);
         String[] urls={"","",""};

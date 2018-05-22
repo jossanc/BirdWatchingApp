@@ -27,6 +27,8 @@ public class  API {
                 return "http://virtual.lab.inf.uva.es:20072/users/login";
             case "url_areas":
                 return "http://virtual.lab.inf.uva.es:20072/areas/areasName";
+            case "url_all_achievements":
+                return "http://virtual.lab.inf.uva.es:20072/achievements/";
             default:
                 return null;
         }

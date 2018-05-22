@@ -54,7 +54,7 @@ public class MySightingsFragment extends Fragment {
         // END_INCLUDE(initializeRecyclerView)
 
         sightingsPresenter = new MySightingsPresenter(this);
-        initDataset();
+        initData();
         return rootView;
     }
 
@@ -62,7 +62,7 @@ public class MySightingsFragment extends Fragment {
      * Generates Strings for RecyclerView's adapter. This data would usually come
      * from a local content provider or remote server.
      */
-    private void initDataset() {
+    private void initData() {
         sightingsPresenter.getMySightings();
     }
 

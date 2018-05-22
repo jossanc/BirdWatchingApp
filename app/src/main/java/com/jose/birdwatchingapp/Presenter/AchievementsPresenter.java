@@ -1,33 +1,38 @@
 package com.jose.birdwatchingapp.Presenter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
-import com.jose.birdwatchingapp.View.ChallengesFragment;
+import com.jose.birdwatchingapp.View.AchievementsFragment;
 
 /**
- * Created by jose on 20/05/18.
+ * Created by jose on 22/05/18.
  */
 
-public class ChallengesPresenter {
-    private String TAG = ChallengesPresenter.class.getSimpleName();
-    private ChallengesFragment view;
+public class AchievementsPresenter {
+    private String TAG = AchievementsPresenter.class.getSimpleName();
+    private AchievementsFragment view;
     private API api;
+    private SharedPreferences prefs;
 
-    public ChallengesPresenter(ChallengesFragment fragView) {
-        Log.d(TAG,"enlazando con el presentador");
+    public AchievementsPresenter(AchievementsFragment fragView){
         view=fragView;
-        api = new API();
+        api= new API();
     }
+    public void getAchievements(){
+        Log.d(TAG,"Obteniendo los logros");
+        String url=api.get_url("url_all_achievements");
+        prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        String user=prefs.getString("username","");
 
-    public void getChallenges(){
-        Log.d(TAG,"Obteniendo las aves");
-        String url=api.get_url("url_all_challenges");
-        Log.d(TAG,url);
+        Log.d(TAG,url+user);
         String[] urls={"","",""};
         urls[0]="get";
-        urls[1]=url;
+        urls[1]=url+user;
+
         new HttpReq(new HttpInterface() {
             @Override
             public void onSuccess(final String result) {
@@ -35,10 +40,11 @@ public class ChallengesPresenter {
                     @Override
                     public void run() {
                         view.showMessage(result);
-                        view.loadChallenges(result);
+                        view.loadAchievements(result);
 
                     }
                 });
+
             }
 
             @Override

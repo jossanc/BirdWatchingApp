@@ -34,5 +34,12 @@
     <string name="signup_area">Provincia de CyL</string>
     <string name="create_sighting">Añadir avistamiento</string>
     <string name="sighting_bird">Nombre común del ave</string>
+    <string name="item_achievement">Nombre del logro</string>
+    <string name="item_birdSN">Nombre científico: </string>
+    <string name="item_birdF">Familia</string>
+    <string name="title_bird">Ave</string>
+    <string name="bird_area">Provincia donde vive</string>
+    <string name="bird_season">Temporadas en las que reside aquí</string>
+    <string name="item_birdE">Ecosistema</string>
 
 </resources>

@@ -148,13 +148,13 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                             String date = c.getString(TAG_DATE);
                             String area = c.getString(TAG_AREA);
                             // creating new object to put into the List
-                            Sighting sig=new Sighting(user,bird,date);
+                            Sighting sig=new Sighting(user,bird,date,area);
 
-                            sig.setUser(user);
+                          /*  sig.setUser(user);
                             sig.setBird(bird);
                             sig.setDate(date);
                             sig.setAreaName(area);
-
+                            */
                             // adding the object to the List
                             sightings.add(sig);
                         }

@@ -21,7 +21,6 @@ public class SightingsFragment extends Fragment {
     private static final String TAG = SightingsFragment.class.getSimpleName();
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
-    private static final int DATASET_COUNT = 30;
     private SightingsPresenter sightingsPresenter;
 
     private enum LayoutManagerType {
@@ -35,7 +34,6 @@ public class SightingsFragment extends Fragment {
     protected RecyclerView mRecyclerView;
     protected SightingsAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
-    protected String[] mDataset;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

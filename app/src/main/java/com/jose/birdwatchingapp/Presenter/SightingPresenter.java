@@ -4,10 +4,13 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.jose.birdwatchingapp.Model.API;
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.SightingFragment;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +21,12 @@ import java.util.List;
 
 public class SightingPresenter {
     private String TAG= SightingPresenter.class.getSimpleName();
+    private String TAG_AREA="areaName";
+    private String TAG_BIRD="commonName";
     private SightingFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
-    private List<String> birdList= new ArrayList<>();
+    private List<String> birdsList= new ArrayList<>();
     private String bird;
     private String area;
     private SharedPreferences prefs;
@@ -33,16 +38,15 @@ public class SightingPresenter {
 
     public void addItemsOnSpinnerArea(){
         //get areasNames  desde el modelo..
-        areaList.add("Valladolid");
-        areaList.add("Zamora");
+        areaList.add("Eliga un área");
+        initializeSpinnerArea();
         view.addItemsOnSpinnerArea(areaList);
     }
 
     public void addItemsOnSpinnerBird(){
-        //get areasNames  desde el modelo..
-        birdList.add("Cotorra Argentina");
-        birdList.add("Paloma Común");
-        view.addItemsOnSpinnerBird(birdList);
+        birdsList.add("Eliga un ave");
+        initializeSpinnerBirds();
+        view.addItemsOnSpinnerBird(birdsList);
     }
 
     public void sightingButton(String bird,String area){
@@ -103,5 +107,117 @@ public class SightingPresenter {
         view.setSightingButton(true);
         view.getActivity().finish();
 
+    }
+    public void initializeSpinnerArea(){
+        String url=api.get_url("url_areas");
+        String[] urls = {"","",""};
+        urls[0]="get";
+        urls[1]=url;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        parseAreas(result);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
+            }
+        }).execute(urls);
+    }
+    public void initializeSpinnerBirds(){
+        String url=api.get_url("url_all_birdsName");
+        String[] urls = {"","",""};
+        urls[0]="get";
+        urls[1]=url;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        parseBirds(result);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
+            }
+        }).execute(urls);
+    }
+    public void parseAreas(String result) {
+        String area;
+        if (result.contains("<html>")) {
+            result = null;
+        }
+        if (result != null) {
+            try {
+                JSONArray data = new JSONArray(result);
+                Log.d(TAG, "areas: " + result);
+                // Checking for SUCCESS TAG
+                JSONObject a = data.getJSONObject(0);
+                String success = a.getString(TAG_AREA);
+                if (success != null) {
+                    // data found
+                    for(int i=0;i<data.length();i++) {
+                        JSONObject c = data.getJSONObject(i);
+                        area = c.getString(TAG_AREA);
+                        areaList.add(area);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else
+            Log.d(TAG, "Resultado del get areas " + result);
+    }
+    public void parseBirds(String result) {
+        String birdName;
+        if (result.contains("<html>")) {
+            result = null;
+        }
+        if (result != null) {
+            try {
+                JSONArray data = new JSONArray(result);
+                Log.d(TAG, "birds: " + result);
+                // Checking for SUCCESS TAG
+                JSONObject a = data.getJSONObject(0);
+                String success = a.getString(TAG_BIRD);
+                if (success != null) {
+                    // data found
+                    for(int i=0;i<data.length();i++) {
+                        JSONObject c = data.getJSONObject(i);
+                        birdName = c.getString(TAG_BIRD);
+                        birdsList.add(birdName);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else
+            Log.d(TAG, "Resultado del get birds " + result);
     }
 }

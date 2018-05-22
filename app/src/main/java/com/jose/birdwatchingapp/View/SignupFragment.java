@@ -60,8 +60,12 @@ public class SignupFragment extends Fragment {
                 String name = userName.getText().toString();
                 String password3 = password.getText().toString();
                 String password4 = password2.getText().toString();
+
                 String area=String.valueOf(spinner.getSelectedItem());
-                presenter.signupButton(name,password3,password4,area);
+                if(!area.contains("Elige un área"))
+                    presenter.signupButton(name,password3,password4,area);
+                else
+                    showMessage("Elige un área por favor");
             }
         });
 
@@ -87,6 +91,8 @@ public class SignupFragment extends Fragment {
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
+        spinner.refreshDrawableState();
+
 
     }
     //pasar a asynctask, o mirarlo

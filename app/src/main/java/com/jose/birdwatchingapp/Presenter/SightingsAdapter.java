@@ -32,6 +32,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     private String TAG_DATE="sightingDate";
     private String TAG_AREA="areaName";
 
+
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -48,6 +49,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
+                    //putExtras
                     //v.getContext().startActivity(new Intent(v.getContext(), SightingsActivity.class));
                 }
             });
@@ -101,9 +103,10 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
 
         // Get element from the list sightings at this position and replace the contents of the view
         // with that element
+
         viewHolder.getSightingUser().setText(sightings.get(position).getUser());
         viewHolder.getSightingBird().setText(sightings.get(position).getBird());
-        viewHolder.getSightingDate().setText(sightings.get(position).getDate());
+        viewHolder.getSightingDate().setText(formatDate(sightings.get(position).getDate()));
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
@@ -111,6 +114,13 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     @Override
     public int getItemCount() {
         return sightings.size();
+    }
+
+    public String formatDate(String d){
+        d=d.replace("T"," ");
+        d=d.replace(".000Z","");
+
+        return d;
     }
 
     public void parserAllSightings(String result){

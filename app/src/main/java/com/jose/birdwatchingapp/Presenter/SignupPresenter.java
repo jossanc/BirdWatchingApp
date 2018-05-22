@@ -2,10 +2,13 @@ package com.jose.birdwatchingapp.Presenter;
 
 import android.util.Log;
 
-import com.jose.birdwatchingapp.Model.API;
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.SignupFragment;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class SignupPresenter {
     private String TAG= SignupPresenter.class.getSimpleName();
+    private String TAG_AREA="areaName";
     private SignupFragment view;
     private String name;
     private String password;
@@ -32,9 +36,41 @@ public class SignupPresenter {
 
     public void addItemsOnSpinner(){
         //get areasNames  desde el modelo..
-        areaList.add("Valladolid");
-        areaList.add("Zamora");
+        areaList.add("Elige un área");
+        //areaList.add("Zamora");
+        initializeSpinnerArea();
         view.addItemsOnSpinner(areaList);
+
+    }
+    public void initializeSpinnerArea(){
+        String url=api.get_url("url_areas");
+        String[] urls = {"","",""};
+        urls[0]="get";
+        urls[1]=url;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        parseAreas(result);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
+            }
+        }).execute(urls);
     }
 
     public void signupButton(String name, String pass, String pass2,String area){
@@ -123,15 +159,35 @@ public class SignupPresenter {
         } else if (!password.contentEquals(password2)){
             valid = "La contraseña no coincide";
         }
-        /* mas condiciones
-        if (password3.isEmpty() || password.length() < 4 || password.length() > 10) {
-            //_passwordText.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            //passwordText.setError(null);
-        }*/
 
         return valid;
     }
+    public void parseAreas(String result) {
+        String area;
+        if (result.contains("<html>")) {
+            result = null;
+        }
+        if (result != null) {
+            try {
+                JSONArray data = new JSONArray(result);
+                Log.d(TAG, "areas: " + result);
+                // Checking for SUCCESS TAG
+                JSONObject a = data.getJSONObject(0);
+                String success = a.getString(TAG_AREA);
+                if (success != null) {
+                    // data found
+                    for(int i=0;i<data.length();i++) {
+                        JSONObject c = data.getJSONObject(i);
+                        area = c.getString(TAG_AREA);
+                        areaList.add(area);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else
+            Log.d(TAG, "Resultado del get areas " + result);
+    }
+
 
 }

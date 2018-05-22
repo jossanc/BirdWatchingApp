@@ -2,7 +2,6 @@ package com.jose.birdwatchingapp.Presenter;
 
 import android.util.Log;
 
-import com.jose.birdwatchingapp.Model.API;
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.BirdListFragmentView;

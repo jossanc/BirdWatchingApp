@@ -45,7 +45,12 @@ public class SightingFragment extends Fragment {
             public void onClick(View v) {
                 String bird = String.valueOf(spinnerBird.getSelectedItem());
                 String area = String.valueOf(spinnerArea.getSelectedItem());
-                presenter.sightingButton(bird, area);
+                if (bird.contains("Elige un ave")){
+                    showMessage("Eliga un ave por favor");
+                }else if (area.contains("Elige un área"))
+                    showMessage("Eliga un área por favor");
+                else
+                    presenter.sightingButton(bird, area);
             }
         });
         return view;

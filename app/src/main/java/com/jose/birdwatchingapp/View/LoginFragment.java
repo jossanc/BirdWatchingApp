@@ -91,7 +91,7 @@ public class LoginFragment extends Fragment {
     public void showMessage(String message){
         Toast.makeText(getActivity(),message,Toast.LENGTH_LONG).show();
     }
-    public void setLoginpButton(boolean vis){
+    public void setLoginButton(boolean vis){
         loginButton.setEnabled(vis);
     }
     /* Función llamada al pulsar el botón

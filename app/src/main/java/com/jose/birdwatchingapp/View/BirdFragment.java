@@ -78,22 +78,23 @@ public class BirdFragment extends Fragment {
     public void initData(){
         //asignar valores del elemento seleccionado a la vista
 
-        String user,birdname,birdscientificname,birdfamily,birdseason;
+        String birdname,birdscientificname,birdfamily,birdecosystem;
             Bundle extras = getActivity().getIntent().getExtras();
             if(extras == null) {
-                user= null;
+                //user= null;
                 birdname=null;
                 birdscientificname=null;
                 birdfamily=null;
+                birdecosystem=null;
             } else {
-                user= extras.getString("username");
+                //user= extras.getString("username");
                 birdname=extras.getString("birdname");
                 birdscientificname=extras.getString("birdscientificname");
                 birdfamily=extras.getString("birdfamily");
-                birdseason=extras.getString("birdseason");
+                birdecosystem=extras.getString("birdecosystem");
             }
 
-        presenter.initData(user);
+        presenter.initData(birdname,birdscientificname,birdfamily,birdecosystem);
         presenter.addItemsOnSpinnerSeason();
         presenter.addItemsOnSpinnerArea();
     }

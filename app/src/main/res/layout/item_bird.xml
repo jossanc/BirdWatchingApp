@@ -48,13 +48,22 @@
             android:id="@+id/birdF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/birdSN"
-            android:layout_alignBottom="@+id/birdSN"
+            android:layout_alignBaseline="@+id/birdName"
+            android:layout_alignBottom="@+id/birdName"
             android:layout_alignParentRight="true"
             android:text="@string/item_birdF"
             android:textColor="#EEEEEE"
             />
-
+        <TextView
+            android:id="@+id/birdE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/birdSN"
+            android:layout_alignBottom="@+id/birdSN"
+            android:layout_alignParentRight="true"
+            android:text="@string/item_birdE"
+            android:textColor="#EEEEEE"
+            />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

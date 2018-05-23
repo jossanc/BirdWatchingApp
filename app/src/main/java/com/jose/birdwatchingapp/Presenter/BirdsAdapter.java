@@ -43,24 +43,35 @@ public class BirdsAdapter extends RecyclerView.Adapter<BirdsAdapter.ViewHolder> 
         private final TextView birdN;
         private final TextView birdSN;
         private final TextView family;
+        private final TextView birdE;
 
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
+
+            birdN = (TextView) v.findViewById(R.id.birdName);
+            birdSN = (TextView) v.findViewById(R.id.birdSN);
+            family = (TextView) v.findViewById(R.id.birdF);
+            birdE = (TextView) v.findViewById(R.id.birdE);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                     //putExtras
                     Intent intent = new Intent(v.getContext(), BirdActivity.class);
-                    String userName = null;
-                    intent.putExtra("username", userName);
+                    String birdName=null,birdSc=null,birdF=null,birdEc=null;
+                    birdName=birdN.getText().toString();
+                    birdSc=birdSN.getText().toString();
+                    birdF=family.getText().toString();
+                    birdEc=birdE.getText().toString();
+                    intent.putExtra("birdname", birdName);
+                    intent.putExtra("birdscientificname", birdSc);
+                    intent.putExtra("birdfamily", birdF);
+                    intent.putExtra("birdecosystem", birdEc);
+                    v.getContext().startActivity(intent);
                     //v.getContext().startActivity(new Intent(v.getContext(), BirdsActivity.class));
                 }
             });
-            birdN = (TextView) v.findViewById(R.id.birdName);
-            birdSN = (TextView) v.findViewById(R.id.birdSN);
-            family = (TextView) v.findViewById(R.id.birdF);
         }
 
         public TextView getBirdN() {
@@ -71,6 +82,9 @@ public class BirdsAdapter extends RecyclerView.Adapter<BirdsAdapter.ViewHolder> 
         }
         public TextView getFamily() {
             return family;
+        }
+        public TextView getBirdE() {
+            return birdE;
         }
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
@@ -110,6 +124,7 @@ public class BirdsAdapter extends RecyclerView.Adapter<BirdsAdapter.ViewHolder> 
         viewHolder.getBirdN().setText(birdsList.get(position).getCommonName());
         viewHolder.getBirdSN().setText(birdsList.get(position).getScientificName());
         viewHolder.getFamily().setText(birdsList.get(position).getFamily());
+        viewHolder.getBirdE().setText(birdsList.get(position).getEcosystem());
 
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/cardview_shadow_end_color"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/sightingsBird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_bird"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/sightingsUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sightingsBird"
+            android:text="@string/element_text"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/sightingsDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sightingsUser"
+            android:layout_alignBottom="@+id/sightingsUser"
+            android:layout_alignParentRight="true"
+            android:text="@string/item_date"
+            android:textColor="#000000" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -3,7 +3,6 @@ package com.jose.birdwatchingapp.Presenter;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -32,8 +31,6 @@ public class LoginPresenter {
     private API api;
     private String url;
     private String TAG_USER = "userName";
-    private String TAG_PASSWORD = "password";
-    private String TAG_AREA = "areaName";
     private User user;
     private static final int REQUEST_SIGNUP = 0;
 
@@ -48,7 +45,8 @@ public class LoginPresenter {
         userName = name;
         password = pass;
         view.setLoginButton(false);
-        new login().execute();
+        //new login().execute();
+        login2();
         view.setLoginButton(true);
     }
 
@@ -58,13 +56,10 @@ public class LoginPresenter {
         view.startActivityForResult(intent, REQUEST_SIGNUP);
     }
 
-    private final class login extends AsyncTask<String, Void, String> {
-        // Llamada al empezar
-        @Override
-        protected String doInBackground(String... params) {
+    private void  login(){
             Log.d(TAG, "Login");
             final String[] stringReturn = new String[1];
-            stringReturn[0]="Bienvenido";
+            //stringReturn[0]="Bienvenido";
             //stringReturn[0]="not ok";  no se cambia,
             validate(new HttpInterface() {
                 @Override
@@ -83,6 +78,7 @@ public class LoginPresenter {
                     //meter el usuario en preferencias, para luego cogerlo en el resto de actividades
                     Log.d(TAG, "Accediendo...");
                     stringReturn[0] ="Bienvenido";
+                    onSuccessF();
                 }
 
                 @Override
@@ -97,7 +93,7 @@ public class LoginPresenter {
                 }
             });
             Log.d(TAG,"evaluacion obtenida: "+stringReturn[0]);
-                return stringReturn[0];
+          //      return stringReturn[0];
             /*
             if(validate.contains("ok")) {
                 // final Location localizacion=null;
@@ -110,24 +106,20 @@ public class LoginPresenter {
             }else{
                     onLoginFailed();
                     return validate();
-            }*/
-
-
-        }
-
-        // Llamada cuando la actividad en background ha terminado
-        @Override
-        protected void onPostExecute(String result) {
-            // Acción al completar el envio del avistamiento
-            super.onPostExecute(result);
-            if (!result.contains("Bienvenido")) {
-                view.showMessage(result);
-            } else {
-                view.showMessage(result);
-                view.startActivity(new Intent(view.getActivity(), MainActivity.class));
             }
-        }
+
+
+        if (!stringReturn[0].contains("Bienvenido")) {
+            view.showMessage(stringReturn[0]);
+        } else {
+            }*/
     }
+    public void onSuccessF(){
+        //view.showMessage(stringReturn[0]);
+        view.startActivity(new Intent(view.getActivity(), MainActivity.class));
+    }
+
+
 
 
     public void validate(final HttpInterface req) {
@@ -209,6 +201,47 @@ public class LoginPresenter {
             }
         } else
             Log.d(TAG, "Resultado del get User" + result);
+    }
+    public void login2(){
+        Log.d(TAG,"certificando usuario..");
+        // view.showMessage("asda");
+        //view.showMessage("as");
+        String url=api.get_url("url_login");
+        String json = "{\"userName\":\""+userName+"\",\"password\":\""+password+"\"}";
+        String[] urls={"","",""};
+
+        urls[0] = "post";
+        urls[1] = url;
+        urls[2] = json;
+        Log.d(TAG,url+userName+password+"json    "+json);
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                        if(result.contains(userName)){
+                            onSuccessF();
+                            Log.d(TAG,"usuario correcto");
+                        }else
+                            Log.d(TAG,"usuario incorrecto");
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage(result);
+                    }
+                });
+            }
+        }).execute(urls);
     }
 
 }

@@ -52,12 +52,12 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
             }
 
         }else if ( urls[0].contains("get")) {
-            Log.d(TAG, "Obteniendo el GET de la url");
+            Log.d(TAG, "Obteniendo el GET de la url "+urls[2]);
             String url = urls[1];
-
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
+            Request request;
+                request = new Request.Builder()
+                        .url(url)
+                        .build();
 
             try {
                 Response response = client.newCall(request).execute();

@@ -52,7 +52,7 @@ public class SightingsFragment extends Fragment {
         rootView.setTag(TAG);
 
         // BEGIN_INCLUDE(initializeRecyclerView)
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewSightings);
         //sightingsPresenter=new SightingsPresenter(this);
 
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion

@@ -44,7 +44,7 @@ public class MySightingsPresenter {
                     @Override
                     public void run() {
                         view.showMessage(result);
-                        view.loadSightings(result);
+                        view.loadMySightings(result);
 
                     }
                 });

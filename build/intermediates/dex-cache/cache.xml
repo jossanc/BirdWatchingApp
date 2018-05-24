@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\b.jlsp\.android\build-cache\6086b1a6c42cefc26044a6660bf37340fb5ba8fa\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="27.0.3"
+        sha1="e176fd06c2ad5b50a2f5cb4de6000a83a7cb48f5">
+        <dex dex="C:\Users\b.jlsp\AndroidStudioProjects\BirdWatchingApp\app\build\intermediates\pre-dexed\debug\classes_1d7f836e875e7a2ef9e6cec7f4b83b1e7615439b.jar" />
+    </item>
+
+</items>

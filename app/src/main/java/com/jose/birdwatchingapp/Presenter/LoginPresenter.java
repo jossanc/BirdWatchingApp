@@ -175,26 +175,17 @@ public class LoginPresenter {
     public void parseUser(String result) {
         if (result.contains("<html>")) {
             result = null;
-            //user.setUserName("jose");
-            //user.setPassword("jose");
             Log.d(TAG,"user obtenido: "+user.getUserName());
         }
         if (result != null) {
             try {
-                JSONArray data = new JSONArray(result);
                 Log.d(TAG, "User: " + result);
                 // Checking for SUCCESS TAG
-                JSONObject c = data.getJSONObject(0);
-                String success = c.getString(TAG_USER);
-                //esto puede sobrar
-                if (success != null) {
+                JSONObject c = new JSONObject(result);
+                String name = c.getString(TAG_USER);
+                if (name != null) {
                     // data found
-                    String name = success;
-                    //String pass = c.getString(TAG_PASSWORD);
-                    //String area = c.getString(TAG_AREA);
                     user.setUserName(name);
-                    //user.setPassword(pass);
-                    //user.setAreaName(area);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -203,9 +194,8 @@ public class LoginPresenter {
             Log.d(TAG, "Resultado del get User" + result);
     }
     public void login2(){
-        Log.d(TAG,"certificando usuario..");
-        // view.showMessage("asda");
-        //view.showMessage("as");
+        Log.d(TAG,"Certificando usuario..");
+
         String url=api.get_url("url_login");
         String json = "{\"userName\":\""+userName+"\",\"password\":\""+password+"\"}";
         String[] urls={"","",""};
@@ -221,12 +211,16 @@ public class LoginPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
-                        if(result.contains(userName)){
+                        //view.showMessage(result);
+                        parseUser(result);
+                        if(user.getUserName().contains(userName)){
                             onSuccessF();
                             Log.d(TAG,"usuario correcto");
-                        }else
-                            Log.d(TAG,"usuario incorrecto");
+                            view.showMessage("Bienvenido");
+                        }else {
+                            Log.d(TAG, "usuario incorrecto" + result + " " + userName);
+                            view.showMessage("Credenciales incorrectas");
+                        }
                     }
                 });
 
@@ -237,7 +231,8 @@ public class LoginPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("Error al verificar el usuario, por favor, intentelo de nuevo mas tarde");
+                        Log.d(TAG, "error al verificar el usuario >" + result);
                     }
                 });
             }

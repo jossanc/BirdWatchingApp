@@ -3,6 +3,7 @@ package com.jose.birdwatchingapp.View;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +57,7 @@ public class ChallengesFragment extends Fragment {
         mAdapter = new ChallengesAdapter(result);
         // Set SightingsAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         Log.d(TAG,"adaptador cargado");
     }
 

@@ -3,6 +3,7 @@ package com.jose.birdwatchingapp.View;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.jose.birdwatchingapp.Presenter.MySightingsAdapter;
 import com.jose.birdwatchingapp.Presenter.MySightingsPresenter;
+import com.jose.birdwatchingapp.Presenter.SightingsAdapter;
 import com.jose.birdwatchingapp.R;
 
 /**
@@ -28,7 +30,7 @@ public class MySightingsFragment extends Fragment {
 
 
     protected RecyclerView mRecyclerView;
-    protected MySightingsAdapter mAdapter;
+    protected SightingsAdapter mAdapter;
     //protected RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -42,11 +44,11 @@ public class MySightingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_my_sightings, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_sightings, container, false);
         rootView.setTag(TAG);
 
         // BEGIN_INCLUDE(initializeRecyclerView)
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMySightings);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewSightings);
 
         //mAdapter = new SightingsAdapter(mDataset);
         // Set SightingsAdapter as the adapter for RecyclerView.
@@ -68,10 +70,12 @@ public class MySightingsFragment extends Fragment {
 
     public void loadMySightings(String result) {
         //llamar a async task y parsear datos
-        mAdapter = new MySightingsAdapter(result);
+        mAdapter = new SightingsAdapter(result);
         // Set SightingsAdapter as the adapter for RecyclerView.
 
         mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         Log.d(TAG,"Adapter cargado en mysightings "+result);
     }
 

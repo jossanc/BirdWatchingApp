@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
-import com.jose.birdwatchingapp.View.SightingFragment;
+import com.jose.birdwatchingapp.View.NewSightingFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,77 +16,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jose on 24/05/18.
+ * Created by jose on 20/05/18.
  */
 
-public class SightingPresenter {
-    private String TAG= SightingPresenter.class.getSimpleName();
+public class NewSightingPresenter {
+    private String TAG= NewSightingPresenter.class.getSimpleName();
     private String TAG_AREA="areaName";
     private String TAG_BIRD="commonName";
-    private SightingFragment view;
+    private NewSightingFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
     private List<String> birdsList= new ArrayList<>();
-    private String bird, area, date;
+    private String bird;
+    private String area;
     private SharedPreferences prefs;
 
-    public SightingPresenter(SightingFragment v){
+    public NewSightingPresenter(NewSightingFragment v){
         view= v;
         api= new API();
     }
 
-    public void initData(String sigBird, String sigArea, String sigDate){
-        addItemsOnSpinnerBird();
-        addItemsOnSpinnerArea();
-        view.setTextBird(sigBird);
-        view.setTextArea(sigArea);
-        view.setTextDate(sigDate);
-    }
-
     public void addItemsOnSpinnerArea(){
         //get areasNames  desde el modelo..
-        areaList.add("Seleccione un nuevo área");
+        areaList.add("Eliga un área");
         initializeSpinnerArea();
         view.addItemsOnSpinnerArea(areaList);
     }
 
     public void addItemsOnSpinnerBird(){
-        birdsList.add("Seleccione un nuevo ave");
+        birdsList.add("Eliga un ave");
         initializeSpinnerBirds();
         view.addItemsOnSpinnerBird(birdsList);
     }
 
-    public void updateButton(String bird, String area,String date){
+    public void sightingButton(String bird,String area){
         this.bird=bird;
         this.area=area;
-        this.date=date;
-        updateSighting();
-    }
-    public void deleteButton(String date){
-        this.date=date;
-        deleteSighting();
-    }
-    public void gobackButton(){
-        view.getActivity().finish();
+        newSighting();
     }
 
-    public void deleteSighting(){
-
-    }
-
-    public void updateSighting() {
-        view.setGobackButton(false);
+    public String newSighting() {
+        String result="ok";
+        view.setSightingButton(false);
         prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
         String userName=prefs.getString("username","");
         Log.d(TAG,bird+"  "+area+"  "+userName);
 
+
+        // TODO: Implement your own signup logic here.
+        //TODO: progress dialog, algo parecido
         String url=api.get_url("url_all_sightings");
         String json;
         //verificar aynctask y eso, httpinterface
-        json = "{userName:"+userName+",commonBirdName:"+bird+",areaName:"+area+",sightingDate:"+date+"}";
+        json = "{userName:"+userName+",commonBirdName:"+bird+",areaName:"+area+"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
-        urls[0]="post";/////////////////////////77  update actualizar API
+        urls[0]="post";
         urls[1]=url;
         urls[2]=json;
 
@@ -97,7 +82,8 @@ public class SightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage(result);
-                        onSightingSuccess();
+                        //view.loadSightings(result);
+                        //TODO sighting registered...
                     }
                 });
 
@@ -108,16 +94,18 @@ public class SightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage("No se pudo actualizar en estos momentos");
+                        view.showMessage(result);
                     }
                 });
             }
         }).execute(urls);
 
+        onSightingSuccess();
+        return  result;
     }
     public void onSightingSuccess(){
-        view.setGobackButton(true);
-        gobackButton();
+        view.setSightingButton(true);
+        view.getActivity().finish();
 
     }
     public void initializeSpinnerArea(){

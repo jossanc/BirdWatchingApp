@@ -1,5 +1,6 @@
 package com.jose.birdwatchingapp.Presenter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.jose.birdwatchingapp.Model.Sighting;
 import com.jose.birdwatchingapp.R;
+import com.jose.birdwatchingapp.View.SightingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,13 +26,15 @@ import java.util.List;
 public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.ViewHolder> {
     private static final String TAG = SightingsAdapter.class.getSimpleName();
 
-    private Sighting s1= new Sighting("jose","Cotorra Común","10-05-2018");
-    private Sighting s2= new Sighting("jose","Cotorra Común","11-05-2018");
+    private Sighting s1= new Sighting("jose","Cotorra Común","10-05-2018","Zamora");
+    private Sighting s2= new Sighting("jose","Cotorra Común","11-05-2018","Soria");
     private List<Sighting> sightings = new ArrayList<>();
     private String TAG_USER="userName";
     private String TAG_BIRD="commonBirdName";
     private String TAG_DATE="sightingDate";
     private String TAG_AREA="areaName";
+    private final static int TAG_MYSIGHTINGS=1;
+    private static int previousFragment=0;
 
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
@@ -41,6 +45,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
         private final TextView sigUser;
         private final TextView sigBird;
         private final TextView sigDate;
+        private final TextView sigArea;
 
         public ViewHolder(View v) {
             super(v);
@@ -49,6 +54,18 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
+                    if (previousFragment==TAG_MYSIGHTINGS){
+                        Intent intent = new Intent(v.getContext(), SightingActivity.class);
+                        String sightingBird=null,sightingDate=null,sightingArea=null;
+                        sightingBird=sigBird.getText().toString();
+                        sightingDate=sigDate.getText().toString();
+                        sightingArea=sigArea.getText().toString();
+                        intent.putExtra("sightingbirdname", sightingBird);
+                        intent.putExtra("sightingdate", sightingDate);
+                        intent.putExtra("sightingarea", sightingArea);
+                        v.getContext().startActivity(intent);
+
+                    }
                     //putExtras
                     //v.getContext().startActivity(new Intent(v.getContext(), SightingsActivity.class));
                 }
@@ -56,6 +73,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
             sigUser = (TextView) v.findViewById(R.id.sightingsUser);
             sigBird = (TextView) v.findViewById(R.id.sightingsBird);
             sigDate = (TextView) v.findViewById(R.id.sightingsDate);
+            sigArea = (TextView) v.findViewById(R.id.sightingsArea);
         }
 
         public TextView getSightingUser() {
@@ -67,6 +85,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
         public TextView getSightingDate() {
             return sigDate;
         }
+        public TextView getSightingArea() { return sigArea; }
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
@@ -75,9 +94,9 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
      *
      * @param jsonArray String containing the data to populate views to be used by RecyclerView.
      */
-    public SightingsAdapter(String jsonArray) {
-        //  parsear aqui
-        // la vista no tiene que generar el array de strings
+    public SightingsAdapter(String jsonArray, int fragment) {
+
+        previousFragment=fragment;
         sightings.add(s1);
         sightings.add(s2);
         parserAllSightings(jsonArray);
@@ -105,9 +124,11 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
         // with that element
 
         Log.d(TAG,"Onbind"+sightings.get(position).getBird());
-        viewHolder.getSightingUser().setText(sightings.get(position).getUser());
+        if(previousFragment!=TAG_MYSIGHTINGS)
+            viewHolder.getSightingUser().setText(sightings.get(position).getUser());
         viewHolder.getSightingBird().setText(sightings.get(position).getBird());
         viewHolder.getSightingDate().setText(formatDate(sightings.get(position).getDate()));
+        viewHolder.getSightingArea().setText(sightings.get(position).getAreaName());
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 

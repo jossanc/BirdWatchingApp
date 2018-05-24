@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jose.birdwatchingapp.View.SightingActivity">
+    tools:context="com.jose.birdwatchingapp.View.NewSightingActivity">
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_my_sightings"
-        android:name="com.jose.birdwatchingapp.View.SightingFragment"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:id="@+id/fragment_sighting"
+        android:name="com.jose.birdwatchingapp.View.NewSightingFragment"
         android:layout_centerHorizontal="true" />
 
 </android.support.constraint.ConstraintLayout>

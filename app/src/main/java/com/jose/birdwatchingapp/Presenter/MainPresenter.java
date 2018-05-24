@@ -7,7 +7,7 @@ import com.jose.birdwatchingapp.View.AchievementsActivity;
 import com.jose.birdwatchingapp.View.ChallengesActivity;
 import com.jose.birdwatchingapp.View.MainActivity;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
-import com.jose.birdwatchingapp.View.SightingActivity;
+import com.jose.birdwatchingapp.View.NewSightingActivity;
 import com.jose.birdwatchingapp.View.SightingsActivity;
 /*
  Clase java que actúa como Presentador de la actividad MainActivity
@@ -29,7 +29,7 @@ public class MainPresenter {
 
         switch (id){
             case "action_sighting":
-                mainView.startActivity(new Intent(mainView, SightingActivity.class));
+                mainView.startActivity(new Intent(mainView, NewSightingActivity.class));
                 return ;
             case "action_sightings":
                 mainView.startActivity(new Intent(mainView, SightingsActivity.class));

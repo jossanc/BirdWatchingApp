@@ -25,7 +25,7 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
 
     private static final String TAG = ChallengesAdapter.class.getSimpleName();
     private List<Challenge> challengeList = new ArrayList<>();
-    private Challenge c1= new Challenge("Aves urbanas","Encuentra 3 aves urbanas");
+    private Challenge c1= new Challenge("Aves de rio","Encuentra 3 aves de rio");
     private String TAG_CHALLENGE="challengeName";
     private String TAG_DESCRIPTION="description";
 

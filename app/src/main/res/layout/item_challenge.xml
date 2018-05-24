@@ -4,6 +4,7 @@
     android:id="@+id/cardview1"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/cardview_shadow_end_color"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="2dp"
     card_view:cardUseCompatPadding="true">

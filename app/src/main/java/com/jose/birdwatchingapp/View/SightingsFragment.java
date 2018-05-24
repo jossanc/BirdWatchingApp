@@ -128,7 +128,7 @@ public class SightingsFragment extends Fragment {
 
     public void loadSightings(String result) {
         //llamra a async task y parsear datos
-        mAdapter = new SightingsAdapter(result);
+        mAdapter = new SightingsAdapter(result,0);
         // Set SightingsAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
     }

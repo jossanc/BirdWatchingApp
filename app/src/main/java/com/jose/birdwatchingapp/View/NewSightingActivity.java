@@ -5,15 +5,16 @@ import android.os.Bundle;
 
 import com.jose.birdwatchingapp.R;
 
-public class SightingActivity extends AppCompatActivity {
+public class NewSightingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sighting);
+        setContentView(R.layout.activity_new_sighting);
+        // Comprobar si la actividad ya ha sido creada con anterioridad
         if (savedInstanceState == null) {
             // Crear un fragmento
-            SightingFragment fragment = new SightingFragment();
+            NewSightingFragment fragment = new NewSightingFragment();
             getFragmentManager()
                     .beginTransaction()
                     .add(android.R.id.content, fragment,

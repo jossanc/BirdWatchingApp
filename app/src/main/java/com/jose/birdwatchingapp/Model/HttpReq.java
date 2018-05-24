@@ -67,6 +67,25 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
                 e.printStackTrace();
                 httpResult.onFail("Error al obtener los datos");
             }
+        }else if (urls[0].contains("del")) {
+            Log.d(TAG, "Ejecutando el DELETE a esa url");
+            String url = urls[1];
+            String json = urls[2];
+            RequestBody body = RequestBody.create(JSON, json);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .delete(body)
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                httpResult.onSuccess(response.body().string());
+                //Log.d(TAG,response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+                httpResult.onFail("Error al obtener los datos");
+            }
+
         }
 
 

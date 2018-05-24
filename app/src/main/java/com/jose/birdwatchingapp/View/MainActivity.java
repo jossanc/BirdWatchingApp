@@ -1,12 +1,15 @@
 package com.jose.birdwatchingapp.View;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.jose.birdwatchingapp.Presenter.MainPresenter;
 import com.jose.birdwatchingapp.R;
+
 /*
     Actividad principal, accedida después de la actividad Login. Es donde se carga la primera lista de aves y el menú
 
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenter= new MainPresenter(this);
+        mainPresenter = new MainPresenter(this);
 
     }
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     // según la opción de menu elegida llamamos al presentador para que inicie una actividad u otra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -52,10 +56,48 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 mainPresenter.menu("action_settings");
                 return true;
+            case R.id.action_orderby:
+                orderBy();
+                return true;
             default:
                 return false;
         }
     }
 
+    public void orderBy() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Ordenar aves");
+        builder1.setCancelable(true);
 
+        builder1.setNeutralButton(
+                "Nombre científico",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        //llamar al metodo que ordene
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Familia",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder1.setPositiveButton(
+                "Áreas",
+                new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        dialog.cancel();
+                    }
+        });
+
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
 }
+
+
+

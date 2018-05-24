@@ -31,9 +31,10 @@
         <activity android:name=".View.SightingsActivity" />
         <activity android:name=".View.MySightingsActivity" />
         <activity android:name=".View.ChallengesActivity" />
-        <activity android:name=".View.SightingActivity" />
+        <activity android:name=".View.NewSightingActivity" />
         <activity android:name=".View.AchievementsActivity" />
-        <activity android:name=".View.BirdActivity"></activity>
+        <activity android:name=".View.BirdActivity" />
+        <activity android:name=".View.SightingActivity"></activity>
     </application>
 
 </manifest>

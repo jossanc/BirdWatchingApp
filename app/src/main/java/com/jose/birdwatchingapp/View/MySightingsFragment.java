@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.jose.birdwatchingapp.Presenter.MySightingsAdapter;
 import com.jose.birdwatchingapp.Presenter.MySightingsPresenter;
 import com.jose.birdwatchingapp.Presenter.SightingsAdapter;
 import com.jose.birdwatchingapp.R;
@@ -23,8 +22,6 @@ public class MySightingsFragment extends Fragment {
 
 
     private static final String TAG = MySightingsFragment.class.getSimpleName();
-    private static final int SPAN_COUNT = 2;
-    private static final int DATASET_COUNT = 30;
     private MySightingsPresenter mySightingsPresenter;
 
 
@@ -70,7 +67,7 @@ public class MySightingsFragment extends Fragment {
 
     public void loadMySightings(String result) {
         //llamar a async task y parsear datos
-        mAdapter = new SightingsAdapter(result);
+        mAdapter = new SightingsAdapter(result,1);
         // Set SightingsAdapter as the adapter for RecyclerView.
 
         mRecyclerView.setAdapter(mAdapter);

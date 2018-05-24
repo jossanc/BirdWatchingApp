@@ -26,16 +26,7 @@ public class BirdOps extends AsyncTask<String,Void,Void>{
         Log.d(TAG,"enlazando listener");
        // getBirds();
     }
-/*
-    public String getBirds(){
 
-        HttpHandler sh = new HttpHandler();
-        // Making a request to url and getting response
-        String url_all_birds = api.getUrl_all_birds();
-        String birds = sh.makeServiceCall(url_all_birds);
-
-        return birds;
-    }*/
 
     @Override
     protected Void doInBackground(String... urls) {
@@ -60,48 +51,4 @@ public class BirdOps extends AsyncTask<String,Void,Void>{
 
         return null;
     }
-        /* private class GetBirds extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            HttpHandler sh = new HttpHandler();
-            // Making a request to url and getting response
-            String url = "http://virtual.lab.inf.uva.es:20072/birds/";
-            String jsonStr = sh.makeServiceCall(url);
-
-            Log.e(TAG, "Response from url: " + jsonStr);
-
-
-            return null;
-        }
-
-
-    }
-    if(response !=null){
-            try{
-                JSONArray birds = new JSONArray(response);
-
-                for(int i=0;i<birds.length();i++){
-                    JSONObject b = birds.getJSONObject(i);
-                    String commonName=b.getString("commonName");
-                    String scientificName= b.getString("scientificName");
-                    String family = b.getString("family");
-
-                    Bird bird= new Bird();
-                    bird.setCommonName(commonName);
-                    bird.setScientificName(scientificName);
-                    bird.setFamily(family);
-                    Birds.add(bird);
-                }
-
-            }catch (final JSONException e) {
-                Log.e(TAG, "Json parsing error: " + e.getMessage());
-            }
-        }*/
 }

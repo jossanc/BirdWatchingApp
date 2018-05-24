@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">BirdWatchingApp</string>
-    <string name="title_sighting">Nuevo avistamiento</string>
+    <string name="title_sighting">Avistamiento</string>
     <string name="sighting">Nuevo Avistamiento</string>
     <string name="action_settings">Ajustes</string>
     <string name="pause">En pausa</string>
@@ -33,7 +33,7 @@
     <string name="item_challenge">Reto</string>
     <string name="signup_area">Provincia de CyL</string>
     <string name="create_sighting">Añadir avistamiento</string>
-    <string name="sighting_bird">Nombre común del ave</string>
+    <string name="sighting_bird">Ave actual: </string>
     <string name="item_achievement">Nombre del logro</string>
     <string name="item_birdSN">Nombre científico: </string>
     <string name="item_birdF">Familia</string>
@@ -41,5 +41,13 @@
     <string name="bird_area">Provincia donde vive</string>
     <string name="bird_season">Temporadas en las que reside aquí</string>
     <string name="item_birdE">Ecosistema</string>
+    <string name="update_sighting">Actualizar</string>
+    <string name="delete_sighting">Borrar</string>
+    <string name="goback_sighting">Volver</string>
+    <string name="sighting_area">Área</string>
+    <string name="sighting_user">usuario</string>
+    <string name="sighting_date">Fecha del avistamiento</string>
+    <string name="sighting_area2">Área actual:</string>
+    <string name="orderBy">Ordenar Aves por:</string>
 
 </resources>

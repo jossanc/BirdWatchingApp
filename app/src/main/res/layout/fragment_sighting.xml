@@ -21,14 +21,29 @@
             android:gravity="center"
             android:textSize="22sp"
             android:textColor="#000000"/>
-
-        <TextView android:id="@+id/sightingBird"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        <TextView android:id="@+id/sightingBirdText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
+            android:layout_marginEnd="5sp"
             android:text="@string/sighting_bird"
             android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:background="#FFFFFF"/>
+        <TextView android:id="@+id/sightingBird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:layout_gravity="right"
+            android:text="@string/item_bird"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:background="#FFFFFF"/>
+        </LinearLayout>
 
         <Spinner
             android:id="@+id/spinnerBird"
@@ -36,33 +51,92 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_medium"
             android:background="#819FF7"/>
-
-        <TextView android:id="@+id/areaName"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView android:id="@+id/areaNameText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
-            android:text="@string/signup_area"
+            android:layout_marginEnd="5sp"
+            android:text="@string/sighting_area2"
             android:textSize="16sp"
             android:textColor="#000000"/>
+        <TextView android:id="@+id/areaName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:layout_marginEnd="5sp"
+            android:text="@string/sighting_area"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+        </LinearLayout>
 
         <Spinner
             android:id="@+id/spinnerArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_medium"
-            android:background="#81BEF7"
+            android:background="#FFFFFF"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView android:id="@+id/SightingDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="5dp"
+            android:text="@string/sighting_date"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+            <TextView android:id="@+id/SightingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/item_date"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginBottom="24sp"
+            android:layout_gravity="left"
+            android:padding="12sp"
+            android:layout_marginEnd="40dp"
+            android:text="@string/update_sighting"
+            android:background="#CEECF5"/>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_signup"
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginBottom="24sp"
+            android:layout_gravity="right"
+            android:padding="12sp"
+            android:text="@string/delete_sighting"
+            android:background="#CEECF5" />
+    </LinearLayout>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_goback"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24sp"
             android:layout_marginBottom="24sp"
             android:padding="12sp"
-            android:text="@string/create_sighting"
+            android:text="@string/goback_sighting"
             android:background="#CEECF5"/>
-
 
     </LinearLayout>
 </ScrollView>

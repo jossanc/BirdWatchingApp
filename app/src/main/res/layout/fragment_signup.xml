@@ -2,16 +2,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/signup_back"
+    android:background="@drawable/silhouette"
     android:fitsSystemWindows="true">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="56sp"
+        android:paddingTop="30sp"
         android:paddingLeft="24sp"
         android:paddingRight="24sp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/title_signup"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
 
         <!--  Name Label -->
         <android.support.design.widget.TextInputLayout
@@ -23,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="@string/name_signup"/>
+                android:hint="@string/name_signup"
+                android:textSize="@dimen/text_medium_size"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -36,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/signup_password"/>
+                android:hint="@string/signup_password"
+                android:textSize="@dimen/text_medium_size"/>
         </android.support.design.widget.TextInputLayout>
         <!-- Password2 Label -->
         <android.support.design.widget.TextInputLayout
@@ -48,7 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/signup_repeat_password"/>
+                android:hint="@string/signup_repeat_password"
+                android:textSize="@dimen/text_medium_size"/>
         </android.support.design.widget.TextInputLayout>
 
         <TextView android:id="@+id/areaName"
@@ -56,12 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
             android:text="@string/signup_area"
-            android:textSize="16sp"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/text_medium_size"/>
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#DDDDDD"
             />
 
         <!-- Signup Button -->
@@ -72,7 +85,9 @@
             android:layout_marginTop="24sp"
             android:layout_marginBottom="24sp"
             android:padding="12sp"
-            android:text="@string/signup_create"/>
+            android:text="@string/signup_create"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
 
         <TextView android:id="@+id/link_login"
             android:layout_width="fill_parent"
@@ -80,7 +95,8 @@
             android:layout_marginBottom="24sp"
             android:text="@string/signup_login"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/text_small_size"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 </ScrollView>

@@ -64,6 +64,7 @@ public class NewSightingFragment extends Fragment {
         sightingButton.setEnabled(vis);
     }
 
+
     public void addItemsOnSpinnerBird(List<String> list) {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, list);

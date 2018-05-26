@@ -42,8 +42,8 @@ public class LoginPresenter {
         userName = name;
         password = pass;
         view.setLoginButton(false);
-        //login();
-        onSuccessF();
+        login();
+        //onSuccessF();
         view.setLoginButton(true);
     }
 

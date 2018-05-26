@@ -2,15 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_sighting"
-        android:icon="@android:drawable/ic_menu_edit"
-        app:showAsAction="always|withText"
-        android:title="@string/sighting" />
-    <item
-        android:id="@+id/action_challenges"
-        android:title="@string/title_challenges"
-        android:icon="@android:drawable/ic_media_play" />
-    <item
         android:id="@+id/action_sightings"
         android:title="@string/titleSightings"
         android:icon="@android:drawable/ic_media_play" />
@@ -18,6 +9,14 @@
         android:id="@+id/action_my_sightings"
         android:title="@string/titleMySightings"
         android:icon="@android:drawable/ic_media_pause" />
+    <item
+        android:id="@+id/action_sighting"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/sighting" />
+    <item
+        android:id="@+id/action_challenges"
+        android:title="@string/title_challenges"
+        android:icon="@android:drawable/ic_media_play" />
     <item
         android:id="@+id/action_achievements"
         android:icon="@android:drawable/ic_menu_delete"
@@ -31,4 +30,6 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="@string/action_settings" />
+
+    <!--app:showAsAction="always|withText"-->
 </menu>

@@ -35,6 +35,8 @@ public class SightingPresenter {
         api= new API();
     }
 
+
+
     public void initData(String sigBird, String sigArea, String sigDate){
         addItemsOnSpinnerBird();
         addItemsOnSpinnerArea();
@@ -55,12 +57,19 @@ public class SightingPresenter {
         initializeSpinnerBirds();
         view.addItemsOnSpinnerBird(birdsList);
     }
+    public void setVisibility(boolean vis){
+        view.setVisibility(vis);
+    }
 
     public void updateButton(String bird, String area,String date){
         this.bird=bird;
         this.area=area;
         this.date=date;
+        view.setUpdateButton(false);
+        view.setDeleteButton(false);
         updateSighting();
+        view.setUpdateButton(true);
+        view.setDeleteButton(true);
     }
     public void deleteButton(String date){
         this.date=date;
@@ -75,7 +84,6 @@ public class SightingPresenter {
     }
 
     public void updateSighting() {
-        view.setGobackButton(false);
         prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
         String userName=prefs.getString("username","");
         Log.d(TAG,bird+"  "+area+"  "+userName);
@@ -116,7 +124,6 @@ public class SightingPresenter {
 
     }
     public void onSightingSuccess(){
-        view.setGobackButton(true);
         gobackButton();
 
     }

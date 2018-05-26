@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BirdWatchingApp</string>
+    <string name="app_name"><b><i>Bird Watching App</i></b></string>
     <string name="title_sighting">Avistamiento</string>
     <string name="sighting">Nuevo Avistamiento</string>
     <string name="action_settings">Ajustes</string>
@@ -12,21 +12,19 @@
     <string name="login_password">Contraseña</string>
     <string name="button_login">Acceder</string>
     <string name="button_register">Registrarse</string>
-    <string name="register">Todavía no tienes una cuenta? Créate una</string>
+    <string name="register"><u>¿Todavía no tienes una cuenta?  Créate una</u></string>
     <string name="usuario">Usuario</string>
     <string name="title_activity_signup">SignupActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_signup">Nombre del usuario</string>
     <string name="signup_password">Contraseña</string>
     <string name="signup_create">Crear cuenta</string>
-    <string name="signup_login">Ya registrado? Accede aquí</string>
+    <string name="signup_login">Ya estás registrado? Accede aquí</string>
     <string name="signup_repeat_password">Reescribe la contraseña</string>
     <string name="element_text">Un avistamiento</string>
     <string name="item_date">Fecha</string>
     <string name="item_bird">Ave avistada</string>
-    <string name="titleSightings">Avistamientos</string>
+    <string name="titleSightings">Todos los avistamientos</string>
     <string name="titleMySightings">Mis avistamientos</string>
     <string name="titleAchievements">Mis logros</string>
     <string name="item_description">Descripción del reto</string>
@@ -46,8 +44,14 @@
     <string name="goback_sighting">Volver</string>
     <string name="sighting_area">Área</string>
     <string name="sighting_user">usuario</string>
-    <string name="sighting_date">Fecha del avistamiento</string>
-    <string name="sighting_area2">Área actual:</string>
-    <string name="orderBy">Ordenar Aves por:</string>
+    <string name="sighting_date">Fecha del avistamiento: </string>
+    <string name="sighting_area2">Área actual: </string>
+    <string name="orderBy">Ordenar Aves por: </string>
+    <string name="bird_list">Búsqueda de aves</string>
+    <string name="mysightings_list">Mis avistamientos</string>
+    <string name="login">Acceder</string>
+    <string name="title_signup">¡Regístrate!</string>
+    <string name="titleSightingEdit">Editar avistamiento</string>
+    <string name="titleSightingCancel">Cancelar</string>
 
 </resources>

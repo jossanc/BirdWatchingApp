@@ -12,7 +12,7 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_item_height"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
         android:gravity="center_vertical">
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/item_achievement"
             android:textColor="#000000"
-            android:textSize="20dp"/>
+            android:textSize="@dimen/text_big_size"/>
 
         <TextView
             android:id="@+id/achievementCha"
@@ -32,6 +32,7 @@
             android:layout_below="@+id/achievementN"
             android:text="@string/item_challenge"
             android:textColor="#000000"
+            android:textSize="@dimen/text_medium_size"
             />
 
 

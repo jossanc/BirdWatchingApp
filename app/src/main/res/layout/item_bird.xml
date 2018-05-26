@@ -22,27 +22,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sighting_bird"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/text_big_size"/>
 
-        <TextView
-            android:id="@+id/SName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/birdName"
-            android:text="@string/item_birdSN"
-            android:textColor="#EEEEEE"
-            />
 
         <TextView
             android:id="@+id/birdSN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/SName"
-            android:layout_alignBottom="@+id/SName"
             android:text="@string/item_birdSN"
-            android:textColor="#EEEEEE"
-            />
+            android:textSize="@dimen/text_small_size"
+            android:textColor="#000000"
+            android:layout_below="@+id/birdName"/>
 
         <TextView
             android:id="@+id/birdF"
@@ -52,7 +43,8 @@
             android:layout_alignBottom="@+id/birdName"
             android:layout_alignParentRight="true"
             android:text="@string/item_birdF"
-            android:textColor="#EEEEEE"
+            android:textSize="@dimen/text_small_size"
+            android:textColor="#000000"
             />
         <TextView
             android:id="@+id/birdE"
@@ -62,7 +54,8 @@
             android:layout_alignBottom="@+id/birdSN"
             android:layout_alignParentRight="true"
             android:text="@string/item_birdE"
-            android:textColor="#EEEEEE"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_small_size"
             />
 
     </RelativeLayout>

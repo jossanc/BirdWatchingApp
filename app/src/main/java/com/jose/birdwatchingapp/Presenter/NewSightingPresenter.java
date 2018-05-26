@@ -55,6 +55,7 @@ public class NewSightingPresenter {
         newSighting();
     }
 
+
     public String newSighting() {
         String result="ok";
         view.setSightingButton(false);

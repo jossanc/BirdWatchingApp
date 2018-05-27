@@ -34,11 +34,11 @@
     <string name="sighting_bird">Ave actual: </string>
     <string name="item_achievement">Nombre del logro</string>
     <string name="item_birdSN">Nombre científico: </string>
-    <string name="item_birdF">Familia</string>
+    <string name="item_birdF">Familia : </string>
     <string name="title_bird">Ave</string>
-    <string name="bird_area">Provincia donde vive</string>
-    <string name="bird_season">Temporadas en las que reside aquí</string>
-    <string name="item_birdE">Ecosistema</string>
+    <string name="bird_area">Provincias donde vive :</string>
+    <string name="bird_season">Temporadas en las que reside aquí :</string>
+    <string name="item_birdE">Ecosistema :</string>
     <string name="update_sighting">Actualizar</string>
     <string name="delete_sighting">Borrar</string>
     <string name="goback_sighting">Volver</string>
@@ -53,5 +53,12 @@
     <string name="title_signup">¡Regístrate!</string>
     <string name="titleSightingEdit">Editar avistamiento</string>
     <string name="titleSightingCancel">Cancelar</string>
+    <string name="newsighting_bird">Ave avistada:</string>
+    <string name="title_new_sighting">Nuevo avistamiento</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sightings_list">Avistamientos de todos los usuarios</string>
+    <string name="new_sighting">Crear un nuevo avistamiento</string>
 
 </resources>

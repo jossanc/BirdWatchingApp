@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.jose.birdwatchingapp.Presenter.MainPresenter;
 import com.jose.birdwatchingapp.R;
@@ -24,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenter = new MainPresenter(this);
+        // mainPresenter = new MainPresenter(this);
 
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
         }
     }
-
+*/
     public void orderBy() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("Ordenar aves");

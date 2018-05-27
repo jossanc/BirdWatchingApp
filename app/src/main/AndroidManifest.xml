@@ -34,7 +34,8 @@
         <activity android:name=".View.NewSightingActivity" />
         <activity android:name=".View.AchievementsActivity" />
         <activity android:name=".View.BirdActivity" />
-        <activity android:name=".View.SightingActivity"></activity>
+        <activity android:name=".View.SightingActivity" />
+        <activity android:name=".View.BirdsActivity"></activity>
     </application>
 
 </manifest>

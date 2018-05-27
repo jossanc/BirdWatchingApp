@@ -1,82 +1,250 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="56sp"
+        android:orientation="vertical"
         android:paddingLeft="24sp"
         android:paddingRight="24sp">
 
-        <TextView android:id="@+id/birdName"
+        <TextView
+            android:id="@+id/birdName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
             android:layout_marginBottom="24sp"
-            android:text="@string/title_bird"
             android:gravity="center"
-            android:textSize="22sp"
-            android:textColor="#000000"/>
+            android:text="@string/title_bird"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_big_size" />
 
-        <TextView android:id="@+id/birdSN"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24sp"
-            android:text="@string/item_birdSN"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <TextView android:id="@+id/birdF"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24sp"
-            android:text="@string/item_birdF"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            <TextView
+                android:id="@+id/title_birdSN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/item_birdSN"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
 
-        <TextView android:id="@+id/birdE"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24sp"
-            android:text="@string/item_birdE"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            <TextView
+                android:id="@+id/birdSN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/item_birdSN"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
 
-        <TextView android:id="@+id/birdSeason"
-            android:layout_width="fill_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_birdF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/item_birdF"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/birdF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/item_birdF"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_birdE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/item_birdE"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/birdE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:text="@string/item_birdE"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/birdSeason"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
             android:text="@string/bird_season"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/text_medium_size"
+            android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinnerSeason"
+        <View
+            android:layout_height="2dip"
+            android:layout_width="match_parent"
+            android:background="#FF909090" />
+
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:background="#819FF7"/>
+            android:stretchColumns="0,1,2,3,4"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TableRow>
+                <TextView
+                    android:id="@+id/table_pri"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textColor="#04B404"
+                    android:textSize="@dimen/text_small_size"
+                    />
+                <TextView
+                    android:id="@+id/table_ver"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textColor="#FF8000"
+                    android:textSize="@dimen/text_small_size"/>
+                </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/table_oto"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#B45F04"/>
+                <TextView
+                    android:id="@+id/table_inv"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#0101DF"/>
+            </TableRow>
+        </TableLayout>
 
-        <TextView android:id="@+id/areaName"
+        <View
+            android:layout_height="2dip"
+            android:layout_width="match_parent"
+            android:background="#FF909090" />
+
+        <TextView
+            android:id="@+id/areaName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24sp"
+            android:layout_marginTop="12sp"
+            android:layout_marginBottom="12sp"
             android:text="@string/bird_area"
-            android:textSize="16sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="@dimen/text_medium_size"
+            android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinnerArea"
+
+        <View
+            android:layout_height="2dip"
+            android:layout_width="match_parent"
+            android:background="#FF909090" />
+
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:background="#81BEF7"
-            />
+            android:stretchColumns="0,1,2,3,4,5,6,7,8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TableRow>
+                <TextView
+                    android:id="@+id/table_Le"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_small_size"
+                    />
+                <TextView
+                    android:id="@+id/table_pa"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_small_size"/>
+                <TextView
+                    android:id="@+id/table_bu"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/table_so"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/table_se"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/table_av"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/table_sa"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/table_za"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:id="@+id/table_va"
+                    android:text=""
+                    android:padding="3dp"
+                    android:textSize="@dimen/text_small_size"
+                    android:textColor="#000000"/>
+            </TableRow>
+        </TableLayout>
 
-
+        <View
+            android:layout_height="2dip"
+            android:layout_width="match_parent"
+            android:background="#FF909090" />
 
     </LinearLayout>
 </ScrollView>

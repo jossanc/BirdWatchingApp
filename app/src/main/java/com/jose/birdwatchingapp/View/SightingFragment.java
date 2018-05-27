@@ -76,6 +76,7 @@ public class SightingFragment extends Fragment {
         initData();
         setUpdateButton(true);
         setDeleteButton(true);
+
         setHasOptionsMenu(true);
         setVisibility(false);
         return view;

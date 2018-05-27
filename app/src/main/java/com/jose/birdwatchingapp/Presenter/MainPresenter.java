@@ -4,20 +4,22 @@ package com.jose.birdwatchingapp.Presenter;
 import android.content.Intent;
 
 import com.jose.birdwatchingapp.View.AchievementsActivity;
+import com.jose.birdwatchingapp.View.BirdsActivity;
 import com.jose.birdwatchingapp.View.ChallengesActivity;
-import com.jose.birdwatchingapp.View.MainActivity;
+import com.jose.birdwatchingapp.View.MainFragment;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
 import com.jose.birdwatchingapp.View.NewSightingActivity;
 import com.jose.birdwatchingapp.View.SightingsActivity;
+
 /*
  Clase java que actúa como Presentador de la actividad MainActivity
  */
 public class MainPresenter {
 
-    private MainActivity mainView;
+    private MainFragment mainView;
 
 
-    public MainPresenter(MainActivity ma) {
+    public MainPresenter(MainFragment ma) {
 
         //enlazamos el presentador con la vista
         mainView=ma;
@@ -29,27 +31,32 @@ public class MainPresenter {
 
         switch (id){
             case "action_sighting":
-                mainView.startActivity(new Intent(mainView, NewSightingActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), NewSightingActivity.class));
                 return ;
             case "action_sightings":
-                mainView.startActivity(new Intent(mainView, SightingsActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), SightingsActivity.class));
                 return ;
             case "action_my_sightings":
-                mainView.startActivity(new Intent(mainView,MySightingsActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(),MySightingsActivity.class));
                 return;
             case "action_challenges":
-                mainView.startActivity(new Intent(mainView, ChallengesActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), ChallengesActivity.class));
                 return;
             case "action_achievements":
-                mainView.startActivity(new Intent(mainView, AchievementsActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), AchievementsActivity.class));
                 return;
             case "action_settings":
                 //mainView.startActivity(new Intent(mainView, SettingsActivity.class));
+                return;
+            case "action_birds":
+                mainView.startActivity(new Intent(mainView.getActivity(), BirdsActivity.class));
                 return;
             default:
                 return;
         }
     }
+
+
 
 
 

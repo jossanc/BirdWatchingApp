@@ -37,7 +37,7 @@ public class BirdsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                         view.loadBirds(result);
 
                     }
@@ -50,7 +50,7 @@ public class BirdsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                     }
                 });
             }

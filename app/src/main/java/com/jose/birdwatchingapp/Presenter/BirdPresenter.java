@@ -40,21 +40,18 @@ public class BirdPresenter {
         view.setBirdE(birdE);
     }
 
-    public void addItemsOnSpinnerSeason() {
+    public void addItemsOnSeason() {
         //get seasonNames  desde el modelo..
-        seasonList.add("Temporadas en las que reside");
-        initializeSpinnerSeason();
-        view.addItemsOnSpinnerSeaason(seasonList);
+        initializeSeason();
     }
 
-    public void addItemsOnSpinnerArea() {
+
+    public void addItemsOnArea() {
         //get areasNames  desde el modelo..
-        areaList.add("Áreas donde reside");
-        initializeSpinnerArea();
-        view.addItemsOnSpinnerArea(areaList);
+        initializeArea();
     }
 
-    public void initializeSpinnerArea() {
+    public void initializeArea() {
         String url = api.get_url("url_area_bybird");
         String[] urls = {"", "", ""};
         urls[0] = "get";
@@ -66,8 +63,9 @@ public class BirdPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                         parseAreas(result);
+                        view.loadArea(areaList);
                     }
                 });
 
@@ -78,7 +76,7 @@ public class BirdPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                     }
                 });
             }
@@ -112,7 +110,7 @@ public class BirdPresenter {
             Log.d(TAG, "Resultado del get areas " + result);
     }
 
-    public void initializeSpinnerSeason() {
+    public void initializeSeason() {
         String url = api.get_url("url_seasons_bybird");
         String[] urls = {"", "", ""};
         urls[0] = "get";
@@ -124,8 +122,9 @@ public class BirdPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                         parseSeasons(result);
+                        view.loadSeason(seasonList);
                     }
                 });
 
@@ -136,7 +135,7 @@ public class BirdPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                       // view.showMessage(result);
                     }
                 });
             }

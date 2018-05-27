@@ -20,12 +20,20 @@
             android:gravity="center"
             android:textSize="22sp"
             android:textColor="#000000"/>
+        <TextView android:id="@+id/title_new_sighting2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:text="@string/title_new_sighting"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#000000"/>
 
         <TextView android:id="@+id/sightingBird"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
-            android:text="@string/sighting_bird"
+            android:text="@string/newsighting_bird"
             android:textSize="16sp"
             android:textColor="#000000"/>
 
@@ -34,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_medium"
-            android:background="#BBBBBB"/>
+            android:background="#DDDDDD"/>
 
         <TextView android:id="@+id/areaName"
             android:layout_width="fill_parent"

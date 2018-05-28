@@ -42,6 +42,7 @@ public class MainFragment extends Fragment {
         btn_birds.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                mainPresenter.menu("action_birds");
 
             }
         });

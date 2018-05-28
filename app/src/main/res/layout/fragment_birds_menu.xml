@@ -1,0 +1,65 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/geese_fondo"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="66dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="@string/bird_menu"
+            android:gravity="center"
+            android:textSize="@dimen/text_big_size"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_cn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/list_cn"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_sn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/list_sn"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_areas"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/list_areas"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_seasons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/list_seasons"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+    </LinearLayout>
+</ScrollView>

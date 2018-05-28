@@ -121,6 +121,7 @@
                 android:layout_weight="1"
                 android:background="#CEECF5"
                 android:padding="12sp"
+                android:textSize="@dimen/text_medium_size"
                 android:text="@string/update_sighting" />
 
             <android.support.v7.widget.AppCompatButton
@@ -133,6 +134,7 @@
                 android:layout_weight="1"
                 android:background="#CEECF5"
                 android:padding="12sp"
+                android:textSize="@dimen/text_medium_size"
                 android:text="@string/delete_sighting" />
         </LinearLayout>
     </LinearLayout>

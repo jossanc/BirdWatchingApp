@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jose.birdwatchingapp.R;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

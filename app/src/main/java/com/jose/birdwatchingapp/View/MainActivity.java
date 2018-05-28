@@ -9,7 +9,7 @@ import com.jose.birdwatchingapp.Presenter.MainPresenter;
 import com.jose.birdwatchingapp.R;
 
 /*
-    Actividad principal, accedida después de la actividad Login. Es donde se carga la primera lista de aves y el menú
+    Actividad principal, accedida después de la actividad LoginActivity. Es donde se carga la primera lista de aves y el menú
 
     Created by José Luis Sánchez Paredes for the Final Degree Project
  */

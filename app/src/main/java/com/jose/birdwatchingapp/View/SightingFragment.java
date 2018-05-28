@@ -78,7 +78,7 @@ public class SightingFragment extends Fragment {
         setDeleteButton(true);
 
         setHasOptionsMenu(true);
-        setVisibility(false);
+        changeVisibility();
         return view;
     }
 
@@ -102,7 +102,7 @@ public class SightingFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menusighting, menu);
+        inflater.inflate(R.menu.menusighting,menu);
     }
 
     // según la opción de menu elegida llamamos al presentador para que inicie una actividad u otra
@@ -110,10 +110,11 @@ public class SightingFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit_sighting:
-                presenter.setVisibility(true);
+                presenter.changeVisibility();
                 return true;
             case R.id.action_cancel:
-                presenter.setVisibility(false);
+                String date= Sdate.getText().toString();
+                presenter.deleteButton(date);
             default:
                 return false;
         }
@@ -130,15 +131,19 @@ public class SightingFragment extends Fragment {
     public void setDeleteButton(boolean vis){
         deleteButton.setEnabled(vis);
     }
-    public void setVisibility(boolean vis){
-        if(vis==false) {
+    public void changeVisibility(){
+       // if(vis==false) {
+        int visibility = spinnerArea.getVisibility();
+        if (visibility==View.VISIBLE){
             spinnerArea.setVisibility(View.INVISIBLE);
             spinnerBird.setVisibility(View.INVISIBLE);
             updateButton.setVisibility(View.INVISIBLE);
+            deleteButton.setVisibility(View.INVISIBLE);
         }else{
             spinnerArea.setVisibility(View.VISIBLE);
             spinnerBird.setVisibility(View.VISIBLE);
             updateButton.setVisibility(View.VISIBLE);
+            deleteButton.setVisibility(View.VISIBLE);
         }
     }
 

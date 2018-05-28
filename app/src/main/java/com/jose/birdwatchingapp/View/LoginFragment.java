@@ -108,7 +108,7 @@ public class LoginFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            Log.d(TAG, "Login");
+            Log.d(TAG, "LoginActivity");
 
             if (validate()!="ok") {
                 onLoginFailed();

@@ -1,22 +1,20 @@
 package com.jose.birdwatchingapp.View;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import com.jose.birdwatchingapp.R;
 
-public class BirdsActivity extends AppCompatActivity {
+public class BirdsMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_birds);
-
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.list_toolbar);
-  //      setSupportActionBar(myToolbar);
+        setContentView(R.layout.activity_birds_menu);
+        // Comprobar si la actividad ya ha sido creada con anterioridad
         if (savedInstanceState == null) {
-            // Crea un fragmento
-            BirdsFragment fragment = new BirdsFragment();
+            // Crear un fragment
+            BirdsMenuFragment fragment = new BirdsMenuFragment();
             getFragmentManager()
                     .beginTransaction()
                     .add(android.R.id.content, fragment,

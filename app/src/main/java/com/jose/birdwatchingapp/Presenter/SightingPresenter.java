@@ -57,8 +57,8 @@ public class SightingPresenter {
         initializeSpinnerBirds();
         view.addItemsOnSpinnerBird(birdsList);
     }
-    public void setVisibility(boolean vis){
-        view.setVisibility(vis);
+    public void changeVisibility(){
+        view.changeVisibility();
     }
 
     public void updateButton(String bird, String area,String date){

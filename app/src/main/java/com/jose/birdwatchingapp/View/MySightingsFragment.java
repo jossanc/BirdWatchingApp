@@ -28,14 +28,10 @@ public class MySightingsFragment extends Fragment {
 
     protected RecyclerView mRecyclerView;
     protected SightingsAdapter mAdapter;
-    //protected RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
     }
 
     @Override
@@ -46,10 +42,6 @@ public class MySightingsFragment extends Fragment {
 
         // BEGIN_INCLUDE(initializeRecyclerView)
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewSightings);
-
-        //mAdapter = new SightingsAdapter(mDataset);
-        // Set SightingsAdapter as the adapter for RecyclerView.
-        //RecyclerView.setAdapter(mAdapter);
         // END_INCLUDE(initializeRecyclerView)
 
         mySightingsPresenter = new MySightingsPresenter(this);

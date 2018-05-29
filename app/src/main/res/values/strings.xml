@@ -67,5 +67,16 @@
     <string name="list_seasons">Por temporada</string>
     <string name="title_le">León</string>
     <string name="title_pa">Palencia</string>
+    <string name="title_inv">Invierno</string>
+    <string name="title_pri">Primavera</string>
+    <string name="title_ver">Verano</string>
+    <string name="title_oto">Otoño</string>
+    <string name="title_bu">Burgos</string>
+    <string name="title_so" />
+    <string name="title_se">Segovia</string>
+    <string name="title_av">Ávila</string>
+    <string name="title_sa">Salamanca</string>
+    <string name="title_za">Zamora</string>
+    <string name="title_va">Valladolid</string>
 
 </resources>

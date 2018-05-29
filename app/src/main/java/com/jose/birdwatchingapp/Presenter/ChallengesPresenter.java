@@ -34,7 +34,6 @@ public class ChallengesPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         view.loadChallenges(result);
 
                     }
@@ -46,7 +45,7 @@ public class ChallengesPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                     }
                 });
             }

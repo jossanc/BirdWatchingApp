@@ -69,7 +69,7 @@ public class NewSightingPresenter {
         String url=api.get_url("url_all_sightings");
         String json;
         //verificar aynctask y eso, httpinterface
-        json = "{userName:"+userName+",commonBirdName:"+bird+",areaName:"+area+"}";
+        json = "{\"userName\":\""+userName+"\",\"commonBirdName\":\""+bird+"\",\"areaName\":\""+area+"\"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
         urls[0]="post";
@@ -82,7 +82,7 @@ public class NewSightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("Nuevo avistamiento añadido correctamente");
                         //view.loadSightings(result);
                         //TODO sighting registered...
                     }
@@ -95,7 +95,7 @@ public class NewSightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("No se pudo añadir en estos momentos");
                     }
                 });
             }

@@ -5,6 +5,7 @@ package com.jose.birdwatchingapp.Model;
  */
 
 public class Sighting {
+    private String id;
     private String user;
     private String bird;
     private String date;
@@ -16,7 +17,8 @@ public class Sighting {
         this.date=date;
         this.areaName="";
     }
-    public Sighting(String user,String bird, String date,String areaName) {
+    public Sighting(String id,String user,String bird, String date,String areaName) {
+        this.id=id;
         this.user = user;
         this.bird=bird;
         this.date=date;
@@ -27,6 +29,9 @@ public class Sighting {
 
     }
 
+    public String getId(){
+         return id;
+    }
     public String getUser() {
         return user;
     }

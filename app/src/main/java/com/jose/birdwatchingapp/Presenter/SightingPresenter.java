@@ -1,7 +1,6 @@
 package com.jose.birdwatchingapp.Presenter;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
@@ -23,6 +22,7 @@ public class SightingPresenter {
     private String TAG= SightingPresenter.class.getSimpleName();
     private String TAG_AREA="areaName";
     private String TAG_BIRD="commonName";
+    private String sigID;
     private SightingFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
@@ -37,12 +37,13 @@ public class SightingPresenter {
 
 
 
-    public void initData(String sigBird, String sigArea, String sigDate){
+    public void initData(String sigBird, String sigArea, String sigDate,String sigId){
         addItemsOnSpinnerBird();
         addItemsOnSpinnerArea();
         view.setTextBird(sigBird);
         view.setTextArea(sigArea);
         view.setTextDate(sigDate);
+        sigID=sigId;
     }
 
     public void addItemsOnSpinnerArea(){
@@ -80,22 +81,13 @@ public class SightingPresenter {
     }
 
     public void deleteSighting(){
-
-    }
-
-    public void updateSighting() {
-        prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
-        String userName=prefs.getString("username","");
-        Log.d(TAG,bird+"  "+area+"  "+userName);
-
         String url=api.get_url("url_all_sightings");
         String json;
-        //verificar aynctask y eso, httpinterface
-        json = "{userName:"+userName+",commonBirdName:"+bird+",areaName:"+area+",sightingDate:"+date+"}";
+        json = "{\"sightingId\":\""+sigID+"\"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
-        urls[0]="post";/////////////////////////77  update actualizar API
-        urls[1]=url;
+        urls[0]="delete";
+        urls[1]=url+sigID;
         urls[2]=json;
 
         new HttpReq(new HttpInterface() {
@@ -104,7 +96,49 @@ public class SightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("Eliminado correctamente");
+                        onSightingSuccess();
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage("No se pudo borrar en estos momentos");
+                    }
+                });
+            }
+        }).execute(urls);
+
+    }
+
+    public void updateSighting() {
+        //prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        //String userName=prefs.getString("username","");
+        Log.d(TAG,bird+"  "+area+"  ");
+
+        String url=api.get_url("url_update_sighting");
+        String json;
+        //verificar aynctask y eso, httpinterface
+        json = "{\"commonBirdName\":\""+bird+"\",\"areaName\":\""+area+"\"}";
+        Log.d(TAG,json);
+        Log.d(TAG,url+sigID);
+        String[] urls = {"","",""};
+        urls[0]="put";
+        urls[1]=url+sigID;
+        urls[2]=json;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage("Actualizado correctamente");
                         onSightingSuccess();
                     }
                 });

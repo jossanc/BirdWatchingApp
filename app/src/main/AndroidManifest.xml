@@ -39,7 +39,8 @@
         <activity
             android:name=".View.SightingActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.BirdsActivity" />
+        <activity android:name=".View.BirdsActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".View.BirdsMenuActivity"></activity>
     </application>
 

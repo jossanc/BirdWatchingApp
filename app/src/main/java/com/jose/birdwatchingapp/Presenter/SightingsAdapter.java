@@ -26,13 +26,12 @@ import java.util.List;
 public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.ViewHolder> {
     private static final String TAG = SightingsAdapter.class.getSimpleName();
 
-    private Sighting s1= new Sighting("jose","Cotorra Común","10-05-2018","Zamora");
-    private Sighting s2= new Sighting("jose","Cotorra Común","11-05-2018","Soria");
     private List<Sighting> sightings = new ArrayList<>();
     private String TAG_USER="userName";
     private String TAG_BIRD="commonBirdName";
     private String TAG_DATE="sightingDate";
     private String TAG_AREA="areaName";
+    private String TAG_ID="sightingId";
     private final static int TAG_MYSIGHTINGS=1;
     private static int previousFragment=0;
 
@@ -46,6 +45,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
         private final TextView sigBird;
         private final TextView sigDate;
         private final TextView sigArea;
+        private final TextView sigId;
 
         public ViewHolder(View v) {
             super(v);
@@ -56,10 +56,12 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                     if (previousFragment==TAG_MYSIGHTINGS){
                         Intent intent = new Intent(v.getContext(), SightingActivity.class);
-                        String sightingBird=null,sightingDate=null,sightingArea=null;
+                        String sightingBird=null,sightingDate=null,sightingArea=null, sightingId=null;
                         sightingBird=sigBird.getText().toString();
                         sightingDate=sigDate.getText().toString();
                         sightingArea=sigArea.getText().toString();
+                        sightingId=sigId.getText().toString();
+                        intent.putExtra("sightingid",sightingId);
                         intent.putExtra("sightingbirdname", sightingBird);
                         intent.putExtra("sightingdate", sightingDate);
                         intent.putExtra("sightingarea", sightingArea);
@@ -74,6 +76,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
             sigBird = (TextView) v.findViewById(R.id.sightingsBird);
             sigDate = (TextView) v.findViewById(R.id.sightingsDate);
             sigArea = (TextView) v.findViewById(R.id.sightingsArea);
+            sigId = (TextView) v.findViewById(R.id.sightingId);
         }
 
         public TextView getSightingUser() {
@@ -86,6 +89,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
             return sigDate;
         }
         public TextView getSightingArea() { return sigArea; }
+        public TextView getSightingId() { return sigId; }
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
@@ -97,8 +101,6 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     public SightingsAdapter(String jsonArray, int fragment) {
 
         previousFragment=fragment;
-        sightings.add(s1);
-        sightings.add(s2);
         parserAllSightings(jsonArray);
     }
 
@@ -129,6 +131,8 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
         viewHolder.getSightingBird().setText(sightings.get(position).getBird());
         viewHolder.getSightingDate().setText(formatDate(sightings.get(position).getDate()));
         viewHolder.getSightingArea().setText(sightings.get(position).getAreaName());
+        viewHolder.getSightingId().setText(sightings.get(position).getId());
+        viewHolder.getSightingId().setVisibility(View.INVISIBLE);
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
@@ -169,8 +173,9 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                             String user = c.getString(TAG_USER);
                             String date = c.getString(TAG_DATE);
                             String area = c.getString(TAG_AREA);
+                            String id=c.getString(TAG_ID);
                             // creating new object to put into the List
-                            Sighting sig=new Sighting(user,bird,date,area);
+                            Sighting sig=new Sighting(id,user,bird,date,area);
 
                           /*  sig.setUser(user);
                             sig.setBird(bird);

@@ -85,19 +85,21 @@ public class SightingFragment extends Fragment {
     public void initData(){
         //asignar valores del elemento seleccionado a la vista
 
-        String sigBird,sigArea,sigDate;
+        String sigBird,sigArea,sigDate, sigId;
         Bundle extras = getActivity().getIntent().getExtras();
         if(extras == null) {
             sigBird=null;
             sigArea=null;
             sigDate=null;
+            sigId=null;
         } else {
             sigBird=extras.getString("sightingbirdname");
             sigArea=extras.getString("sightingarea");
             sigDate=extras.getString("sightingdate");
+            sigId=extras.getString("sightingid");
         }
         Log.d(TAG,sigBird+sigArea+sigDate);
-        presenter.initData(sigBird,sigArea,sigDate);
+        presenter.initData(sigBird,sigArea,sigDate,sigId);
     }
 
     @Override

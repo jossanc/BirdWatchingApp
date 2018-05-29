@@ -29,7 +29,7 @@ public class MySightingsPresenter {
         Log.d(TAG,"Obteniendo mis avistamientos");
         // view.showMessage("asda");
         //view.showMessage("as");
-        String url=api.get_url("url_all_sightings");
+        String url=api.get_url("url_my_sightings");
         prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
         String user=prefs.getString("username","");
         Log.d(TAG,url+user);
@@ -43,7 +43,7 @@ public class MySightingsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                         view.loadMySightings(result);
 
                     }
@@ -56,7 +56,7 @@ public class MySightingsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        //view.showMessage(result);
                     }
                 });
             }

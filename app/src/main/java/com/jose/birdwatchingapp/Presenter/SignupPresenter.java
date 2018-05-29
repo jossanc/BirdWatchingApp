@@ -99,7 +99,7 @@ public class SignupPresenter {
         String url=api.get_url("url_register_user");
         String json;
         //verificar aynctask y eso, httpinterface
-        json = "{userName:"+name+",password:"+password+",areaName:"+areaName+"}";
+        json = "{\"userName\":\""+name+"\",\"password\":\""+password+"\",\"areaName\":\""+areaName+"\"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
         urls[0]="post";
@@ -112,7 +112,8 @@ public class SignupPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("Registrado correctamente");
+                        Log.d(TAG,result);
                         //view.loadSightings(result);
                         //TODO user registrado...
                     }
@@ -125,7 +126,7 @@ public class SignupPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
+                        view.showMessage("No pudo registrarse en estos momentos");
                     }
                 });
             }

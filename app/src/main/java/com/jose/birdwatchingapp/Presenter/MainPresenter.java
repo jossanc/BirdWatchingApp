@@ -4,7 +4,7 @@ package com.jose.birdwatchingapp.Presenter;
 import android.content.Intent;
 
 import com.jose.birdwatchingapp.View.AchievementsActivity;
-import com.jose.birdwatchingapp.View.BirdsActivity;
+import com.jose.birdwatchingapp.View.BirdsMenuActivity;
 import com.jose.birdwatchingapp.View.ChallengesActivity;
 import com.jose.birdwatchingapp.View.MainFragment;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
@@ -49,7 +49,7 @@ public class MainPresenter {
                 //mainView.startActivity(new Intent(mainView, SettingsActivity.class));
                 return;
             case "action_birds":
-                mainView.startActivity(new Intent(mainView.getActivity(), BirdsActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), BirdsMenuActivity.class));
                 return;
             default:
                 return;

@@ -121,7 +121,6 @@ public class NewSightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         parseAreas(result);
                     }
                 });

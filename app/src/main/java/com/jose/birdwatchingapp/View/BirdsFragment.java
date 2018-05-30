@@ -32,8 +32,8 @@ public class BirdsFragment extends Fragment {
     private API api;
     private String choice;
     private TextView toolbar;
-    protected RecyclerView mRecyclerView;
-    protected BirdsAdapter mAdapter;
+    private RecyclerView mRecyclerView;
+    private BirdsAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

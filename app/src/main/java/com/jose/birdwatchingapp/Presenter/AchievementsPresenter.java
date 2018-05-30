@@ -39,7 +39,6 @@ public class AchievementsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         view.loadAchievements(result);
 
                     }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jose.birdwatchingapp.Presenter.ChallengesAdapter;
@@ -23,6 +24,8 @@ public class ChallengesFragment extends Fragment {
     private ChallengesPresenter presenter;
     protected RecyclerView mRecyclerView;
     protected ChallengesAdapter mAdapter;
+    private TextView title_toolbar;
+    private String title_fragment="Retos";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class ChallengesFragment extends Fragment {
         rootView.setTag(TAG);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewChallenge);
+        title_toolbar = (TextView) rootView.findViewById(R.id.toolbar_title);
+        title_toolbar.setText(title_fragment);
 
         presenter = new ChallengesPresenter(this);
         initData();

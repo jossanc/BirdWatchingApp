@@ -35,7 +35,6 @@ public class SightingsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         view.loadSightings(result);
 
                     }

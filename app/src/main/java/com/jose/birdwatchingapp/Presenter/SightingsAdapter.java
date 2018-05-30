@@ -66,10 +66,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                         intent.putExtra("sightingdate", sightingDate);
                         intent.putExtra("sightingarea", sightingArea);
                         v.getContext().startActivity(intent);
-
                     }
-                    //putExtras
-                    //v.getContext().startActivity(new Intent(v.getContext(), SightingsActivity.class));
                 }
             });
             sigUser = (TextView) v.findViewById(R.id.sightingsUser);

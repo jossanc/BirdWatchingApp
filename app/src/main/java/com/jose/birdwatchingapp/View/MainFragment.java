@@ -95,9 +95,6 @@ public class MainFragment extends Fragment {
             case R.id.action_settings:
                 mainPresenter.menu("action_settings");
                 return true;
-            case R.id.action_orderby:
-                //orderBy();
-                return true;
             default:
                 return false;
         }

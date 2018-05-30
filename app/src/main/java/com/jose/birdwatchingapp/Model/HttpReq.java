@@ -44,7 +44,9 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
 
             try {
                 Response response = client.newCall(request).execute();
-                httpResult.onSuccess(response.body().string());
+                if(response.isSuccessful())
+                    httpResult.onSuccess(response.body().string());
+                else httpResult.onFail("Error al obtener los datos");
                 //Log.d(TAG,response.body().string());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -61,7 +63,9 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
 
             try {
                 Response response = client.newCall(request).execute();
-                httpResult.onSuccess(response.body().string());
+                if(response.isSuccessful())
+                    httpResult.onSuccess(response.body().string());
+                else httpResult.onFail("Error al obtener los datos");
                 //Log.d(TAG,response.body().string());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -79,7 +83,9 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
 
             try {
                 Response response = client.newCall(request).execute();
-                httpResult.onSuccess(response.body().string());
+                if(response.isSuccessful())
+                    httpResult.onSuccess(response.body().string());
+                else httpResult.onFail("Error al eliminar los datos");
                 //Log.d(TAG,response.body().string());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -98,7 +104,7 @@ public class HttpReq extends AsyncTask<String,Void,Void> {
 
             try {
                 Response response = client.newCall(request).execute();
-                httpResult.onSuccess(response.body().string());
+                    httpResult.onSuccess(response.body().string());
                 //Log.d(TAG,response.body().string());
             } catch (IOException e) {
                 e.printStackTrace();

@@ -21,10 +21,6 @@
         android:id="@+id/action_achievements"
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/titleAchievements" />
-    <item android:id="@+id/action_orderby"
-        android:icon="@android:drawable/ic_media_play"
-        android:title="@string/orderBy"
-        />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

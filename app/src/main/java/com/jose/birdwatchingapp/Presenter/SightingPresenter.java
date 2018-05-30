@@ -71,10 +71,12 @@ public class SightingPresenter {
         updateSighting();
         view.setUpdateButton(true);
         view.setDeleteButton(true);
+        //gobackButton();
     }
     public void deleteButton(String date){
         this.date=date;
         deleteSighting();
+        //gobackButton();
     }
     public void gobackButton(){
         view.getActivity().finish();
@@ -97,7 +99,7 @@ public class SightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage("Eliminado correctamente");
-                        onSightingSuccess();
+                       // onSightingSuccess();
                     }
                 });
 
@@ -139,7 +141,7 @@ public class SightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage("Actualizado correctamente");
-                        onSightingSuccess();
+                        //onSightingSuccess();
                     }
                 });
 
@@ -173,7 +175,6 @@ public class SightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         parseAreas(result);
                     }
                 });
@@ -203,7 +204,6 @@ public class SightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
                         parseBirds(result);
                     }
                 });

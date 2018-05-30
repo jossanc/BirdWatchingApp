@@ -1,5 +1,6 @@
 package com.jose.birdwatchingapp.Presenter;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.util.Log;
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.MySightingsFragment;
+import com.jose.birdwatchingapp.View.NewSightingActivity;
 
 /**
  * Created by jose on 19/05/18.
@@ -62,4 +64,12 @@ public class MySightingsPresenter {
             }
         }).execute(urls);
     }
+
+    public void menu(String option){
+        if(option.contains("action_new_sighting")){
+            view.startActivity(new Intent(view.getActivity(), NewSightingActivity.class));
+            view.getActivity().finish();
+        }
+    }
+
 }

@@ -34,9 +34,13 @@ public class  API {
             case "url_areas":
                 return "http://virtual.lab.inf.uva.es:20072/areas/areasName";
             case "url_area_bybird":
-                return  "http://virtual.lab.inf.uva.es:20072/live/findbybird/";
+                return  "http://virtual.lab.inf.uva.es:20072/lives/findbybird/";
+            case "url_birds_byarea":
+                return  "http://virtual.lab.inf.uva.es:20072/lives/findbyarea/";
             case "url_seasons_bybird":
                 return "http://virtual.lab.inf.uva.es:20072/seasons/bybird/";
+            case "url_birds_byseason":
+                return "http://virtual.lab.inf.uva.es:20072/seasons/byseason/";
             case "url_all_achievements":
                 return "http://virtual.lab.inf.uva.es:20072/achievements/";
             default:

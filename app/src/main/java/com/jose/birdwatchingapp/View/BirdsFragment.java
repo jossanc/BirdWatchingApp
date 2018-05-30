@@ -108,7 +108,7 @@ public class BirdsFragment extends Fragment {
                 toolbar.setText("Aves por provincia: Valladolid");
                 break;
             case "areas":
-                toolbar.setText("Aves por provincia");
+                toolbar.setText("Aves por provincia: Valladolid");
                 break;
             case "inv":
                 toolbar.setText("Aves por temporada: Invierno");
@@ -123,7 +123,7 @@ public class BirdsFragment extends Fragment {
                 toolbar.setText("Aves por temporada: Otoño");
                 break;
             case "seasons":
-                toolbar.setText("Aves por temporada");
+                toolbar.setText("Aves por temporada: Verano");
                 break;
             default:
         }
@@ -140,23 +140,64 @@ public class BirdsFragment extends Fragment {
                 url = api.get_url("url_birds_bysn");
                 break;
             case "le":
+                url = api.get_url("url_birds_byarea");
+                url=url+"León";
+                break;
             case "pa":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Palencia";
+                break;
             case "bu":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Burgos";
+                break;
             case "se":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Segovia";
+                break;
             case "so":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Soria";
+                break;
             case "av":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Ávila";
+                break;
             case "sa":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Salamanca";
+                break;
             case "za":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Zamora";
+                break;
             case "va":
+                url = api.get_url("url_birds_byarea");
+                url=url+"Valladolid";
+                break;
             case "areas":
-                url = api.get_url("url_all_birds");
+                url = api.get_url("url_birds_byarea");
+                url=url+"Valladolid";
                 break;
             case "inv":
+                url = api.get_url("url_birds_byseason");
+                url=url+"Invierno";
+                break;
             case "pri":
+                url = api.get_url("url_birds_byseason");
+                url=url+"Primavera";
+                break;
             case "ver":
+                url = api.get_url("url_birds_byseason");
+                url=url+"Verano";
+                break;
             case "oto":
+                url = api.get_url("url_birds_byseason");
+                url=url+"Otoño";
+                break;
             case "seasons":
-                url = api.get_url("url_all_birds");
+                url = api.get_url("url_birds_byseason");
+                url=url+"Verano";
                 break;
             default:
                 url = "";
@@ -208,40 +249,54 @@ public class BirdsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (choice.contains("areas")) {
-            switch (item.getItemId()) {
-                case R.id.action_le:
-                    presenter.menuAreas("action_le");
-                    return true;
-                case R.id.action_pa:
-                    presenter.menuAreas("action_pa");
-                    return true;
-                case R.id.action_bu:
-                    presenter.menuAreas("action_bu");
-                    return true;
-                case R.id.action_so:
-                    presenter.menuAreas("action_so");
-                    return true;
-                case R.id.action_av:
-                    presenter.menuAreas("action_av");
-                    return true;
-                case R.id.action_se:
-                    presenter.menuAreas("action_se");
-                    return true;
-                case R.id.action_sa:
-                    presenter.menuAreas("action_sa");
-                    return true;
-                case R.id.action_za:
-                    presenter.menuAreas("action_za");
-                    return true;
-                case R.id.action_va:
-                    presenter.menuAreas("action_va");
-                    return true;
-                default:
-                    return false;
-            }
-        } else if (choice.contains("seasons")) {
-            switch (item.getItemId()) {
+        switch (choice){
+            case "le":
+            case "pa":
+            case "bu":
+            case "se":
+            case "so":
+            case "av":
+            case "sa":
+            case "za":
+            case "va":
+            case "areas":
+                switch (item.getItemId()) {
+                    case R.id.action_le:
+                        presenter.menuAreas("action_le");
+                        return true;
+                    case R.id.action_pa:
+                        presenter.menuAreas("action_pa");
+                        return true;
+                    case R.id.action_bu:
+                        presenter.menuAreas("action_bu");
+                        return true;
+                    case R.id.action_so:
+                        presenter.menuAreas("action_so");
+                        return true;
+                    case R.id.action_av:
+                        presenter.menuAreas("action_av");
+                        return true;
+                    case R.id.action_se:
+                        presenter.menuAreas("action_se");
+                        return true;
+                    case R.id.action_sa:
+                        presenter.menuAreas("action_sa");
+                        return true;
+                    case R.id.action_za:
+                        presenter.menuAreas("action_za");
+                        return true;
+                    case R.id.action_va:
+                        presenter.menuAreas("action_va");
+                        return true;
+                    default:
+                        return false;
+                }
+            case "inv":
+            case "pri":
+            case "ver":
+            case "oto":
+            case "seasons":
+                switch (item.getItemId()) {
                 case R.id.action_inv:
                     presenter.menuSeasons("action_inv");
                     return true;
@@ -257,7 +312,8 @@ public class BirdsFragment extends Fragment {
                 default:
                     return false;
             }
+            default:
+                return true;
         }
-        return true;
     }
 }

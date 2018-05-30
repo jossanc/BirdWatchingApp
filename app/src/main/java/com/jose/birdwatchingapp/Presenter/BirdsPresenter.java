@@ -64,21 +64,25 @@ public class BirdsPresenter {
                 op = "inv";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_pri":
                 op = "pri";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_ver":
                 op = "ver";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_oto":
                 op = "oto";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             default:
                 return;
@@ -95,46 +99,55 @@ public class BirdsPresenter {
                 op = "le";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_pa":
                 op = "pa";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_bu":
                 op = "bu";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_so":
                 op = "so";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_av":
                 op = "av";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_se":
                 op = "se";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_sa":
                 op = "sa";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_za":
                 op = "za";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             case "action_va":
                 op = "va";
                 intent.putExtra("choice", op);
                 view.startActivity(intent);
+                view.getActivity().finish();
                 return;
             default:
                 return;

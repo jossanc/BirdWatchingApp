@@ -19,7 +19,7 @@
     <string name="name_signup">Nombre del usuario</string>
     <string name="signup_password">Contraseña</string>
     <string name="signup_create">Crear cuenta</string>
-    <string name="signup_login">Ya estás registrado? Accede aquí</string>
+    <string name="signup_login"><u>Ya estás registrado? Accede aquí</u></string>
     <string name="signup_repeat_password">Reescribe la contraseña</string>
     <string name="element_text">Un avistamiento</string>
     <string name="item_date">Fecha</string>
@@ -72,7 +72,7 @@
     <string name="title_ver">Verano</string>
     <string name="title_oto">Otoño</string>
     <string name="title_bu">Burgos</string>
-    <string name="title_so" />
+    <string name="title_so">Soria</string>
     <string name="title_se">Segovia</string>
     <string name="title_av">Ávila</string>
     <string name="title_sa">Salamanca</string>

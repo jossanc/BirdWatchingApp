@@ -14,7 +14,11 @@ public class BirdsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_birds);
-
+       /* getSupportFragmentManager().beginTransaction()
+                .replace(R.id.bird_fragment, new BirdsFragment())
+                .addToBackStack(null)
+                .commit();
+*/
         if (savedInstanceState == null) {
             // Crea un fragmento
             BirdsFragment fragment = new BirdsFragment();

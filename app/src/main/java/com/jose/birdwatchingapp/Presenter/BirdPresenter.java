@@ -66,6 +66,7 @@ public class BirdPresenter {
                         //view.showMessage(result);
                         parseAreas(result);
                         view.loadArea(areaList);
+                        Log.d(TAG,result);
                     }
                 });
 

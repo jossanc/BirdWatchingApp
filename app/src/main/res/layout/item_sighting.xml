@@ -24,13 +24,6 @@
             android:textColor="#000000"
             android:textSize="@dimen/text_big_size" />
 
-        <TextView
-            android:id="@+id/sightingsUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sightingsBird"
-            android:textSize="@dimen/text_medium_size"
-            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/sightingsDate"
@@ -47,12 +40,18 @@
             android:id="@+id/sightingsArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sightingsBird"
-            android:layout_alignBottom="@+id/sightingsBird"
-            android:layout_alignParentRight="true"
+            android:layout_below="@+id/sightingsBird"
             android:text="@string/sighting_area"
             android:textColor="#000000"
             android:textSize="@dimen/text_medium_size"/>
+
+        <TextView
+            android:id="@+id/sightingsUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sightingsArea"
+            android:textSize="@dimen/text_medium_size"
+            android:textColor="#000000" />
         <TextView
             android:id="@+id/sightingId"
             android:layout_width="wrap_content"

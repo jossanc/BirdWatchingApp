@@ -8,7 +8,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="56sp"
+        android:paddingTop="6sp"
         android:paddingLeft="24sp"
         android:paddingRight="24sp">
 
@@ -18,7 +18,7 @@
             android:layout_marginBottom="48sp"
             android:gravity="center"
             android:text="@string/title_new_sighting"
-            android:textSize="@dimen/text_big_size"
+            android:textSize="@dimen/text_very_big_size"
             android:textColor="#000000"/>
 
         <TextView android:id="@+id/sightingBird"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
             android:text="@string/newsighting_bird"
-            android:textSize="@dimen/text_medium_size"
+            android:textSize="@dimen/text_big_size"
             android:textColor="#000000"/>
 
         <Spinner
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
             android:text="@string/signup_area"
-            android:textSize="@dimen/text_medium_size"
+            android:textSize="@dimen/text_big_size"
             android:textColor="#000000"/>
 
         <Spinner

@@ -1,0 +1,144 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24sp"
+        android:paddingRight="24sp"
+        android:paddingTop="56sp">
+
+        <TextView
+            android:id="@+id/title_settings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:gravity="center"
+            android:text="@string/title_settings"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_big_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/settingsUserText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/user_text"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/settingsUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24sp"
+                android:text="@string/usuario"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/passwordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/login_password"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/settings_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    android:textSize="@dimen/text_medium_size"/>
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/areaNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/sighting_area2"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/areaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/sighting_area"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="24sp"
+                android:layout_weight="1"
+                android:background="#CEECF5"
+                android:padding="12sp"
+                android:textSize="@dimen/text_medium_size"
+                android:text="@string/update_sighting" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24sp"
+                android:layout_marginTop="24sp"
+                android:layout_weight="1"
+                android:background="#CEECF5"
+                android:padding="12sp"
+                android:textSize="@dimen/text_medium_size"
+                android:text="@string/delete_sighting" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

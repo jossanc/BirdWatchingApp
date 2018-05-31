@@ -1,11 +1,10 @@
 package com.jose.birdwatchingapp.Presenter;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
-import com.jose.birdwatchingapp.View.SightingFragment;
+import com.jose.birdwatchingapp.View.SettingsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,35 +14,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jose on 24/05/18.
+ * Created by jose on 31/05/18.
  */
 
-public class SightingPresenter {
-    private String TAG= SightingPresenter.class.getSimpleName();
+public class SettingsPresenter {
+    private String TAG=SettingsPresenter.class.getSimpleName();
     private String TAG_AREA="areaName";
-    private String TAG_BIRD="commonName";
-    private String sigID;
-    private SightingFragment view;
+    private SettingsFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
-    private List<String> birdsList= new ArrayList<>();
-    private String bird, area, date;
-    private SharedPreferences prefs;
+    private String bird, area, userName;
 
-    public SightingPresenter(SightingFragment v){
+    public SettingsPresenter(SettingsFragment v){
         view= v;
         api= new API();
     }
 
 
 
-    public void initData(String sigBird, String sigArea, String sigDate,String sigId){
-        addItemsOnSpinnerBird();
+    public void initData(String user, String sigArea, String password){
         addItemsOnSpinnerArea();
-        view.setTextBird(sigBird);
         view.setTextArea(sigArea);
-        view.setTextDate(sigDate);
-        sigID=sigId;
     }
 
     public void addItemsOnSpinnerArea(){
@@ -53,11 +44,6 @@ public class SightingPresenter {
         view.addItemsOnSpinnerArea(areaList);
     }
 
-    public void addItemsOnSpinnerBird(){
-        birdsList.add("Seleccione un nuevo ave");
-        initializeSpinnerBirds();
-        view.addItemsOnSpinnerBird(birdsList);
-    }
     public void changeVisibility(){
         view.changeVisibility();
     }
@@ -65,31 +51,30 @@ public class SightingPresenter {
     public void updateButton(String bird, String area,String date){
         this.bird=bird;
         this.area=area;
-        this.date=date;
         view.setUpdateButton(false);
         view.setDeleteButton(false);
-        updateSighting();
+        updateUser();
         view.setUpdateButton(true);
         view.setDeleteButton(true);
         //gobackButton();
     }
-    public void deleteButton(String date){
-        this.date=date;
-        deleteSighting();
+    public void deleteButton(String user){
+        userName=user;
+        deleteUser();
         //gobackButton();
     }
     public void gobackButton(){
         view.getActivity().finish();
     }
 
-    public void deleteSighting(){
+    public void deleteUser(){
         String url=api.get_url("url_all_sightings");
         String json;
-        json = "{\"sightingId\":\""+sigID+"\"}";
+        json = "{\"userName\":\""+userName+"\"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
         urls[0]="delete";
-        urls[1]=url+sigID;
+        urls[1]=url+userName;
         urls[2]=json;
 
         new HttpReq(new HttpInterface() {
@@ -99,8 +84,8 @@ public class SightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage("Eliminado correctamente");
-                        view.showMessage("Vuelva a abrir \"Mis avistamientos\" para ver los cambios");
-                       // onSightingSuccess();
+                        view.showMessage("Vuelva atrás para ver los cambios");
+                        // onSightingSuccess();
                     }
                 });
 
@@ -119,7 +104,7 @@ public class SightingPresenter {
 
     }
 
-    public void updateSighting() {
+    public void updateUser() {
         //prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
         //String userName=prefs.getString("username","");
         Log.d(TAG,bird+"  "+area+"  ");
@@ -129,10 +114,10 @@ public class SightingPresenter {
         //verificar aynctask y eso, httpinterface
         json = "{\"commonBirdName\":\""+bird+"\",\"areaName\":\""+area+"\"}";
         Log.d(TAG,json);
-        Log.d(TAG,url+sigID);
+        Log.d(TAG,url+userName);
         String[] urls = {"","",""};
         urls[0]="put";
-        urls[1]=url+sigID;
+        urls[1]=url+userName;
         urls[2]=json;
 
         new HttpReq(new HttpInterface() {
@@ -142,7 +127,7 @@ public class SightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage("Actualizado correctamente");
-                        view.showMessage("Vuelva a abrir \"Mis avistamientos\" para ver los cambios");
+                        view.showMessage("Vuelva atrás para ver los cambios");
                     }
                 });
 
@@ -190,35 +175,7 @@ public class SightingPresenter {
             }
         }).execute(urls);
     }
-    public void initializeSpinnerBirds(){
-        String url=api.get_url("url_all_birdsName");
-        String[] urls = {"","",""};
-        urls[0]="get";
-        urls[1]=url;
 
-        new HttpReq(new HttpInterface() {
-            @Override
-            public void onSuccess(final String result) {
-                view.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        parseBirds(result);
-                    }
-                });
-
-            }
-
-            @Override
-            public void onFail(final String result) {
-                view.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        view.showMessage(result);
-                    }
-                });
-            }
-        }).execute(urls);
-    }
     public void parseAreas(String result) {
         String area;
         if (result.contains("<html>")) {
@@ -244,31 +201,5 @@ public class SightingPresenter {
             }
         } else
             Log.d(TAG, "Resultado del get areas " + result);
-    }
-    public void parseBirds(String result) {
-        String birdName;
-        if (result.contains("<html>")) {
-            result = null;
-        }
-        if (result != null) {
-            try {
-                JSONArray data = new JSONArray(result);
-                Log.d(TAG, "birds: " + result);
-                // Checking for SUCCESS TAG
-                JSONObject a = data.getJSONObject(0);
-                String success = a.getString(TAG_BIRD);
-                if (success != null) {
-                    // data found
-                    for(int i=0;i<data.length();i++) {
-                        JSONObject c = data.getJSONObject(i);
-                        birdName = c.getString(TAG_BIRD);
-                        birdsList.add(birdName);
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } else
-            Log.d(TAG, "Resultado del get birds " + result);
     }
 }

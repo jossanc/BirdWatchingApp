@@ -23,17 +23,23 @@ public class NewSightingPresenter {
     private String TAG= NewSightingPresenter.class.getSimpleName();
     private String TAG_AREA="areaName";
     private String TAG_BIRD="commonName";
+    private String TAG_ECOSYSTEM="ecosystemName";
+    private String TAG_COUNT="count";
     private NewSightingFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
     private List<String> birdsList= new ArrayList<>();
     private String bird;
     private String area;
+    private String userName;
+    private String ecosystem=null, count;
     private SharedPreferences prefs;
 
     public NewSightingPresenter(NewSightingFragment v){
         view= v;
         api= new API();
+        prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        userName=prefs.getString("username","");
     }
 
     public void addItemsOnSpinnerArea(){
@@ -52,23 +58,21 @@ public class NewSightingPresenter {
     public void sightingButton(String bird,String area){
         this.bird=bird;
         this.area=area;
+        view.setSightingButton(false);
         newSighting();
+        getEcosystem();
+        getCountSightings();
+        view.setSightingButton(true);
+        //checkAchievements();
+        //checkNovato();
+
     }
 
 
-    public String newSighting() {
-        String result="ok";
-        view.setSightingButton(false);
-        prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
-        String userName=prefs.getString("username","");
+    public void newSighting() {
         Log.d(TAG,bird+"  "+area+"  "+userName);
-
-
-        // TODO: Implement your own signup logic here.
-        //TODO: progress dialog, algo parecido
         String url=api.get_url("url_all_sightings");
         String json;
-        //verificar aynctask y eso, httpinterface
         json = "{\"userName\":\""+userName+"\",\"commonBirdName\":\""+bird+"\",\"areaName\":\""+area+"\"}";
         Log.d(TAG,json);
         String[] urls = {"","",""};
@@ -83,9 +87,7 @@ public class NewSightingPresenter {
                     @Override
                     public void run() {
                         view.showMessage("Nuevo avistamiento añadido correctamente");
-                        //view.loadSightings(result);
-                        //TODO sighting registered...
-                    }
+                           }
                 });
 
             }
@@ -100,14 +102,6 @@ public class NewSightingPresenter {
                 });
             }
         }).execute(urls);
-
-        onSightingSuccess();
-        return  result;
-    }
-    public void onSightingSuccess(){
-        view.setSightingButton(true);
-        view.getActivity().finish();
-
     }
     public void initializeSpinnerArea(){
         String url=api.get_url("url_areas");
@@ -150,8 +144,7 @@ public class NewSightingPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage(result);
-                        parseBirds(result);
+                         parseBirds(result);
                     }
                 });
 
@@ -220,4 +213,188 @@ public class NewSightingPresenter {
         } else
             Log.d(TAG, "Resultado del get birds " + result);
     }
-}
+
+    public void getEcosystem(){
+        String url=api.get_url("url_get_ecosystem");
+        String json;
+        json = "{\"commonName\":\""+bird+"\"}";
+        Log.d(TAG,json);
+        String[] urls = {"","",""};
+        urls[0]="get";
+        urls[1]=url+bird;
+        urls[2]=json;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                if (!result.contains("<html>")) {
+                    try {
+                        JSONObject data = new JSONObject(result);
+                        String success = data.getString(TAG_ECOSYSTEM);
+                        if (success != null) {
+                                ecosystem=success;
+                        }checkAchievements(ecosystem);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else
+                    Log.d(TAG, "error al hacer get ecosystem " + result);
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage("No se pudo añadir en estos momentos");
+                    }
+                });
+            }
+        }).execute(urls);
+    }
+
+    public void getCountSightings(){
+        String url=api.get_url("url_count_sightings");
+        String json, data;
+        json = "{\"userName\":\""+userName+"\"}";
+        Log.d(TAG,json);
+        String[] urls = {"","",""};
+        urls[0]="get";
+        urls[1]=url+userName;
+        urls[2]=json;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+                if (!result.contains("<html>")) {
+                    try {
+                        JSONArray array = new JSONArray(result);
+                        JSONObject data = array.getJSONObject(0);
+                        String success = data.getString(TAG_COUNT);
+                        if (success != null) {
+                            // data found
+                            count=success;
+                        }checkNovato();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else
+                    Log.d(TAG, "error al hacer get count sightings " + result);
+            }
+
+            @Override
+            public void onFail(final String result) {
+                view.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.showMessage("No se pudo añadir en estos momentos");
+                    }
+                });
+            }
+        }).execute(urls);
+    }
+
+    public void checkAchievements(String ecosystem){
+        String url=api.get_url("url_all_achievements");
+        String json;
+        if(ecosystem!=null)
+            switch (ecosystem){
+            case "Zona urbana":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Urbanita novato\",\"challengeName\":\"Ave de ciudad\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona arbolada":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"\",\"challengeName\":\"\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona semiarbolada":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"\",\"challengeName\":\"\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona de pradera":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Pastor\",\"challengeName\":\"Ave de pradera\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona boscosa":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Cervatillo\",\"challengeName\":\"Ave de zona boscosa\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona de montaña":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Montañero novato\",\"challengeName\":\"Ave de montaña\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona rural":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Campesino novato\",\"challengeName\":\"Ave rural\"}";
+                insertAchievement(url,json);
+                return;
+            case "Brezales":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Amo del monte\",\"challengeName\":\"Ave de brezales\"}";
+                insertAchievement(url,json);
+                return;
+            case "Zona de humedales":
+                json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Anfibio\",\"challengeName\":\"Ave de humedales\"}";
+                insertAchievement(url,json);
+                return;
+            default:
+                return;
+        }
+        else
+            Log.d(TAG,"ecosystem null");
+    }
+    public void checkNovato() {
+        String url=api.get_url("url_all_achievements");
+        String json;
+        int c = 0;
+        if (count != null){
+            c = Integer.parseInt(count);
+         }else
+            Log.d(TAG,"Count null");
+        if(c<3) {
+            Log.d(TAG, "Mas de 3 avistamientos");
+        }else if(c<10){
+            json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Novato\",\"challengeName\":\"Novato\"}";
+            insertAchNov(url,json);
+        }else{
+            json = "{\"userName\":\""+userName+"\",\"achievementName\":\"Amante de las aves\",\"challengeName\":\"Ver 10 aves\"}";
+            insertAchNov(url,json);
+        }
+    }
+    public void insertAchievement(String url,String json){
+        String[] urls = {"","",""};
+        urls[0]="post";
+        urls[1]=url;
+        urls[2]=json;
+
+        new HttpReq(new HttpInterface() {
+            @Override
+            public void onSuccess(final String result) {
+            }
+
+            @Override
+            public void onFail(final String result) {
+            }
+        }).execute(urls);
+
+    }
+
+    public void insertAchNov(String url, String json){
+            Log.d(TAG,json);
+            String[] urls = {"","",""};
+            urls[0]="post";
+            urls[1]=url;
+            urls[2]=json;
+
+            new HttpReq(new HttpInterface() {
+                @Override
+                public void onSuccess(final String result) {
+                }
+
+                @Override
+                public void onFail(final String result) {
+                }
+            }).execute(urls);
+
+            //  onSightingFinish();
+        }
+    }
+

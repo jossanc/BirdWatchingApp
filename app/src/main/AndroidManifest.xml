@@ -30,23 +30,30 @@
         <activity
             android:name=".View.MainActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.SightingsActivity"
+        <activity
+            android:name=".View.SightingsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.MySightingsActivity"
+        <activity
+            android:name=".View.MySightingsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.ChallengesActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".View.ChallengesActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".View.NewSightingActivity" />
-        <activity android:name=".View.AchievementsActivity"
-            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".View.AchievementsActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".View.BirdActivity" />
         <activity
             android:name=".View.SightingActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.BirdsActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".View.BirdsMenuActivity"
-            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".View.BirdsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".View.BirdsMenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.SettingsActivity"></activity>
     </application>
 
 </manifest>

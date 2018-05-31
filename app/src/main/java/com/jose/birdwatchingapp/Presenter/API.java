@@ -17,10 +17,14 @@ public class  API {
                 return "http://virtual.lab.inf.uva.es:20072/birds/birdsbysn";
             case "url_all_birdsName":
                 return "http://virtual.lab.inf.uva.es:20072/birds/birdsName";
+            case "url_get_ecosystem":
+                return "http://virtual.lab.inf.uva.es:20072/birds/getecosystem/";
             case "url_all_sightings":
                 return "http://virtual.lab.inf.uva.es:20072/sightings/";
             case "url_my_sightings":
                 return "http://virtual.lab.inf.uva.es:20072/sightings/byuser/";
+            case "url_count_sightings":
+                return "http://virtual.lab.inf.uva.es:20072/sightings/byuser/count/";
             case "url_update_sighting":
                 return "http://virtual.lab.inf.uva.es:20072/sightings/update/";
             case "url_all_challenges":

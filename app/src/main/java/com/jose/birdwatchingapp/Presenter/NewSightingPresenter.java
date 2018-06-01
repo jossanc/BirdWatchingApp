@@ -166,7 +166,7 @@ public class NewSightingPresenter {
         if (result.contains("<html>")) {
             result = null;
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
                 Log.d(TAG, "areas: " + result);
@@ -192,7 +192,7 @@ public class NewSightingPresenter {
         if (result.contains("<html>")) {
             result = null;
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
                 Log.d(TAG, "birds: " + result);

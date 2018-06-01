@@ -108,7 +108,7 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
         Log.d(TAG, "Resultado del GET url " + result);
         if (result.contains("<html>"))
             result = null;
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
 

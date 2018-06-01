@@ -48,8 +48,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/passwordText"
@@ -64,15 +66,14 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
-                <EditText android:id="@+id/settings_password"
-                    android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/settings_password"
+                    android:layout_width="158dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     android:hint="Password"
-                    android:textSize="@dimen/text_medium_size"/>
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/text_medium_size" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -119,12 +120,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginBottom="24sp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="24sp"
                 android:layout_weight="1"
                 android:background="#CEECF5"
-                android:padding="12sp"
-                android:textSize="@dimen/text_medium_size"
+                android:padding="2sp"
+                android:textSize="@dimen/text_small_size"
                 android:text="@string/update_sighting" />
 
             <android.support.v7.widget.AppCompatButton
@@ -136,8 +137,8 @@
                 android:layout_marginTop="24sp"
                 android:layout_weight="1"
                 android:background="#CEECF5"
-                android:padding="12sp"
-                android:textSize="@dimen/text_medium_size"
+                android:padding="2sp"
+                android:textSize="@dimen/text_small_size"
                 android:text="@string/delete_sighting" />
         </LinearLayout>
     </LinearLayout>

@@ -1,5 +1,7 @@
 package com.jose.birdwatchingapp.Presenter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
@@ -23,18 +25,21 @@ public class SettingsPresenter {
     private SettingsFragment view;
     private API api;
     private List<String> areaList= new ArrayList<>();
-    private String bird, area, userName;
+    private String password, areaName, userName;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor edit;
 
     public SettingsPresenter(SettingsFragment v){
         view= v;
         api= new API();
     }
 
-
-
-    public void initData(String user, String sigArea, String password){
+    public void initData(String user,String area){
         addItemsOnSpinnerArea();
-        view.setTextArea(sigArea);
+        userName=user;
+        areaName=area;
+        view.setTextUser(user);
+        view.setTextArea(area);
     }
 
     public void addItemsOnSpinnerArea(){
@@ -48,12 +53,14 @@ public class SettingsPresenter {
         view.changeVisibility();
     }
 
-    public void updateButton(String bird, String area,String date){
-        this.bird=bird;
-        this.area=area;
+    public void updateButton(String user,String area,String pass){
+        this.userName=user;
+        this.areaName=area;
+        this.password=pass;
         view.setUpdateButton(false);
         view.setDeleteButton(false);
         updateUser();
+        changePrefs();
         view.setUpdateButton(true);
         view.setDeleteButton(true);
         //gobackButton();
@@ -63,12 +70,15 @@ public class SettingsPresenter {
         deleteUser();
         //gobackButton();
     }
-    public void gobackButton(){
-        view.getActivity().finish();
+    public void changePrefs(){
+        prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
+        edit = prefs.edit();
+        edit.putString("username", userName);
+        edit.putString("areaname",areaName);
     }
 
     public void deleteUser(){
-        String url=api.get_url("url_all_sightings");
+        String url=api.get_url("url_user");
         String json;
         json = "{\"userName\":\""+userName+"\"}";
         Log.d(TAG,json);
@@ -105,14 +115,20 @@ public class SettingsPresenter {
     }
 
     public void updateUser() {
-        //prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
-        //String userName=prefs.getString("username","");
-        Log.d(TAG,bird+"  "+area+"  ");
-
-        String url=api.get_url("url_update_sighting");
+        String url;
         String json;
+        if(password.isEmpty()){
+            url=api.get_url("url_updatearea_user");
+            json = "{\"userName\":\""+userName+"\",\"areaName\":\""+areaName+"\"}";
+        }else if (!validate().contains("ok")) {
+            onUpdateFailed(validate());
+            return;
+        }else {
+            url=api.get_url("url_update_user");
+            json = "{\"userName\":\"" + userName + "\",\"password\":\""+password+"\",\"areaName\":\"" + areaName + "\"}";
+            Log.d(TAG,"json:  "+json);
+        }
         //verificar aynctask y eso, httpinterface
-        json = "{\"commonBirdName\":\""+bird+"\",\"areaName\":\""+area+"\"}";
         Log.d(TAG,json);
         Log.d(TAG,url+userName);
         String[] urls = {"","",""};
@@ -138,12 +154,29 @@ public class SettingsPresenter {
                 view.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        view.showMessage("No se pudo actualizar en estos momentos");
+                        view.showMessage("Actualizado correctamente");
+                        view.showMessage("Vuelva atrás para ver los cambios");
+                       // view.showMessage("No se pudo actualizar en estos momentos");
                     }
                 });
             }
         }).execute(urls);
 
+    }
+    public void onUpdateFailed(String result) {
+        view.showMessage(result);
+        view.setUpdateButton(true);
+    }
+
+    public String validate() {
+        String valid = "ok";
+
+        if (password.length() < 4 || password.length()>15) {
+            //_nameText.setError("at least 3 characters");
+            valid = "La contraseña tiene que tener entre 4 y 15 caracteres";
+        }
+
+        return valid;
     }
 
     public void initializeSpinnerArea(){
@@ -181,7 +214,7 @@ public class SettingsPresenter {
         if (result.contains("<html>")) {
             result = null;
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
                 Log.d(TAG, "areas: " + result);

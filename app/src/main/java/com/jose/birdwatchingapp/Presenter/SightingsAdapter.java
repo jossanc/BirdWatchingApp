@@ -150,7 +150,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
             Log.d(TAG, "Resultado del get sightings " + result);
             if (result.contains("<html>"))
                 result = null;
-            if (result != null) {
+            if (!result.isEmpty()) {
                 try {
                     JSONArray data = new JSONArray(result);
 
@@ -159,7 +159,7 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
                     // Checking for SUCCESS TAG
                     JSONObject aux = data.getJSONObject(0);
                     String success = aux.getString(TAG_USER);
-                    if (success != null) {
+                    if (!success.isEmpty()) {
                         // data found
                         // looping through All Data
                         for (int i = 0; i < data.length(); i++) {

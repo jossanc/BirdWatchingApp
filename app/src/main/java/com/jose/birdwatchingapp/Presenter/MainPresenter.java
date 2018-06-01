@@ -9,6 +9,7 @@ import com.jose.birdwatchingapp.View.ChallengesActivity;
 import com.jose.birdwatchingapp.View.MainFragment;
 import com.jose.birdwatchingapp.View.MySightingsActivity;
 import com.jose.birdwatchingapp.View.NewSightingActivity;
+import com.jose.birdwatchingapp.View.SettingsActivity;
 import com.jose.birdwatchingapp.View.SightingsActivity;
 
 /*
@@ -46,7 +47,7 @@ public class MainPresenter {
                 mainView.startActivity(new Intent(mainView.getActivity(), AchievementsActivity.class));
                 return;
             case "action_settings":
-                //mainView.startActivity(new Intent(mainView, SettingsActivity.class));
+                mainView.startActivity(new Intent(mainView.getActivity(), SettingsActivity.class));
                 return;
             case "action_birds":
                 mainView.startActivity(new Intent(mainView.getActivity(), BirdsMenuActivity.class));

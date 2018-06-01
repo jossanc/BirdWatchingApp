@@ -140,7 +140,7 @@ public class BirdsAdapter extends RecyclerView.Adapter<BirdsAdapter.ViewHolder> 
         Log.d(TAG, "Resultado del get Birds " + result);
         if (result.contains("<html>"))
             result = null;
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
 

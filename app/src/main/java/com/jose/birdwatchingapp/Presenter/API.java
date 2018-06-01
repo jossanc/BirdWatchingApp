@@ -31,6 +31,10 @@ public class  API {
                 return "http://virtual.lab.inf.uva.es:20072/challenges/";
             case "url_user":
                 return "http://virtual.lab.inf.uva.es:20072/users/";
+            case "url_update_user":
+                return "http://virtual.lab.inf.uva.es:20072/users/update/";
+            case "url_updatearea_user":
+                return "http://virtual.lab.inf.uva.es:20072/users/updatearea/";
             case "url_register_user":
                 return "http://virtual.lab.inf.uva.es:20072/users/register";
             case "url_login":

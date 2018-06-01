@@ -224,14 +224,14 @@ public class SightingPresenter {
         if (result.contains("<html>")) {
             result = null;
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
                 Log.d(TAG, "areas: " + result);
                 // Checking for SUCCESS TAG
                 JSONObject a = data.getJSONObject(0);
                 String success = a.getString(TAG_AREA);
-                if (success != null) {
+                if (!success.isEmpty()) {
                     // data found
                     for(int i=0;i<data.length();i++) {
                         JSONObject c = data.getJSONObject(i);

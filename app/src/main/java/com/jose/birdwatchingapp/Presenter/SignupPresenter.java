@@ -150,12 +150,12 @@ public class SignupPresenter {
     public String validate() {
         String valid = "ok";
 
-        if (name.isEmpty() || name.length() < 4) {
+        if (name.isEmpty() || name.length() < 4 || name.length()>15) {
             //_nameText.setError("at least 3 characters");
-            valid = "El usuario tiene que tener entre 4 y 10 caracteres";
-        } else if (password.isEmpty() || password2.isEmpty() || password.length() < 4 || password.length() > 10) {
+            valid = "El usuario tiene que tener entre 4 y 15 caracteres";
+        } else if (password.isEmpty() || password2.isEmpty() || password.length() < 4 || password.length() > 15) {
             //_emailText.setError("enter a valid password");
-            valid = "La contraseña tiene que tener entre 4 y 10 caracteres";
+            valid = "La contraseña tiene que tener entre 4 y 15 caracteres";
         } else if (!password.contentEquals(password2)){
             valid = "La contraseña no coincide";
         }
@@ -167,7 +167,7 @@ public class SignupPresenter {
         if (result.contains("<html>")) {
             result = null;
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
                 JSONArray data = new JSONArray(result);
                 Log.d(TAG, "areas: " + result);

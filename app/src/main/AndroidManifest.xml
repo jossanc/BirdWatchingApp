@@ -8,13 +8,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
         <!-- android:networkSecurityConfig="@xml/network_security_config" -->
         <activity
             android:name=".View.LoginActivity"
+            android:roundIcon="@mipmap/ic_launcher_round"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -53,7 +53,8 @@
         <activity
             android:name=".View.BirdsMenuActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".View.SettingsActivity"></activity>
+        <activity android:name=".View.SettingsActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

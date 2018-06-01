@@ -28,6 +28,7 @@ public class LoginPresenter {
     private SharedPreferences.Editor edit;
     private API api;
     private String TAG_USER = "userName";
+    private String TAG_AREA = "areaName";
     private User user;
     private static final int REQUEST_SIGNUP = 0;
 
@@ -57,6 +58,7 @@ public class LoginPresenter {
         prefs = PreferenceManager.getDefaultSharedPreferences(view.getActivity());
         edit = prefs.edit();
         edit.putString("username", userName);
+        edit.putString("areaname",user.getAreaName());
         edit.commit();
         Log.d(TAG,"usuario guardado en preferencias "+userName);
         view.startActivity(new Intent(view.getActivity(), MainActivity.class));
@@ -68,15 +70,17 @@ public class LoginPresenter {
             result = null;
             Log.d(TAG,"user obtenido: "+user.getUserName());
         }
-        if (result != null) {
+        if (!result.isEmpty()) {
             try {
-                Log.d(TAG, "User: " + result);
+                Log.d(TAG, "User:" + result+"/");
                 // Checking for SUCCESS TAG
                 JSONObject c = new JSONObject(result);
                 String name = c.getString(TAG_USER);
+                String area = c.getString(TAG_AREA);
                 if (name != null) {
                     // data found
                     user.setUserName(name);
+                    user.setAreaName(area);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -105,7 +109,7 @@ public class LoginPresenter {
                         //view.showMessage(result);
                         parseUser(result);
                         if(user.getUserName().contains(userName)){
-                            Log.d(TAG,"usuario correcto");
+                            Log.d(TAG,"usuario correcto"+userName+"  "+ user.getUserName());
                             view.showMessage("Bienvenido");
                             onSuccessF();
                         }else {

@@ -1,11 +1,10 @@
 package com.jose.birdwatchingapp.View;
 
 
+import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jose.birdwatchingapp.Presenter.SettingsPresenter;
-import com.jose.birdwatchingapp.Presenter.SightingPresenter;
 import com.jose.birdwatchingapp.R;
 
 import java.util.List;
@@ -30,12 +28,12 @@ import java.util.List;
 public class SettingsFragment extends Fragment {
 
     private SettingsPresenter presenter;
-    private String TAG = SightingFragment.class.getSimpleName();
+    private String TAG = SettingsFragment.class.getSimpleName();
     private TextView Suser,Spassword,Sarea;
     private Button updateButton, deleteButton;
     private Spinner spinnerArea;
     private SharedPreferences prefs;
-    private String userName;
+    private String userName, areaName;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -48,9 +46,10 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings,
                 container, false);
-        presenter = new SightingPresenter(this);
+        presenter = new SettingsPresenter(this);
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         userName=prefs.getString("username","");
+        areaName=prefs.getString("areaname","");
 
         updateButton = (Button) view.findViewById(R.id.btn_update);
         deleteButton = (Button) view.findViewById(R.id.btn_delete);
@@ -64,18 +63,18 @@ public class SettingsFragment extends Fragment {
                 String area = String.valueOf(spinnerArea.getSelectedItem());
                 String password=Spassword.getText().toString();
                 if (area.contains("Seleccione un nuevo área")) {
-                    showMessage("No se ha actualizado nada");
-                    presenter.gobackButton();
+                    showMessage("No se ha actualizado el area");
+                    //presenter.gobackButton();
+                    presenter.updateButton(userName,areaName,password);
                 }else
-                    presenter.updateButton(area,password);
+                    presenter.updateButton(userName,area,password);
                 //cuando llega aquí solo queda esta posibilidad
             }
         });
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username;
-                presenter.deleteButton(date);
+                presenter.deleteButton(userName);
             }
         });
         setUpdateButton(false);
@@ -92,9 +91,7 @@ public class SettingsFragment extends Fragment {
     public void initData(){
         //asignar valores del elemento seleccionado a la vista
 
-        String password,area;
-
-        presenter.initData(Suser,password,area);
+        presenter.initData(userName,areaName);
     }
 
     @Override
@@ -106,7 +103,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_edit_sighting:
+            case R.id.action_edit_user:
                 presenter.changeVisibility();
                 return true;
             default:
@@ -131,21 +128,23 @@ public class SettingsFragment extends Fragment {
         if (visibility==View.VISIBLE){
             spinnerArea.setVisibility(View.INVISIBLE);
             updateButton.setVisibility(View.INVISIBLE);
+            Spassword.setVisibility(View.INVISIBLE);
         }else{
             spinnerArea.setVisibility(View.VISIBLE);
             updateButton.setVisibility(View.VISIBLE);
+            Spassword.setVisibility(View.VISIBLE);
         }
     }
 
     public void setTextUser(String name){
-        Sarea.setText(name);
+        Suser.setText(name);
     }
     public void setTextArea(String area){
         Sarea.setText(area);
     }
-    public void setTextPassword(String pass){
-        Spassword.setText(pass);
-    }
+   // public void setTextPassword(String pass){
+     //   Spassword.setText(pass);
+    //}
 
 
     public void addItemsOnSpinnerArea(List<String> list) {

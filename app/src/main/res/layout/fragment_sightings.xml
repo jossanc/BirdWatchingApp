@@ -12,5 +12,5 @@
         android:id="@+id/recyclerViewSightings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/signup_back"/>
+        android:background="@drawable/texture"/>
 </LinearLayout>

@@ -16,7 +16,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -142,6 +145,14 @@ public class SightingsAdapter extends RecyclerView.Adapter<SightingsAdapter.View
     public String formatDate(String d){
         d=d.replace("T"," ");
         d=d.replace(".000Z","");
+        Log.d(TAG,d);
+        try {
+            Date da= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(d);
+            String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:SS").format(da);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return d;
     }

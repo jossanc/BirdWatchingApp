@@ -44,13 +44,13 @@ public class NewSightingPresenter {
 
     public void addItemsOnSpinnerArea(){
         //get areasNames  desde el modelo..
-        areaList.add("Eliga un área");
+        areaList.add("Elija un área");
         initializeSpinnerArea();
         view.addItemsOnSpinnerArea(areaList);
     }
 
     public void addItemsOnSpinnerBird(){
-        birdsList.add("Eliga un ave");
+        birdsList.add("Elija un ave");
         initializeSpinnerBirds();
         view.addItemsOnSpinnerBird(birdsList);
     }

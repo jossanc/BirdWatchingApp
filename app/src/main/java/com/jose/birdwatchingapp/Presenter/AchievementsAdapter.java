@@ -25,11 +25,11 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
     private static final String TAG = AchievementsAdapter.class.getSimpleName();
 
     private List<Achievement> achievementsList = new ArrayList<>();
+    private List<String> descriptionList = new ArrayList<>();
     private String TAG_ACHIEVEMENTNAME = "achievementName";
     private String TAG_CHALLENGE = "challengeName";
+    private String TAG_DESCRIPTION = "description";
 
-
-// BEGIN_INCLUDE(recyclerViewSampleViewHolder)
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -37,7 +37,7 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView achievementName;
         private final TextView achievementChallenge;
-
+        private final TextView description;
         public ViewHolder(View v) {
             super(v);
             // Define click listener for the ViewHolder's View.
@@ -51,7 +51,8 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
             });
             achievementName = (TextView) v.findViewById(R.id.achievementN);
             achievementChallenge = (TextView) v.findViewById(R.id.achievementCha);
-          }
+            description = (TextView) v.findViewById(R.id.achievementDes);
+        }
 
         public TextView getAchievementName() {
             return achievementName;
@@ -60,6 +61,7 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
         public TextView getAchievementChallenge() {
             return achievementChallenge;
         }
+        public TextView getDescription() { return description; }
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
@@ -70,12 +72,9 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
      */
     public AchievementsAdapter(String jsonArray) {
         //  parsear aqui
-        // la vista no tiene que generar el array de strings
         parserAll(jsonArray);
     }
 
-    // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
-    // Create new views (invoked by the layout manager)
     @Override
     public AchievementsAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
@@ -84,9 +83,6 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
 
         return new AchievementsAdapter.ViewHolder(v);
     }
-    // END_INCLUDE(recyclerViewOnCreateViewHolder)
-
-    // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
@@ -97,9 +93,8 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
 
         viewHolder.getAchievementName().setText(achievementsList.get(position).getAchievementName());
         viewHolder.getAchievementChallenge().setText(achievementsList.get(position).getChallengeName());
-
+        viewHolder.getDescription().setText(descriptionList.get(position));
     }
-    // END_INCLUDE(recyclerViewOnBindViewHolder)
 
     // Return the size of your list (invoked by the layout manager)
     @Override
@@ -130,11 +125,12 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
                         // Storing each json item in variable
                         String aname = c.getString(TAG_ACHIEVEMENTNAME);
                         String achallenge = c.getString(TAG_CHALLENGE);
+                        String des = c.getString(TAG_DESCRIPTION);
                         // creating new object to put into the List
                         Achievement achievement= new Achievement(aname,achallenge);
-
                         // adding the object to the List
                         achievementsList.add(achievement);
+                        descriptionList.add(des);
                     }
                 }
 

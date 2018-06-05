@@ -1,10 +1,12 @@
 package com.jose.birdwatchingapp.Presenter;
 
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.jose.birdwatchingapp.Model.HttpReq;
 import com.jose.birdwatchingapp.Utilities.HttpInterface;
 import com.jose.birdwatchingapp.View.BirdFragment;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,24 +34,17 @@ public class BirdPresenter {
         api = new API();
     }
 
-    public void initData(String birdN, String birdSN, String birdF, String birdE) {
+    public void initData(String birdN, String birdSN, String birdF, String birdE, ImageView image1, ImageView image2, ImageView image3) {
         view.setBirdN(birdN);
         birdName = birdN;
         view.setBirdSN(birdSN);
         view.setBirdF(birdF);
         view.setBirdE(birdE);
-    }
-
-    public void addItemsOnSeason() {
-        //get seasonNames  desde el modelo..
-        initializeSeason();
-    }
-
-
-    public void addItemsOnArea() {
-        //get areasNames  desde el modelo..
         initializeArea();
+        initializeSeason();
+        initializeImage(image1,image2,image3);
     }
+
 
     public void initializeArea() {
         String url = api.get_url("url_area_bybird");
@@ -168,6 +163,14 @@ public class BirdPresenter {
             }
         } else
             Log.d(TAG, "Resultado del get seasons " + result);
+    }
+
+    public void initializeImage(ImageView imageView1,ImageView imageView2,ImageView imageView3){
+        String url = api.get_url("url_images");
+        url=url+birdName;
+        Picasso.get().load(url+"1.jpg").into(imageView1);
+        Picasso.get().load(url+"2.jpg").into(imageView2);
+        Picasso.get().load(url+"3.jpg").into(imageView3);
     }
 }
 

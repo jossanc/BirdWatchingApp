@@ -36,7 +36,7 @@ public class SignupPresenter {
 
     public void addItemsOnSpinner(){
         //get areasNames  desde el modelo..
-        areaList.add("Elige un área");
+        areaList.add("Elija un área");
         //areaList.add("Zamora");
         initializeSpinnerArea();
         view.addItemsOnSpinner(areaList);

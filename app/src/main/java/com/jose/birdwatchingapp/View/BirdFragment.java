@@ -6,11 +6,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jose.birdwatchingapp.Presenter.BirdPresenter;
 import com.jose.birdwatchingapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class BirdFragment extends Fragment {
     private TextView birdN,birdSN, birdF, birdE;
     private TextView birdPRI,birdVER,birdOTO,birdINV;
     private TextView tableLE,tablePA,tableBU, tableSO, tableSE, tableAV, tableSA, tableZA, tableVA;
+    private ImageView imageView1,imageView2,imageView3;
 
 
     public BirdFragment() {
@@ -80,6 +83,9 @@ public class BirdFragment extends Fragment {
         tableZA = (TextView ) view.findViewById(R.id.table_za);
         tableVA = (TextView ) view.findViewById(R.id.table_va);
 
+        imageView1 = (ImageView) view.findViewById(R.id.photo1);
+        imageView2 = (ImageView) view.findViewById(R.id.photo2);
+        imageView3 = (ImageView) view.findViewById(R.id.photo3);
 
         presenter = new BirdPresenter(this);
         initData();
@@ -92,37 +98,18 @@ public class BirdFragment extends Fragment {
         String birdname,birdscientificname,birdfamily,birdecosystem;
             Bundle extras = getActivity().getIntent().getExtras();
             if(extras == null) {
-                //user= null;
                 birdname=null;
                 birdscientificname=null;
                 birdfamily=null;
                 birdecosystem=null;
             } else {
-                //user= extras.getString("username");
                 birdname=extras.getString("birdname");
                 birdscientificname=extras.getString("birdscientificname");
                 birdfamily=extras.getString("birdfamily");
                 birdecosystem=extras.getString("birdecosystem");
             }
 
-        presenter.initData(birdname,birdscientificname,birdfamily,birdecosystem);
- /*       setSTTPri(true);
-        setSTTVer(true);
-        setSTTOto(true);
-        setSTTInv(true);
-
-        setSTTva(true);
-        setSTTza(true);
-        setSTTle(true);
-        setSTTpa(true);
-        setSTTbu(true);
-        setSTTso(true);
-        setSTTse(true);
-        setSTTav(true);
-        setSTTsa(true);*/
-
-        presenter.addItemsOnSeason();
-        presenter.addItemsOnArea();
+        presenter.initData(birdname,birdscientificname,birdfamily,birdecosystem,imageView1,imageView2,imageView3);
     }
 
     public void setBirdN(String bird) {
@@ -143,7 +130,6 @@ public class BirdFragment extends Fragment {
 
     public void setSTTPri(boolean vis){
             birdPRI.setText("PRIMAVERA");
-            //birdPRI.setPaintFlags(birdPRI.getPaintFlags());
     }
 
     public void setSTTVer(boolean vis){
@@ -152,51 +138,27 @@ public class BirdFragment extends Fragment {
     }
 
     public void setSTTOto(boolean vis){
-        birdOTO.setText("OTOÑO");//setPaintFlags(birdOTO.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
+        birdOTO.setText("OTOÑO");
     }
 
     public void setSTTInv(boolean vis){
-        /*if(vis)
-            //birdPRI.setPaintFlags(birdPRI.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
-            birdINV.setVisibility(View.INVISIBLE);
-        else {
-            birdINV.setVisibility(View.VISIBLE);
-        */    birdINV.setText("INVIERNO");
-        //birdPRI.setPaintFlags(birdPRI.getPaintFlags());
-     }
+            birdINV.setText("INVIERNO");
+    }
 
     public void setSTTle(boolean vis){
-        /*if(vis == true)
-           // tableLE.setPaintFlags(tableLE.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Log.d(TAG,"");
-        else*/
             tableLE.setText("LE");
-            //tableLE.setPaintFlags(tableLE.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
     }
 
     public void setSTTpa(boolean vis){
-        /*if(vis == true)
-//            tablePA.setPaintFlags(tablePA.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            Log.d(TAG,"");
-        else*/
             tablePA.setText("PA");
     }
 
     public void setSTTbu(boolean vis){
-        /*if(vis == true)
-            //tableBU.setPaintFlags(tableBU.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            Log.d(TAG,"");
-        else*/
-            tableBU.setText("BU");//setPaintFlags(tableBU.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
+            tableBU.setText("BU");
     }
 
     public void setSTTso(boolean vis){
-        /*if(vis == true)
-        //    tableSO.setPaintFlags(tableSO.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Log.d(TAG,"");
-
-        else*/
-            tableSO.setText("SO");//setPaintFlags(tableSO.getPaintFlags() | Paint.LINEAR_TEXT_FLAG);
+            tableSO.setText("SO");
     }
 
     public void setSTTse(boolean vis){

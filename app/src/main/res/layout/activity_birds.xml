@@ -5,11 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jose.birdwatchingapp.View.BirdsActivity">
-<!--    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_birds"
-        android:layout_centerHorizontal="true"
-        android:name="com.jose.birdwatchingapp.View.BirdsFragment"/>-->
 
 </android.support.constraint.ConstraintLayout>

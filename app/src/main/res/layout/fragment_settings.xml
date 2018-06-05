@@ -139,7 +139,7 @@
                 android:background="#CEECF5"
                 android:padding="2sp"
                 android:textSize="@dimen/text_small_size"
-                android:text="@string/delete_sighting" />
+                android:text="@string/delete_user" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

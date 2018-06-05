@@ -44,7 +44,7 @@ public class SettingsPresenter {
 
     public void addItemsOnSpinnerArea(){
         //get areasNames  desde el modelo..
-        areaList.add("Seleccione un nuevo área");
+        areaList.add("Elija un nuevo área");
         initializeSpinnerArea();
         view.addItemsOnSpinnerArea(areaList);
     }

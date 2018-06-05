@@ -80,5 +80,7 @@
     <string name="title_va">Valladolid</string>
     <string name="title_settings">Ajustes</string>
     <string name="user_text">Nombre de usuario:</string>
+    <string name="item_challenge_description">Descripción</string>
+    <string name="delete_user">Borrar usuario</string>
 
 </resources>

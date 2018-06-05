@@ -43,7 +43,10 @@ public class LoginPresenter {
         userName = name;
         password = pass;
         view.setLoginButton(false);
-        login();
+        if (userName.isEmpty()){
+            view.showMessage("Introduzca un usuario por favor");
+        }else
+            login();
         //onSuccessF();
         view.setLoginButton(true);
     }

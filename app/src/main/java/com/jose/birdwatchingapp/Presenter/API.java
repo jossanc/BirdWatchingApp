@@ -51,6 +51,8 @@ public class  API {
                 return "http://virtual.lab.inf.uva.es:20072/seasons/byseason/";
             case "url_all_achievements":
                 return "http://virtual.lab.inf.uva.es:20072/achievements/";
+            case "url_images":
+                return "http://virtual.lab.inf.uva.es:20072/images/";
             default:
                 return null;
         }

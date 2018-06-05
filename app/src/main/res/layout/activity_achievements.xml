@@ -5,11 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jose.birdwatchingapp.View.AchievementsActivity">
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_achievements"
-        android:name="com.jose.birdwatchingapp.View.AchievementsFragment"
-        android:layout_centerHorizontal="true" />
+
 
 </android.support.constraint.ConstraintLayout>

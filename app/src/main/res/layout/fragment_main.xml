@@ -1,0 +1,59 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/geese_fondo"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <ImageView android:src="@drawable/prismaticos1"
+            android:layout_width="wrap_content"
+            android:layout_height="112dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal" />
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_birds"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/bird_list"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_sightings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/sightings_list"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_mysightings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/mysightings_list"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_newsightings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/new_sighting"
+            android:textStyle="italic"
+            android:textSize="@dimen/text_medium_size"/>
+
+    </LinearLayout>
+</ScrollView>
+

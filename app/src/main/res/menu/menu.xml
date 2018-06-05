@@ -2,29 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_sightings"
+        android:title="@string/titleSightings"
+        android:icon="@android:drawable/ic_media_play" />
+    <item
+        android:id="@+id/action_my_sightings"
+        android:title="@string/titleMySightings"
+        android:icon="@android:drawable/ic_media_pause" />
+    <item
         android:id="@+id/action_sighting"
         android:icon="@android:drawable/ic_menu_edit"
-        app:showAsAction="always|withText"
         android:title="@string/sighting" />
     <item
         android:id="@+id/action_challenges"
         android:title="@string/title_challenges"
         android:icon="@android:drawable/ic_media_play" />
     <item
-        android:id="@+id/itemServiceStart"
-        android:title="@string/titleServiceStart"
-        android:icon="@android:drawable/ic_media_play" />
-    <item
-        android:id="@+id/itemServiceStop"
-        android:title="@string/titleServiceStop"
-        android:icon="@android:drawable/ic_media_pause" />
-    <item
-        android:id="@+id/action_purge"
+        android:id="@+id/action_achievements"
         android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/purge" />
+        android:title="@string/titleAchievements" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="@string/action_settings" />
+
+    <!--app:showAsAction="always|withText"-->
 </menu>

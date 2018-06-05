@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_inv"
+        android:title="@string/title_inv"
+        android:icon="@android:drawable/ic_menu_gallery"
+        />
+    <item
+        android:id="@+id/action_pri"
+        android:title="@string/title_pri"
+        />
+    <item
+        android:id="@+id/action_ver"
+        android:title="@string/title_ver"
+        />
+    <item
+        android:id="@+id/action_oto"
+        android:title="@string/title_oto"
+        />
+
+</menu>

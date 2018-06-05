@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24sp"
+        android:paddingRight="24sp"
+        android:paddingTop="6sp">
+
+        <TextView
+            android:id="@+id/title_sighting"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24sp"
+            android:gravity="center"
+            android:text="@string/title_sighting"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_big_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/sightingBirdText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/sighting_bird"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sightingBird"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24sp"
+                android:text="@string/item_bird"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerBird"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/areaNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/sighting_area2"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/areaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="5sp"
+                android:text="@string/sighting_area"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinnerArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium" />
+
+            <TextView
+                android:id="@+id/SightingDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginEnd="5dp"
+                android:text="@string/sighting_date"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/SightingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:text="@string/item_date"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_medium_size" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="24sp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="24sp"
+                android:layout_weight="1"
+                android:background="#CEECF5"
+                android:padding="12sp"
+                android:textSize="@dimen/text_small_size"
+                android:text="@string/update_sighting" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24sp"
+                android:layout_marginTop="24sp"
+                android:layout_weight="1"
+                android:background="#CEECF5"
+                android:padding="12sp"
+                android:textSize="@dimen/text_small_size"
+                android:text="@string/delete_sighting" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
